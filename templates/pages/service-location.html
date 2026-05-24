@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block hero%}
+    <section class="hero short">
+        <div class="slider dark">
+            <img alt="{{ location.title }}" title="{{ location.title }}" src="{% if location.area.featured_image %}{{ location.area.featured_image.get_absolute_url() }}{% else %}/static/img/slider/areas-placeholder.png{% endif %}"/>      
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h1 class="display white-text x-large-text">{{ location.title }}</h1>
+                <p class="white-text my-6">Are you looking for {{ service.title }} in {{ location.title }}? ROK Operates accross the entire {{location.area.title}} area.</p>
+                
+            </div>
+            <div>
+                <div class="hero-children card-stack">
+                    <div class="card clear
+    p-3 ">
+                            <h3 class="gold-text caps small-text spaced-text">Common </h3>
+                            <p class="white-text">{{location.short_description}}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock hero %}
+
+{% block main %}
+    <section class="light pt-4">
+        <div class="content pt-4 grid pb-6 col-2 g-3 md-collapse">
+            <div>
+
+                <h3 class="spaced-text caps pb-2 gold-text small-text">Service</h3>
+                <p>{{service.desc}}</p>
+            </div>
+            <div>
+                <h3 class="spaced-text caps pb-2 gold-text small-text">Location</h3>
+                <p>{{location.long_description}}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="soft">
+        <div class="grid content col-2--right g-6 py-6">
+            <div>
+                <h3 class="small-text spaced-text gold-text semi-bold caps">Talk to us</h3>
+                <h2 class="display large-text">Discuss your {{ service.title }} in {{ location.title }}.</h2>
+                <p>Book an initial consultation to explore the best route for your renovation, extension or bespoke new build.</p>
+            </div>
+            <div class="card clear p-6 shadow-4">
+                <form method="POST" action="/contact">
+                {{form.csrf_token }}
+                <div class="grid col-2 g-3 pb-3">
+                    <div>
+                        <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
+                            {{form.name}}
+
+                    </div>
+                    <div>
+                        <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
+                        {{form.email}}
+                    </div>
+                </div>
+                    <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
+                    {{form.number}}
+
+                    <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
+                    {{form.message}}
+                <div class="grid col-2 g-6 mt-3">
+                    <p>Share a few details and we will be in touch within two business days.</p>
+                    <div>
+                        
+                        <button role="submit" class="cta primary">Start Your Enquiry</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </section>
+{% endblock main %}
+

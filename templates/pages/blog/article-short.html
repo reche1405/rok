@@ -1,0 +1,70 @@
+
+{% extends 'base.html' %}
+{% block hero %}
+
+	<style>
+		.container { max-width: 900px; margin: 0 auto; }
+		.abstract { font-style: italic; margin: 1rem 0; }
+		.body { margin: 1.5rem 0; }
+		.supplementary { margin: 1.5rem 0; text-align: center; }
+		.supplementary img { max-width: 100%; height: auto; }
+	</style>
+
+	<section class="hero short">
+        <div class="slider dark">
+            {% if article.featured_image %}
+                <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="{{ article.featured_image.get_absolute_url() }}"/>
+            {% else %}
+                <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="/static/img/slider/blog-placeholder.jpg"/>
+            {% endif %}
+        </div>
+		<div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+			<div>
+				<h1 class="display white-text large-text">{{ article.title }}</h1>
+				<p class="white-text my-6">{% if article.subtitle %}{{ article.subtitle }} {% else %}Enjoy a quick read from our writers.{% endif %}</p>
+			</div>
+			<div class="sm-hide">
+				<div class="hero-children card-stack">
+					<div class="card clear p-3 ">
+						<h3 class="gold-text caps small-text spaced-text">Author</h3>
+						<p class="white-text">{{ article.author }}</p>
+					</div>
+					<div class="card clear p-3 ">
+						<h3 class="gold-text caps small-text spaced-text">Publish Date</h3>
+						<p class="white-text">{% if article.published_date %}{{ article.published_date }}{% endif %} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock hero %}
+	{% block main %}
+
+	<main class="container">
+		{% if article.abstract %}
+		<section class="abstract">
+			<h2>Abstract</h2>
+			<p>{{ article.abstract }}</p>
+		</section>
+		{% endif %}
+
+		<section class="body">
+			<h2>Article</h2>
+			{# primary body field requested as article.body_one on the context object #}
+			
+			{% if article.body_one %}
+				{{ article.body_one.replace('\n', '<br>') | safe }}
+			{% else %}
+				<p>No content available.</p>
+			{% endif %}
+		</section>
+
+		{% if article.supplementary_image %}
+		<section class="supplementary">
+			<h3>Supplementary image</h3>
+			<img src="{{ article.supplementary_image.get_absolute_url() }}" alt="Supplementary image">
+		</section>
+		{% endif %}
+	</main>
+
+{% endblock main %}

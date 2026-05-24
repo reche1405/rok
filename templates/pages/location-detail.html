@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+   {% block hero %}
+     
+
+    <section class="hero short">
+        <div class="slider dark">
+            {% if location.featured_image %}
+                <img alt="{{ location.title }}" title="{{ location.title }}" src="{{ location.featured_image }}"/>
+            {% else %}
+                <img alt="{{ location.title }}" title="{{ location.title }}" src="{% if location.area.featured_image %}{{ location.area.featured_image.get_absolute_url() }}{% else %}/static/img/slider/areas-placeholder.png{% endif %}"/>
+            {% endif %}
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h1 class="display white-text x-large-text">{{ location.title }}</h1>
+                <p class="white-text my-6">We offer a wide range of services in {{ location.title }}, {{location.area.title}}</p>
+                
+            </div>
+            <div>
+                <div class="hero-children card-stack">
+                    <div class="card clear p-3 ">
+                        <h3 class="gold-text caps small-text spaced-text">Common </h3>
+                        <p class="white-text">{{location.short_description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+       {% endblock hero %}
+    {% block main %}
+
+    <section class="light pt-4">
+        <div class="grid content py-6 g-6 col-3 align-center">
+            {% for service in services %}
+                <div class="card white p-3 flex col justify-center shadow-4 text-center">
+                    <div class="icon-block">
+                        <img
+                            src="/static/svg/tools.svg"
+                            alt="triangle with all three sides equal"
+                            height="30"
+                            width="30" />
+                    </div>
+                    <h3 class="mt-6 mb-3">{{ service.title }} in {{ location.title|title }}</h3>
+                    <p>{{service.short_desc}}</p>
+                    <div>
+                    <a class="cta secondary p-1" href="/services/{{ service.slug }}/{{location.slug}}">See More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="dark">
+        <div class="grid content col-2--right g-6 py-6">
+            <div>
+                <h3 class="small-text spaced-text gold-text semi-bold caps">Surrounding Areas</h3>
+                <h2 class="display white-text large-text">Working in {{ location.area.title }} and Surrounding Areas</h2>
+                <p class="white-text my-6">Servicable areas in the surrounding region in {{ location.area.title }}.</p>
+            </div>
+            <div>
+
+                <div class="grid col-2 g-6">
+                    {% for related in location.area.locations %}
+                    {% if related.id != location.id %}
+                    
+                        <div class="card clear p-5 shadow-4">
+                            <h3 class="small-text spaced-text gold-text caps">Location</h3>
+                            <h3 class="mt-2 mb-4">{{ related.title }}</h3>
+                            <a class="cta secondary" href="/locations/{{ related.slug }}">View location</a>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+  {% endblock main %}

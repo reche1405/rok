@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/img/rok-favicon.ico">
+    {% if page %}
+    <title>{{ page.meta.title }}</title>
+    <meta name="description" content="{{ page.meta.description }}">
+    <meta name="keywords" content="{{ page.meta.keywords }}">
+    {% elif project %}
+    <title>{{  project.title}}</title>
+    <meta name="description" content="{{ project.short_desc }}">
+    <meta name="keywords" content="{% for service in project.services %}{{ service.title }} services,{% endfor %} ">
+    {% elif area %}
+    <title>{{ area.title }}</title>
+    <meta name="description" content="{{ area.short_desc }}">
+    <meta name="keywords" content="{% for service in area.services %}{{ service.title }} in {{ area.title }},{% endfor %}">
+    {% elif location and service %}
+    <title>{{ service.title }} in {{ location.title }}</title>
+    <meta name="description" content="{{ service.title }} in {{ location.title }}. {{ location.short_desc }}">
+    <meta name="keywords" content="{{ service.title }} in {{ location.title }}, {{ service.title }} in {{ location.area.title }}, {{ service.title }} in {{ location.area.title }} and surrounding areas.">
+    {% elif service %}
+    <title>{{ service.title }}</title>
+    <meta name="description" content="{{ service.short_desc }}">
+    <meta name="keywords" content="{% for area in service_areas %}{{service.title}} in {{area.title}},{% endfor %}">
+    {% elif article %}
+    <title>{{ article.title }}</title>
+    <meta name="description" content="{{ article.short_desc }}">
+    <meta name="keywords" content="ROK Blog, {{article.title}}">
+    {% elif location %}
+    <title>{{  location.title }}</title>
+    <meta name="description" content="{{ location.short_desc }}">
+    <meta name="keywords" content="{{ ' ROK Group, ' + location.area.title + ', ' + location.title }}">
+        {% elif policy %}
+    <title>{{ policy.title }}</title>
+    <meta name="description" content="The ROK Group -{{ policy.title }}">
+    <meta name="keywords" content="ROK Group, {{ policy.title }}">
+
+    {% endif %}
+
+    
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/slideshow.css">
+</head>
+<body>
+    {% include "header.html" %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="message-list">
+        {% for category, message in messages %}
+          <div class="message fade-in shadow-3 message-{{ category }}">
+              {{ message }}
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block hero %} {% endblock hero %}
+    {% include "breadcrumbs.html" %}
+    
+    {% block main %} {% endblock main %}
+
+    {% include "footer.html" %}
+</body>
+<script>
+    const messages = document.querySelectorAll('.message');
+    if (messages) {
+        messages.forEach(message => {
+            setTimeout(() => {
+                message.classList.add('fade-out');
+                setTimeout(() => {
+                    message.remove();
+                }, 1000);
+            }, 5000);
+        });
+    }
+</script>
+<script src="/static/js/nav.js" ></script>
+<script src="/static/js/forms.js" ></script>
+<script src="/static/js/slideshows.js" type="module"></script>
+</html>

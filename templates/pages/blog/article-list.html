@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+{% block hero %}
+
+	<section class="hero short">
+        <div class="slider dark">
+                <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="/static/img/slider/blog-placeholder.jpg"/>
+            
+        </div>
+		<div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+			<div>
+				<h1 class="display white-text x-large-text">Latest Articles</h1>
+				<p class="white-text my-6">Insights, case studies and company news from The Rok Group.</p>
+			</div>
+			<div class="sm-hide">
+				<div class="hero-children card-stack">
+					<div class="card clear p-3 ">
+						<h3 class="gold-text caps small-text spaced-text">Industry Insights</h3>
+						<p class="white-text">Practical advice for homeowners and designers.</p>
+					</div>
+					<div class="card clear p-3 ">
+						<h3 class="gold-text caps small-text spaced-text">Project Stories</h3>
+						<p class="white-text">Behind-the-scenes of selected builds.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock hero %}
+    {% block main %}
+	<section class="light pt-4">
+		<div class="content grid py-6">
+			<div class="grid col-3 g-6">
+				{# Show six articles (controller should provide 'articles' sliced to six) #}
+				{% for article in articles %}
+				<div class="card white pb-3 shadow-4">
+					<a href="/blog/{{ article.slug }}">
+						<div class="card__image">
+							{% if article.featured_media %}
+							<img alt="{{ article.title }}" title="{{ article.title }}" src="{{ article.featured_media.get_absolute_url() }}" />
+							{% else %}
+							<img src="/static/img/slider/blog-placeholder.jpg" alt="{{ article.title }}" />
+							{% endif %}
+						</div>
+						<div class="card__body pb-3 px-3">
+							<h3 class="small-text spaced-text gold-text semi-bold caps pt-3">{{ article.category or 'Article' }}</h3>
+							<h3 class="pb-3 pt-1 ">{{ article.title|truncate(35) }}</h3>
+							<p>{{ article.abstract|truncate(130) }}</p>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="content full-width center mt-6">
+				<nav class="pagination">
+					{% if has_prev %}
+						<a class="btn" href="?page={{ prev_page_no }}">{{ prev_page_no }}</a>
+                    {% endif %}
+
+					{# simple page number buttons #}
+                    <span class="btn active">{{ page_no }}</span>
+                    {# Next button #}
+
+					{% if has_next %}
+						<a class="btn" href="?page={{ next_page_no }}">{{ next_page_no }}</a>
+					{% endif %}
+				</nav>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock main %}

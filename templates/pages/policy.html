@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+   {% block hero %}
+	<section class="hero short">
+        <div class="slider dark">
+           
+                <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="/static/img/slider/blog-placeholder.jpg"/>
+        </div>
+		<div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+			<div>
+				<h1 class="display white-text large-text">{{ policy.title }}</h1>
+				<p class="white-text my-6">We adhere strictly to all applicable laws and regulations.</p>
+			</div>
+		</div>
+	</section>
+    {% endblock hero %}
+    {% block main %}
+
+
+	<main>
+
+		<section class="content py-6" style="">
+			{{policy.content|safe}}
+		</section>
+
+		
+	</main>
+  {% endblock main %}

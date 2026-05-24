@@ -1,0 +1,91 @@
+
+{% extends 'base.html' %}
+{% block hero %}
+    <section class="hero short">
+        <div class="slider dark">
+            <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="static/img/slider/rok-van-hero.png"/>
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h1 class="display white-text x-large-text">{{ page.title }}</h1>
+                <p class=" white-text my-6">
+                    {{ page.subtitle }}
+                </p>
+            </div>
+
+            
+        </div>
+    </section>
+    {% endblock hero %}
+    {% block main %}
+    <section class="pale pb-6 pt-6">
+        
+        <div class="grid content col-2 py-4 mt-3 g-6 ">
+            {% for project in projects %}
+            
+            
+            <div class="card white shadow-4">
+                <div class="card__image">
+                {% if project.featured_media %}
+                <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
+                {% else %}
+                    <img  src="/static/img/slider/project-placeholder.png" alt="{{ project.title }}" title="{{ project.title }}"/>
+                {% endif %}
+                </div>
+                <a href="/projects/{{ project.slug }}" class="card__link">
+                    <div class="card__body p-4">
+                        {% if project.featured %}
+                        <div class="flex center-y">
+
+                            <span class="card__tag white-text">FEATURED</span>
+                        </div>
+                        {% endif %}
+                        <div class="flex center-y mt-4">
+                            <h1 class="display large-text mb-3 ">{{ project.title }}</h1>
+                        </div>
+                        
+                        <p class="pb-4">{{ project.short_desc|truncate(200) }}</p>
+                        <div class="card__footer">
+                            <div class="flex row center-y">
+                                <span class="small-text spaced-text gold-text caps"> 
+                                    {% for service in project.services %}{{ service.title }}{% if not loop.last %}, {% endif %}{% endfor %}
+                                </span>
+                            </div>
+                            <div class="flex row center-y">
+                                 <div class="flex center-y mt-4">
+
+                           
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    
+    <section class="soft">
+        <div class="grid content col-2--right g-6 py-6">
+            <div>
+                        <h3 class="small-text spaced-text gold-text semi-bold caps">Why this matters</h3>
+                <h2 class="display  large-text">The right contractor experience should feel organised, not opaque.</h2>
+                <p class=" my-6">
+                        Better service pages should reassure clients that the project will be understood properly,
+                        structured clearly and delivered with care. That means setting expectations early and keeping
+                        quality visible throughout the job.
+                </p>
+            </div>
+            <div class="grid col-2 g-3">
+        
+                <div class="card soft p-6 shadow-4">
+                    
+                </div>
+                <div class="card soft p-6 shadow-4">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+   {% endblock main %}

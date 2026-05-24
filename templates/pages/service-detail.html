@@ -1,0 +1,106 @@
+
+{% extends 'base.html' %}
+{% block hero %}
+
+    <section class="hero short">
+        
+         <div class="slider light">
+            <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="/static/img/slider/service-placeholder.png"/>
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h1 class="display  x-large-text">{{ service.title }}</h1>
+                <p class=" my-6">{{ service.short_desc }}</p>
+            </div>
+            <div>
+                <div class="hero-children card-stack">
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock hero %}
+    {% block main %}
+    <section class="soft pb-6">
+        <div class="grid content pt-4 g-6 col-2--left">
+            <div>
+                <div class="sticky-top">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps mb-3">Service overview</h3>
+                    <p>{{ service.desc }}</p>
+                </div>
+            </div>
+            <div>
+                {% if service.benefits_list %}
+                    <div class="card white p-4 shadow-4">
+                        <p class=" spaced-text gold-text caps mb-2">Benefits</p>
+                        {% for benefit in service.benefits_list.items %}
+                        <div class="flex row center-y mb-3 g-3 py-1">
+                            <svg style="margin-right:10px;" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#9a7441" stroke-width="2"/>
+                            <path d="M9 12L10.6828 13.6828V13.6828C10.858 13.858 11.142 13.858 11.3172 13.6828V13.6828L15 10" stroke="#9a7441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p class=" small-text bold-text caps " style="line-height:1">{{ benefit.text }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section class="light pt-4">
+        <div class="grid content py-6 g-6 col-2 align-center">
+            <div>
+                <h3 class="small-text spaced-text gold-text semi-bold caps">How we work</h3>
+                <h2 class="display large-text">A clear and consistent delivery process</h2>
+                <p>Every service is delivered with thoughtful planning, regular communication and a focus on quality outcomes.</p>
+            </div>
+            <div class="card soft p-6 shadow-4">
+                <div class="grid col-2 g-4">
+                    <div class="card white px-3 py-5">
+                        <h3 class="gold-text caps small-text spaced-text">Consultation</h3>
+                        <p>We begin by understanding your goals and tailoring the service to your project requirements.</p>
+                    </div>
+                    <div class="card white px-3 py-5">
+                        <h3 class="gold-text caps small-text spaced-text">Planning</h3>
+                        <p>We define a structured approach and deliver the service with transparent milestones.</p>
+                    </div>
+                    <div class="card white px-3 py-5">
+                       <h3 class="gold-text caps small-text spaced-text">Execution</h3>
+                       <p>We maintain quality throughout and keep you informed at every stage of the process.</p>
+                   </div>
+                    <div class="card white px-3 py-5">
+                        <h3 class="gold-text caps small-text spaced-text">Delivery</h3>
+                        <p>We maintain quality throughout and keep you informed at every stage of the process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark">
+        <div class="content grid col-2 py-6">
+            <div class="py-3 ">
+                <h3 class="small-text spaced-text gold-text semi-bold caps">Where we work</h3>
+                <h2 class="display white-text large-text">We are available in the following areas</h2>
+                <p class="white-text my-6">Help could be closer than you thought! We cover the entire south east region with intimate knowledge of the local landscape. </p>
+            </div>
+            <div class="grid col-2 g-3">
+
+                {% for area in service_areas %}
+                
+                    <div class="card clear px-3 text-center py-4 shadow-4">
+                            <svg style="margin-inline:auto;" width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="#9a7441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#9a7441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        <h2 class="mt-2 light-weight">{{ area.title }}</h2>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% endblock main %}

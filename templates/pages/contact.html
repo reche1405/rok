@@ -1,0 +1,105 @@
+{%  extends 'base.html'%}
+    {% block hero %}
+
+    <section class="hero dark short">
+        <div class="slider dark">
+           
+                <img alt="A ROK Customer Service Agent handling an inbound call." title="ROK Customer Service" src="/static/img/slider/contact-placeholder.png"/>
+         
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 md-collapse pt-4">
+            <div>
+                <h1 class="display white-text x-large-text">Contact The Rok Group</h1>
+                <p class="white-text my-6">
+                    Ready to discuss your extension, renovation or new build? Share a few details and we will be in touch.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+{% endblock hero %}
+
+{% block main %}
+    <section class="pale pb-6">
+        <div class="grid content pt-4 g-6 col-2--right">
+            <div>
+                <div class="sticky-top">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Contact</h3>
+                    <h2 class="display large-text">
+                        Tell us about your project.
+                    </h2>
+                    <p class="pt-4">
+                        Use the form to share your plans, or reach out via one of our social channels below.
+                    </p>
+                    <div class="flex g-3 center-y mt-4">
+                        <img
+                            src="/static/svg/email.svg"
+                            alt="A Email Icon"
+                            height="30"
+                            width="30" />
+                        <p class="semi-bold average-text pb-4" style="line-height:1;">info@therokgroup.co.uk</p>
+                    </div>
+                    <div class="flex g-3 center-y">
+                        <img
+                            src="/static/svg/phone.svg"
+                            alt="triangle with all three sides equal"
+                            height="30"
+                            width="30" />
+                        <p class="semi-bold average-text" style="line-height:1;">01323 409640</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card soft p-6 shadow-4 mt-3">
+                <form method="POST" action="">
+                {{form.csrf_token }}
+                <div class="grid col-2 g-3 pb-3">
+                    <div>
+                        <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
+                            {{form.name}}
+
+                    </div>
+                    <div>
+                        <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
+                        {{form.email}}
+                    </div>
+                </div>
+                    <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
+                    {{form.number}}
+
+                    <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
+                    {{form.message}}
+                <div class="grid col-2 g-6 mt-3">
+                    <p>Share a few details and we will be in touch within two business days.</p>
+                    <div>
+                        
+                        <button role="submit" class="cta primary">Start Your Enquiry</button>
+                    </div>
+                </div>
+            </form>
+            <div class="spinner" hidden>
+                <svg viewBox="0 0 50 50" >
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="90 150" stroke-dashoffset="0"/>
+                </svg>
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    {% if socials %}
+    <section class="soft pt-4 pb-6">
+        <div class="content">
+            <h3 class="small-text spaced-text gold-text semi-bold caps">Follow us</h3>
+            <div class="flex row g-3 socials">
+                {% for link in socials %}
+                <a class=" p-4" href="{{ link.page_uri }}" target="_blank" rel="noreferrer noopener">
+                    {{ link.icon|safe }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+   
+{% endblock main %}

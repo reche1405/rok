@@ -1,0 +1,136 @@
+
+{% extends 'base.html' %}
+{% block hero %}
+    <section class="hero short">
+        <div class="slider dark">
+            {% if project.featured_media %}
+                <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
+            {% else %}
+                <img alt="{{ project.title }}" title="{{ project.title }}" src="/static/img/slider/rok-van-hero.png"/>
+            {% endif %}
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h1 class="display white-text x-large-text">{{ project.title }}</h1>
+                <p class="white-text my-6">{{ project.short_desc }}</p>
+                
+            </div>
+            <div>
+                <div class="hero-children card-stack">
+                    <div class="card clear p-3">
+                        <h3 class="gold-text caps small-text spaced-text">Project type</h3>
+                        <p class="white-text">{{ project.type or "Residential" }}</p>
+                    </div>
+                    <div class="card clear p-3">
+                        <h3 class="gold-text caps small-text spaced-text">Location</h3>
+                        <p class="white-text">{{ project.location.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock hero %}
+    {% block main %}
+
+    <section class="light pb-6">
+        <div class="grid content pb-4 pt-6 g-6 col-2--right">
+            <div>
+                <div class="sticky-top">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Project overview</h3>
+                    <h2 class="display large-text">{{ project.title }}</h2>
+                    <p>{{ project.full_desc or project.desc }}</p>
+                </div>
+            </div>
+            <div>
+                <div class="grid col-2 my-4 mx-3 g-4">
+                    <div class="card white p-4 shadow-4">
+                        <h2 class="mt-2 mb-2 light-weight">Scope</h2>
+                        <p>{{ project.scope or "Design, planning and construction management for a carefully finished residential project." }}</p>
+                    </div>
+                    <div class="card white p-4 shadow-4">
+                        <h2 class="mt-2 mb-2 light-weight">Services</h2>
+                        <ul class="project-services">
+                            {% for service in project.services %}
+                                <li>{{ service.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="soft py-4">
+        <div class="grid content py-6 g-6 col-2 align-center">
+            <div>
+                <div class="sticky-top">
+                    
+                </div>
+            </div>
+            <div>
+                <h3 class="small-text spaced-text gold-text semi-bold caps">Gallery</h3>
+                    <h2 class="display large-text">The finished space in detail</h2>
+                <p>{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
+            </div>
+        </div>
+        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow" data-slide-duration="7000" data-transition-duration="1500" style="position:relative; min-height:min(650px, 100svh);">
+            {% if project.media %}
+                {% for image in project.media %}
+                    <div class="slide"  data-slide-number="{{loop.index0}}" >
+                        <img class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
+
+
+                    </div>
+                {% endfor %}
+                <div class="slideshow__overlay">
+                            <div class="slide-progress__wrapper">
+                                <div class="slide-progress__container">
+
+                                </div>
+                            </div> 
+                        </div> 
+            {% else %}
+                
+                <div class="no-results">
+                    <p>No Images</p>
+                
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% if project.units %}
+  
+<section class="dark">
+    <div class="grid content py-6 g-6 col-2 align-center">
+        <div>
+            <h3 class="small-text spaced-text gold-text semi-bold caps">Units</h3>
+            <h2 class="display white-text large-text">The components that made up the project</h2>
+            <p class="white-text">{{ project.delivery or "Clear communication, careful sequencing and finish quality kept the build on track and aligned to the client’s expectations." }}</p>
+        </div>
+        <div >
+            
+        </div>
+    </div>
+    <div class="grid content pb-6 g-3 col-3">
+        {% if project.units %}
+          
+            {% for unit in project.units %}
+            <div class="card clear">
+                <div class="card__image">
+                    {% if unit.featured_media %}
+                    <img src="{{ unit.featured_media.get_absolute_url() }}" title="{{unit.featured_media.title or unit.title + ' Media'}} " alt="{{unit.featured_media.title or unit.title + ' Media'}}">                      
+                    {% endif %}
+                </div>
+                <div class="card__body p-4">
+                    <h2>{{unit.title}}</h2>
+                    <p>{{unit.description}}</p>
+                </div>
+            </div>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+
+   {% endblock main %}

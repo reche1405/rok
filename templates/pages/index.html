@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+   {% block hero %}
+     
+   
+    <section class="hero">
+        <div class="slider dark">
+
+            <div class="slideshow permanent" data-slide-duration="7000" data-transition-duration="1500">
+
+                {% for slide in slides %}
+                <div class="slide" data-slide-number="{{forloop.counter0}}" >
+                    <img class="slide__image" src="{{slide.get_absolute_image_url}}" alt="{{slide.title}}" title="{{slide.title}}"/>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="static/img/slider/rok-van-hero.png"/>
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h1 class="display white-text x-large-text">{{page.title}}</h1>
+                <p class="white-text my-6">
+                     {{page.subtitle}}
+                </p>
+                <div class="grid col-2 g-3">
+                    <button class="cta primary">REQUEST CONSULTATION</button>
+                    <button class="cta secondary">FEATURED WORK</button>
+                </div>
+            </div>
+
+            <div class="sm-hide">
+                <div class="hero-children card-stack">
+                    {% for item in hero_list.items  %}
+                       <div class="card clear p-3 ">
+                            <h3 class="gold-text caps small-text spaced-text">{{ item.text }}</h3>
+                            <p class="white-text"> {{item.subtext}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock hero %}
+    {% block main %}
+      
+    
+    <section class="soft pb-6">
+        <div class="grid content pt-4 g-6 col-2--right md-collapse">
+            <div>
+                <div class="sticky-top">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">what we do</h3>
+                    <h2 class="display large-text">
+                        Residential building work that feels resolved, not rushed.
+                    </h2>
+                    <p class="pt-4">
+                        We work with homeowners who want more than a basic contractor experience. The focus is on clear planning, thoughtful execution and a finish that stands up to daily life as well as first impressions.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div class="grid col-2 my-4 g-4">
+                    {% for service in services %}
+                    
+                    <div class="card white p-4 shadow-4">
+                        <div class="flex space-between align-center">
+                            <div class="icon-block">
+                                    <img
+                                        src="/static/svg/tools.svg"
+                                        alt="triangle with all three sides equal"
+                                        height="30"
+                                        width="30" />
+                            </div>
+                            <a class="caps grey-text small-text spaced-text semi-bold" href="">See Examples</a>
+                        </div>
+                        <h2 class="mt-4 mb-3">{{ service.title }}</h2>
+                        <p class="pb-4">{{ service.short_desc }}</p>
+                    </div>
+                    {% endfor %}
+                
+                   
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="light pt-4">
+        <div class="grid content py-6 g-6 col-2 md-collapse align-center">
+            <div>
+                <div class="sticky-top">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Featured work</h3>
+                    <h2 class="display large-text">
+                        Spaces that show the standard, not just the service list.
+                    </h2>
+                </div>
+            </div>
+            <div>
+                <p>
+                    We work with homeowners who want more than a basic contractor experience. The focus is on clear planning, thoughtful execution and a finish that stands up to daily life as well as first impressions.
+                </p>
+            </div>
+        </div>
+        <div class="grid content pb-6 pt-4 g-6 mb-6 col-3 md-col-2">
+            {% for project in projects%}
+            <div class="card white pb-3 shadow-4">
+                <div class="card__image">
+                {% if project.featured_media %}
+                <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
+                {% else %}
+                    <img  src="/static/img/slider/project-placeholder.png" alt="{{ project.title }}" title="{{ project.title }}"/>
+                {% endif %}
+                </div>
+                <a href="/projects/{{ project.slug }}" >
+                <div class="card__body pb-3 px-3">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps pt-3">{{project.type}}</h3>
+                    <h3 class="py-3">
+                        {{ project.title }}
+                    </h3>
+                    <p>
+                        {{ project.desc|truncate(150) }}
+                    </p>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        
+            
+        </div>
+    </section>
+    <section class="dark py-6">
+        <div class="grid content py-6 my-3 g-6 col-2 md-collapse align-center">
+            <div>
+                <div>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Why choose Rok</h3>
+                    <h2 class="display large-text">
+                        A measured approach to quality, communication and control.
+                    </h2>
+                    <p>
+                        High-value residential projects require more than trade capability.
+                        They require sequencing, judgement, site discipline and consistent 
+                        communication so the process feels dependable from start to finish.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div class="grid col-2 g-4">
+                    {% for item in why_rok.items  %}
+                          
+                        <div class="card clear px-3 py-5  ">
+                            <h3 class="gold-text caps small-text spaced-text"> {{ item.text }} </h3>
+                            <p class="white-text"> {{item.subtext}} </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <section class="soft">
+        <div class="grid content py-6 g-6 col-2 md-collapse align-center">
+            <div>
+                <div class="card white p-3 shadow-4">
+                    <div class="card__image">
+                        <img src="/static/img/slider/process-placeholder.png" alt="A ROK site manager at a contruction site", title="Our Process">
+                        <div class="grid col-2">
+
+                            <div class="card clear p-3 m-3">
+                                <h3 class="gold-text small-text spaced-text caps semi-bold">Tested Methodology</h3>
+                                <p class="small-text white-text">We haver refined our processs, with over <span style="font-weight:bold;">20 years</span> experience across our service range.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div>
+                <div class="">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Our Process</h3>
+                    <h2 class="display large-text">
+                       A simpler path from first brief to final handover.
+                    </h2>
+                    <ol class="process">
+                        
+                        <li class="process__item">
+                            <h3 class="my-2">Initial consultation</h3>
+                            <p class="pb-3">We discuss your plans, priorities, timescales and the kind of finished home you want to create.</p>
+                        </li>
+                        <li class="process__item">
+                            <h3 class="my-2">Scope and programme</h3>
+                            <p class="pb-3">We define the project clearly, outline likely sequencing and create a realistic route to delivery.</p>
+                        </li>
+                        <li class="process__item">
+                            <h3 class="my-2">Build and coordinate</h3>
+                            <p class="pb-3">The site is managed carefully with close attention to workmanship, communication and programme control.</p>
+                        </li>
+                        <li class="process__item">
+                            <h3 class="my-2">Finish and handover</h3>
+                            <p class="pb-3">Final details are reviewed properly so the completed space feels resolved, polished and ready to use.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="light">
+        <div class="grid content py-6 my-3 g-6 col-2--right md-collapse align-center">
+            <div>
+                <div>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Where we work</h3>
+                    <h2 class="display large-text">
+                        Serving clients across the South East.
+                    </h2>
+                    <p>
+                        We support homeowners across Sussex, Surrey, Kent and Greater London who want a residential contractor that combines careful site management with a polished, high-quality finish.
+                    </p>
+                </div>
+            </div>
+            <div class="grid col-2 g-3">
+                {% for area in areas %} 
+               
+                    <div class="card soft p-4">
+                        <div class="flex space-between align-center">
+                            <div class="icon-block pale">
+                                <img
+                                        src="/static/svg/location.svg"
+                                        alt="triangle with all three sides equal"
+                                        height="30"
+                                        width="30" />
+                            </div>
+                        </div>
+                        <h2 class="mt-4 mb-3">{{ area.title }}</h2>
+                        <p class="pb-4">{{ area.short_desc }}</p>
+                    </div>
+            
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="dark">
+        <div class="grid content col-2--right md-collapse g-6 py-6">
+        <div>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Contact</h3>
+            <h2 class="display white-text large-text">Ready to discuss your project?</h2>
+            <p class="white-text my-6">
+                    Speak with The Rok Group about your extension, renovation or new build.
+                    We can arrange an initial conversation and advise on the most practical 
+                    next step for your plans.
+            </p>
+        </div>
+        <div class="card clear p-6 shadow-4">
+            <form method="POST" action="/contact">
+                {{form.csrf_token }}
+                <div class="grid col-2 g-3 pb-3">
+                    <div>
+                        <label class="spaced-text caps" for="name">{{form.name.label.text}}</label>
+                            {{form.name}}
+
+                    </div>
+                    <div>
+                        <label class="spaced-text caps" for="email">{{form.email.label.text}}</label>
+                        {{form.email}}
+                    </div>
+                </div>
+                    <label class="spaced-text caps" for="number">{{form.number.label.text}}</label>
+                    {{form.number}}
+
+                    <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
+                    {{form.message}}
+                <div class="grid col-2 g-6 mt-3">
+                    <p>Share a few details and we will be in touch within two business days.</p>
+                    <div>
+                        
+                        <button role="submit" class="cta primary">Start Your Enquiry</button>
+                    </div>
+                </div>
+            </form>
+            <div class="spinner" hidden>
+                <svg viewBox="0 0 50 50" >
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="90 150" stroke-dashoffset="0"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    </section>
+    {% endblock main %}
+   

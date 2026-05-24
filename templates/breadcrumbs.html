@@ -1,0 +1,41 @@
+<div class="breadcrumbs">
+    <div class="content flex row g-4 py-2 wrap center-y">
+        <a href="/">Home</a>
+       {% if page %}
+            {% if page.tag == "Services" %}
+                    <span>Services</span>
+                {% elif page.tag == "Projects" %}
+                    <span>Projects</span>
+                {% elif page.tag == "Areas" %}
+                    <span>Areas</span>
+                {% elif page.tag == "Contact" %}
+                    <span>Contact</span>
+                {% elif page.tag == "Blog" %}
+                    <span>Blog</span>
+            {% endif %}  
+        {% elif project %}    
+            <a href="/projects">Projects</a>
+            <span>{{ project.title|truncate(10) }}</span>
+         {% elif area %}
+            <a href="/areas">Areas</a>
+            <span>{{ area.title }}</span>
+        {% elif service and location %}
+            <a href="/services">Services</a>
+
+            <span>{{ service.title }} in {{ location.title }}</span>
+         {% elif service %}
+            <a href="/services">Services</a>
+            <span>{{ service.title }}</span>
+        {% elif article %}
+            <a href="/blog">Blog</a>
+            <span>{{ article.title|truncate(35) }}</span>
+            {% elif location %}
+            <a href="/areas">Areas</a>
+             <a href="/areas/{{ location.area.slug }}">{{ location.area.title }}</a>
+            <span>{{ location.title }}</span>
+        {% elif policy %}
+            <span>{{ policy.title }}</span>
+        {% endif %} 
+
+    </div>
+</div>  
