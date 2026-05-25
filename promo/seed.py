@@ -1,5 +1,5 @@
 import os,  datetime
-from app import app  # Imports your Flask app instance
+from promo.app import app  # Imports your Flask app instance
 from promo.models import db  # Imports your SQLAlchemy instance
 from promo.models.service import Service  # Adjust path to your actual Service model
 from promo.models.project import Project, Unit  # Adjust path to your actual Project model
