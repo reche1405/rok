@@ -7,7 +7,7 @@
 @font-face {
   font-family: 'Manrope Variable';
 
-  src: url('../fonts/Manrope/Manrope-VariableFont_wght.ttf') format('truetype');
+  src: url('../fonts/Manrope/Manrope-VariableFont_wght.woff2') format('woff2-supports-variations');
   
   font-weight: 200 800;
   
@@ -17,7 +17,7 @@
 
 @font-face {
     font-family: 'Bebas';
-    src: url("../fonts/Bebas/BebasNeue-Regular.ttf") format('truetype');
+    src: url("../fonts/Bebas/BebasNeue-Regular.woff2") format('woff2');
     font-style: normal;
     font-weight:800;
 }
