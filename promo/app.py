@@ -10,8 +10,8 @@ from admin.views import (
     MediaAdminView, SlugifyAdminView,
     ListAdminView, BaseSecureView,
     SecuredAdminIndexView, ProjectAdminView)
-from admin.forms import LoginForm
-from admin.commands import create_admin
+from .admin.forms import LoginForm
+from .admin.commands import create_admin
 from flask_login import LoginManager, current_user, login_user
 from dotenv import load_dotenv
 from flask_mailman import Mail, EmailMessage
