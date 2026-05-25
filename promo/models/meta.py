@@ -1,4 +1,4 @@
-from models import db 
+from promo.models import db 
 import os
 class Meta(db.Model):
     __tablename__ = "metas"

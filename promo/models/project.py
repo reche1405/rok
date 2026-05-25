@@ -1,5 +1,5 @@
 from datetime import datetime
-from models import db
+from promo.models import db
 
 project_services = db.Table('project_services',
     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True),

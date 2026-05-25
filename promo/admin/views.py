@@ -5,8 +5,8 @@ from flask_login import current_user
 from flask_admin import form, AdminIndexView, expose
 from flask import current_app, redirect, url_for, request
 from slugify import slugify
-from models.list import ListItem
-from models.project import Project, Unit
+from promo.models.list import ListItem
+from promo.models.project import Project, Unit
 
 # Define where your uploads live on the server
 # (Matches the UPLOAD_FOLDER we discussed earlier)

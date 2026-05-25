@@ -1,4 +1,4 @@
-from models import db
+from promo.models import db
 
 class Area(db.Model):
     __tablename__ = 'areas'

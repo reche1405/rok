@@ -1,17 +1,17 @@
 from flask import Flask, request,flash, redirect, url_for, render_template, send_from_directory, abort, session
-from .models import db
-from .forms import ContactForm
+from promo.models import db
+from promo.forms import ContactForm
 import os, math, datetime, smtplib, sqlite3
 from email.mime.text import MIMEText
 from flask_admin import Admin
 from flask_admin.theme import Bootstrap4Theme
 from flask_admin.contrib.sqla import ModelView
-from .admin.views import (
+from promo.admin.views import (
     MediaAdminView, SlugifyAdminView,
     ListAdminView, BaseSecureView,
     SecuredAdminIndexView, ProjectAdminView)
-from .admin.forms import LoginForm
-from .admin.commands import create_admin
+from promo.admin.forms import LoginForm
+from promo.admin.commands import create_admin
 from flask_login import LoginManager, current_user, login_user
 from dotenv import load_dotenv
 from flask_mailman import Mail, EmailMessage
@@ -59,17 +59,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 with app.app_context():
-    from models.list import List, ListItem
-    from models.service import Service
-    from models.project import Project, Unit
-    from models.media import Media
-    from models.area import Area
-    from models.location import Location
-    from models.meta import Meta, Page
-    from models.article import Article
-    from models.social import Social
-    from models.user import User
-    from models.policy import Policy
+    from promo.models.list import List, ListItem
+    from promo.models.service import Service
+    from promo.models.project import Project, Unit
+    from promo.models.media import Media
+    from promo.models.area import Area
+    from promo.models.location import Location
+    from promo.models.meta import Meta, Page
+    from promo.models.article import Article
+    from promo.models.social import Social
+    from promo.models.user import User
+    from promo.models.policy import Policy
 
     db.create_all()
     admin.add_view(ListAdminView(List, db.session, category="Static"))

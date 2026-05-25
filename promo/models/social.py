@@ -1,4 +1,4 @@
-from models import db
+from promo.models import db
 
 class Social(db.Model):
     __tablename__ = "socials"

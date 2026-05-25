@@ -1,4 +1,4 @@
-from models import db 
+from promo.models import db 
 import os
 BASE_URL = "/media"
 class Media(db.Model):

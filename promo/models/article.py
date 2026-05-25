@@ -1,4 +1,4 @@
-from models import db
+from promo.models import db
 
 article_media = db.Table(
     'article_media',

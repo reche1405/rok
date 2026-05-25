@@ -1,4 +1,4 @@
-from models import db
+from promo.models import db
 
 class Policy(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)

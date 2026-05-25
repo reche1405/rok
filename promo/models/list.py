@@ -1,4 +1,4 @@
-from models import db
+from promo.models import db
 from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
 class List(db.Model):

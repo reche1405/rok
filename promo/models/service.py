@@ -1,4 +1,4 @@
-from models import db
+from promo.models import db
 
 class Service(db.Model):
     __tablename__ = 'services'

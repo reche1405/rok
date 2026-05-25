@@ -1,8 +1,8 @@
 import click
 from flask.cli import with_appcontext
 from werkzeug.security import generate_password_hash
-from models import db  # Relative import to your models
-from models.user import User
+from promo.models import db  # Relative import to your models
+from promo.models.user import User
 
 @click.command("create-admin")  # Note: Use click.command here, not app.cli.command
 @click.argument("username")
