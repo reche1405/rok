@@ -1,5 +1,5 @@
 from flask import Flask, request,flash, redirect, url_for, render_template, send_from_directory, abort, session
-from models import db
+from .models import db
 from forms import ContactForm
 import os, math, datetime, smtplib, sqlite3
 from email.mime.text import MIMEText
