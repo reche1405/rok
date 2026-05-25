@@ -1,7 +1,7 @@
 from flask import Flask, request,flash, redirect, url_for, render_template, send_from_directory, abort, session
 from models import db
 from forms import ContactForm
-import os, math, datetime, smtplib
+import os, math, datetime, smtplib, sqlite3
 from email.mime.text import MIMEText
 from flask_admin import Admin
 from flask_admin.theme import Bootstrap4Theme
@@ -15,6 +15,7 @@ from admin.commands import create_admin
 from flask_login import LoginManager, current_user, login_user
 from dotenv import load_dotenv
 from flask_mailman import Mail, EmailMessage
+
 
 load_dotenv()
 
@@ -328,4 +329,4 @@ def contact_form():
 
 if __name__ == '__main__':
     # Setting debug=True activates the auto-reloader
-    app.run(debug=True, port=5000)
+    app.run(debug=False)
