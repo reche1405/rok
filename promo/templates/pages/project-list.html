@@ -29,7 +29,7 @@
                 {% if project.featured_media %}
                 <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
                 {% else %}
-                    <img  src="/static/img/slider/project-placeholder.png" alt="{{ project.title }}" title="{{ project.title }}"/>
+                    <img  src="/static/img/slider/project-placeholder.jpg" alt="{{ project.title }}" title="{{ project.title }}"/>
                 {% endif %}
                 </div>
                 <a href="/projects/{{ project.slug }}" class="card__link">

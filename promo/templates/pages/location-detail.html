@@ -7,7 +7,7 @@
             {% if location.featured_image %}
                 <img alt="{{ location.title }}" title="{{ location.title }}" src="{{ location.featured_image }}"/>
             {% else %}
-                <img alt="{{ location.title }}" title="{{ location.title }}" src="{% if location.area.featured_image %}{{ location.area.featured_image.get_absolute_url() }}{% else %}/static/img/slider/areas-placeholder.png{% endif %}"/>
+                <img alt="{{ location.title }}" title="{{ location.title }}" src="{% if location.area.featured_image %}{{ location.area.featured_image.get_absolute_url() }}{% else %}/static/img/slider/areas-placeholder.jpg{% endif %}"/>
             {% endif %}
         </div>
         <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
