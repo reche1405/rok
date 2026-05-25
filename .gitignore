@@ -222,3 +222,6 @@ __marimo__/
 media/
 
 seed.py
+
+*.db
+*.sqlite3

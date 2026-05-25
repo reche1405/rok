@@ -1,7 +1,8 @@
 from flask import Flask, request,flash, redirect, url_for, render_template, send_from_directory, abort, session
 from models import db
 from forms import ContactForm
-import os, math, datetime
+import os, math, datetime, smtplib
+from email.mime.text import MIMEText
 from flask_admin import Admin
 from flask_admin.theme import Bootstrap4Theme
 from flask_admin.contrib.sqla import ModelView
@@ -12,12 +13,29 @@ from admin.views import (
 from admin.forms import LoginForm
 from admin.commands import create_admin
 from flask_login import LoginManager, current_user, login_user
+from dotenv import load_dotenv
+from flask_mailman import Mail, EmailMessage
+
+load_dotenv()
+
 login_manager = LoginManager()
 
 app = Flask(__name__)
 app.cli.add_command(create_admin)
-app.config['SECRET_KEY'] = "some-super-secret-key-that-is-secret"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 login_manager.init_app(app)
+
+
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', '127.0.0.1')
+app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 1025))
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'False').lower() in ['true', '1']
+app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL', 'False').lower() in ['true', '1']
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'noreply@yourdomain.local')
+app.config['INBOUND_MAIL'] = os.environ.get('INBOUND_MAIL')
+
+mail = Mail(app)
 
 admin = Admin(
     app, 
@@ -34,10 +52,6 @@ app.config['UPLOAD_PATH'] = UPLOAD_PATH
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'project.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
-""" Development only!!! """
-
-app.config['MAIL_BACKEND'] = 'flask_mailman.backends.console.EmailBackend'
 
 
 
@@ -121,10 +135,6 @@ def get_footer():
 def serve_media(rel_path):
     media_item = Media.query.filter_by(relative_path=rel_path).first_or_404()
     
-    # 2. Safely isolate the directory and filename from the stored physical path
-    # e.g., if relative_path is "projects/user_12/image.jpg"
-    
-    # Target the precise nested folder safely inside our upload sandbox
     path = app.config['UPLOAD_PATH']
     
     # 3. Stream the file securely
@@ -161,8 +171,11 @@ def service_list():
 
 @app.route("/services/<string:slug>")
 def service_detail(slug):
+    service = Service.get_by_slug(slug)
+    if not service:
+        return redirect(url_for('service_list'))
     context ={
-        'service' : Service.get_by_slug(slug),
+        'service' : service,
         'service_areas' : Area.get_all()
     }
     return render_template('pages/service-detail.html', **context)
@@ -191,9 +204,12 @@ def project_list():
 
 @app.route("/projects/<path:slug>")
 def project_detail(slug):
+    project = Project.get_by_slug(slug)
+    if not project:
+        return redirect(url_for('project_list'))
     context = {
 
-    'project' : Project.get_by_slug(slug)
+    'project' : project
     }
     return render_template("pages/project-detail.html", **context)
 
@@ -209,6 +225,9 @@ def area_list():
 @app.route("/locations/<string:slug>")
 def location_detail(slug):
     location = Location.get_by_slug(slug)
+    if not location:
+        return redirect(url_for('area_list'))
+
     context = {
         'location' : location,
         'services' : Service.get_all(),
@@ -266,7 +285,19 @@ def contact():
 
             #TEMP: Print the form data
             print(f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}")
-            flash("Thanks for getting in touch! We will be in contact within two business days.", "success")
+            msg = EmailMessage(
+                subject="New Website Contact Query",
+                body=f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}",
+                to=[app.config['INBOUND_MAIL']]
+            )
+            try:
+                
+                msg.send()
+                flash("Message sent successfully, we will respond within 2 business days..", "success")
+            except Exception as e:
+                print(f"Email failed to send: {e}")
+                flash("Email failed  to send. Please try again.", "error")
+               
         else: 
             print("Error parsing form data!!!!")
             for error in form.errors.values():

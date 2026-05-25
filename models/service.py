@@ -21,5 +21,6 @@ class Service(db.Model):
         return cls.query.all()
     @classmethod
     def get_by_slug(cls, slug):
+        
         return cls.query.filter_by(slug=slug).first()
 
