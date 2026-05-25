@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 from flask_admin import Admin
 from flask_admin.theme import Bootstrap4Theme
 from flask_admin.contrib.sqla import ModelView
-from admin.views import (
+from .admin.views import (
     MediaAdminView, SlugifyAdminView,
     ListAdminView, BaseSecureView,
     SecuredAdminIndexView, ProjectAdminView)
