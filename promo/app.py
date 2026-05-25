@@ -45,12 +45,13 @@ admin = Admin(
     theme=Bootstrap4Theme(swatch='darkly'))
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
 
 
 UPLOAD_PATH = os.path.join(BASE_DIR, 'media')
 
 app.config['UPLOAD_PATH'] = UPLOAD_PATH
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'project.db')}"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(PARENT_DIR, 'project.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
