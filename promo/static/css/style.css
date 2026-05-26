@@ -191,6 +191,11 @@
 .g-5 {gap:var(--space-5);}
 .g-6 {gap:var(--space-6);}
 
+@view-transition {
+  navigation: auto;
+}
+
+
 h1,h2,h3,h4,h5,h6,section, div, table, ul, li, p {
     margin:0;
     padding:0;
