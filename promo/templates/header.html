@@ -17,6 +17,8 @@
                 {% else %}
                     {% if page and page.tag == 'Areas' or location or area  %}
                         <li><a class="nav-link normal-weight nav-link--active" href="/areas">Areas</a></li>
+                    {% else %}
+                        <li><a class="nav-link normal-weight" href="/areas">Areas</a></li>
                     {% endif %}
                 {% endif %}
                 <li><a class="nav-link normal-weight {% if page and page.tag == 'Contact' %}nav-link--active{% endif %}" href="/contact">Contact</a></li>

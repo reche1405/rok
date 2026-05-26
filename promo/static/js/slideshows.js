@@ -1,4 +1,4 @@
-import Slideshow from "./slideshow.js";
+import Slideshow from "./slideshow.min.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {

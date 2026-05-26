@@ -7,7 +7,7 @@ from flask import current_app, redirect, url_for, request
 from slugify import slugify
 from promo.models.list import ListItem
 from promo.models.project import Project, Unit
-
+from promo.extensions import cache
 # Define where your uploads live on the server
 # (Matches the UPLOAD_FOLDER we discussed earlier)
 UPLOAD_PATH = current_app
@@ -66,6 +66,7 @@ class MediaAdminView(BaseSecureView):
 class SlugifyAdminView(BaseSecureView):
 
     def on_model_change(self, form, model, is_created):
+        super().on_model_change(form, model, is_created)
         if model.title:
             model.slug = slugify(model.title)
 
@@ -76,6 +77,15 @@ class ListAdminView(BaseSecureView):
     
     # Optional customization:
     # column_list = ('name',)
+
+class CachedAdminView(BaseSecureView):
+    def on_model_change(self, form, model, is_created):
+        super().on_model_change(form, model, is_created)
+        cache.delete('global_site_links')
+
+    def on_model_delete(self, model):
+        super().on_model_delete(model)
+        cache.delete('global_site_links')
 
 
 class SecuredAdminIndexView(AdminIndexView):
@@ -93,6 +103,7 @@ class ProjectAdminView(BaseSecureView):
 
     # Optionally auto-generate slug from project title
     def on_model_change(self, form, model, is_created):
+        super().on_model_change(form, model, is_created)
         if getattr(model, 'title', None):
             model.slug = slugify(model.title)
     

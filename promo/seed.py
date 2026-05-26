@@ -1,5 +1,5 @@
 import os,  datetime
-from promo.app import app  # Imports your Flask app instance
+from promo.app import create_app  # Imports your Flask app instance
 from promo.models import db  # Imports your SQLAlchemy instance
 from promo.models.service import Service  # Adjust path to your actual Service model
 from promo.models.project import Project, Unit  # Adjust path to your actual Project model
@@ -14,7 +14,6 @@ from promo.models.policy import Policy
 
 def seed_database():
     print("Initializing database seeding process with slug fields...")
-
     # 1. Complete dataset with custom URL slugs included
     services_data = [
         {
@@ -789,5 +788,7 @@ def seed_database():
         
 
 if __name__ == "__main__":
+    app = create_app()
+
     with app.app_context():
         seed_database()
