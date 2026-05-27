@@ -8,7 +8,7 @@
         <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
             <div>
                 <h1 class="display white-text x-large-text">{{ location.title }}</h1>
-                <p class="white-text my-6">Are you looking for {{ service.title }} in {{ location.title }}? ROK Operates accross the entire {{location.area.title}} area.</p>
+                <p class="white-text my-6 sm-my-3">Are you looking for {{ service.title }} in {{ location.title }}? ROK Operates accross the entire {{location.area.title}} area.</p>
                 
             </div>
             <div>
@@ -46,7 +46,7 @@
                 <h2 class="display large-text">Discuss your {{ service.title }} in {{ location.title }}.</h2>
                 <p>Book an initial consultation to explore the best route for your renovation, extension or bespoke new build.</p>
             </div>
-            <div class="card clear p-6 sm-p3 shadow-4">
+            <div class="card clear p-6 sm-p-0 shadow-4 sm-shadow-0 sm-transparent">
                 <form method="POST" action="/contact">
                 {{form.csrf_token }}
                 <div class="grid col-2 g-3 pb-3">

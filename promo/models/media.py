@@ -8,7 +8,7 @@ class Media(db.Model):
     filename = db.Column(db.String(255), nullable=False)
     relative_path = db.Column(db.String(255), nullable=False)
     alt_tag = db.Column(db.Text, nullable=False)
-    slug = db.Column(db.String(255), nullable=False, unique=True)
+    slug = db.Column(db.String(255), nullable=True)
     description = db.Column(db.Text, nullable=True)
     
     def __repr__(self):

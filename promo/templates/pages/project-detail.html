@@ -12,7 +12,7 @@
         <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
             <div>
                 <h1 class="display white-text x-large-text">{{ project.title }}</h1>
-                <p class="white-text my-6">{{ project.short_desc }}</p>
+                <p class="white-text my-6 sm-my-3">{{ project.short_desc }}</p>
                 
             </div>
             <div>
@@ -73,7 +73,7 @@
                 <p>{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
             </div>
         </div>
-        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow" data-slide-duration="7000" data-transition-duration="1500" style="position:relative; min-height:min(650px, 100svh);">
+        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="7000" data-transition-duration="1500">
             {% if project.media %}
                 {% for image in project.media %}
                     <div class="slide"  data-slide-number="{{loop.index0}}" >

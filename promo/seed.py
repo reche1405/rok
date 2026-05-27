@@ -17,93 +17,381 @@ def seed_database():
     # 1. Complete dataset with custom URL slugs included
     services_data = [
         {
-            "title": "Brickwork Services",
-            "slug": "brickwork-services",
-            "short_desc": "Professional bricklaying and blockwork for extensions, garden walls, structural alterations, and repairs.",
-            "desc": (
-                "Our expert bricklaying team delivers high-quality, durable masonry work for residential projects. "
-                "Whether you are building a new home extension, erecting structural retaining walls, or requiring precision brick matching for repairs, we ensure flawless execution. "
-                "We handle everything from foundation blockwork to intricate decorative brick features, strictly adhering to building regulations and structural safety standards."
-            ),
-            "benefits_list" : [
-                "Structural integrity for lasting durability.",
-                "Increases overall property market value.",
-                "Excellent natural weather resistance.",
-                "Requires minimal long-term maintenance.",
-                "High level of fire protection.",
-            ]
-        },
-        {
-            "title": "Interior & Exterior",
-            "slug": "-and-exterior-decorating",
-            "short_desc": "High-end painting, wallpapering, and surface preparation to transform your living or commercial spaces.",
-            "desc": (
-                "Bring your spaces to life with our comprehensive painting and decorating services. We specialize in meticulous surface preparation—"
-                "including sanding, filling, and priming—to guarantee a flawless, long-lasting finish. From interior walls, ceilings, and woodwork trim to "
-                "weather-resistant exterior rendering and professional wallpaper hanging, our decorators use premium materials to achieve a stunning aesthetic tailored to your style."
-            ),
-             "benefits_list" : [
-                "Dramatically improves property curb appeal.",
-                "Complete space customization to your taste.",
-                "Fixes wear and tear to prevent major damage.",
-                "Makes the living environment feel brand new.",
-                "Boosts buyer interest when selling.",
-            ]
-        },
-        {
             "title": "Plastering & Rendering",
             "slug": "plastering-and-rendering",
-            "short_desc": "Expert skimming, dry lining, and plaster repairs for perfectly smooth, paint-ready walls and ceilings.",
+            "short_desc": "Expert skimming, dry lining, and structural plaster repairs for interior walls and exterior facades.",
             "desc": (
-                "Achieve the ultimate smooth finish with our professional plastering services. We provide top-tier skimming for old or damaged walls, "
-                "clean dry-lining installations for new extensions, and structural plaster repairs following water damage or electrical rewires. "
-                "Our plasterers ensure perfectly flat surfaces and sharp, crisp corners, creating the ideal canvas for your painters and decorators."
+                "Achieve flat, flawless, and highly durable surfaces with our professional plastering and rendering services. "
+                "We handle premium internal skimming, crisp dry-lining installations, and intensive surface restorations. "
+                "For exterior envelopes, our high-grade rendering shields your masonry from weather damage while modernizing your property's exterior aesthetic."
             ),
-            "benefits_list" : [
-                "Creates perfectly smooth walls for painting.",
-                "Significantly improves home insulation.",
-                "Effectively seals out damp and moisture.",
-                "Modernizes dated brickwork and facades.",
-                "Adds an extra layer of acoustic soundproofing.",
-            ]
-            
-        },
-        {
-            "title": "Electrical & Gas",
-            "slug": "electrical-and-gas",
-            "short_desc": "Safe, fully certified electrical rewires, boiler installations, system upgrades, and critical safety inspections.",
-            "desc": (
-                "Our team of fully accredited engineers provides complete safety and compliance for your property's primary infrastructure. "
-                "On the electrical side, we specialize in full house rewires, consumer unit upgrades, modern lighting design, and comprehensive fault finding. "
-                "For gas and heating, we handle high-efficiency boiler installations, central heating system repairs, radiator upgrades, and mandatory landlord gas safety checks. "
-                "Every project is carried out to the highest regulatory standards, prioritizing safety, energy efficiency, and long-term reliability."
-            ),
-            "benefits_list" : [
-                "Complete safety certification and peace of mind.",
-                "Lowers utility bills with energy efficiency.",
-                "Elimates dangerous fire and leak hazards.",
-                "Ensures reliable power and consistent heating.",
-                "Smart home integration and modern controls.",
+            "benefits_list": [
+                "Creates perfectly smooth surfaces for seamless painting.",
+                "Greatly improves property insulation and thermal efficiency.",
+                "Effectively seals out external damp and structural moisture.",
+                "Modernizes dated brickwork facades and external walls.",
+                "Adds an excellent extra layer of internal acoustic soundproofing."
             ]
         },
         {
-            "title": "Plumbing Services",
-            "slug": "plumbing-services",
-            "short_desc": "Reliable installation, maintenance, and emergency repairs for domestic water systems, drainage, and premium fixtures.",
+            "title": "Wall & Floor Tiling",
+            "slug": "wall-and-floor-tiling",
+            "short_desc": "Precision ceramic, porcelain, and natural stone tile installations for walls, floors, and wet rooms.",
             "desc": (
-                "From resolving urgent leak repairs to executing complete multi-unit installations, our plumbing services keep your water and waste networks functioning flawlessly. "
-                "We handle the expert fitting of premium bathroom suites, kitchen sinks, and modern household appliances, alongside critical pipework re-routing and drainage solutions. "
-                "Our experienced team emphasizes rapid response times, clean workmanship, and durable repairs to protect your property from water damage and optimize system pressure."
+                "Transform your kitchens, bathrooms, and high-traffic areas with our precision tiling services. "
+                "Our craftsmen work with ceramic, porcelain, mosaic, and premium natural stone to deliver perfectly aligned, leveled layouts. "
+                "From intensive geometric patterns to complete wet-room tanking and waterproofing, we guarantee watertight, long-lasting finishes."
             ),
-            "benefits_list" : [
-                "Prevents costly water damage and leaks.",
-                "Ensures a reliable, clean water supply.",
-                "Improves water pressure and drainage speed.",
-                "Extends the lifespan of your water heater.",
-                "Reduces water bills through high efficiency.",
+            "benefits_list": [
+                "Highly durable surface that withstands heavy daily wear.",
+                "Complete water and moisture resistance for wet zones.",
+                "Extremely easy to clean and maintain over time.",
+                "Expansive design versatility to match any architectural style.",
+                "Hypoallergenic surfaces that do not harbor dust or allergens."
+            ]
+        },
+        {
+            "title": "Electrical Engineering",
+            "slug": "electrical-engineering",
+            "short_desc": "Safe, fully certified installations, rewires, fuse board replacements, and custom lighting designs.",
+            "desc": (
+                "Our certified electrical services provide complete safety, compliance, and modern functionality for your property infrastructure. "
+                "We handle everything from full house rewires and modern consumer unit (fuse board) upgrades to architectural lighting layouts and power system installations. "
+                "Every job is strictly tested and certified to adhere to current safety and building regulations."
+            ),
+            "benefits_list": [
+                "Full regulatory compliance and safety certification.",
+                "Eliminates dangerous fire and electrical shock hazards.",
+                "Reduces energy bills with modern, smart control systems.",
+                "Ensures consistent, reliable power delivery across circuits.",
+                "Future-proofs your property for high-load modern appliances."
+            ]
+        },
+        {
+            "title": "Roofing Services",
+            "slug": "roofing-services",
+            "short_desc": "Comprehensive installation, maintenance, and emergency structural repairs for all roof profiles.",
+            "desc": (
+                "Protect your asset from the elements with our comprehensive roofing services. "
+                "We specialize in full structural roof installations, localized leak repairs, tile replacements, and flat-roof torch-on felt or GRP systems. "
+                "Our team meticulously inspects and refurbs fascias, soffits, and guttering components to ensure flawless structural drainage."
+            ),
+            "benefits_list": [
+                "Guarantees total weatherproofing against harsh elements.",
+                "Prevents expensive timber rot and internal structural damage.",
+                "Improves roof insulation to lock in building heat.",
+                "Significantly boosts overall property market value.",
+                "Extends the operational lifespan of the entire building envelope."
+            ]
+        },
+        {
+            "title": "Waterproofing & Envelope Specialist",
+            "slug": "waterproofing-and-envelope-specialist",
+            "short_desc": "Advanced below-grade tanking, structural foundations sealing, and exterior envelope moisture barriers.",
+            "desc": (
+                "Defend your building's structural integrity from groundwater and moisture ingress. "
+                "Our specialized waterproofing services focus on advanced below-grade basement tanking, structural foundation barriers, and seamless weather protection wrappers for the exterior envelope. "
+                "We deploy cutting-edge membranes and liquid coatings to keep subterranean and structural zones completely dry."
+            ),
+            "benefits_list": [
+                "Prevents catastrophic basement flooding and damp ingress.",
+                "Maintains the load-bearing integrity of concrete foundations.",
+                "Eliminates toxic mold and fungal wood-rot vectors.",
+                "Preserves internal air quality by regulating ambient humidity.",
+                "Saves thousands in structural water damage restorations."
+            ]
+        },
+        {
+            "title": "Demolition & Hazardous Material Removal",
+            "slug": "demolition-and-hazardous-material-removal",
+            "short_desc": "Controlled strip-outs, structural deconstruction, site clearance, and safe hazardous waste mitigation.",
+            "desc": (
+                "Prepare your site safely and efficiently with our expert demolition and strip-out services. "
+                "We orchestrate controlled structural deconstructions, internal commercial strip-outs, and precise site clearance operations. "
+                "Our licensed workflows place critical focus on rigorous safety measures, toxic or hazardous material containment, and maximum recycling of structural wreckage."
+            ),
+            "benefits_list": [
+                "Maintains rigorous site safety standards to eliminate risk.",
+                "Accelerates follow-on construction schedules via fast clearances.",
+                "Guarantees fully legal, documented hazardous waste disposal.",
+                "Minimizes dust, vibration, and noise impact on neighbors.",
+                "Promotes green building via meticulous material salvaging."
+            ]
+        },
+        {
+            "title": "Carpentry & Joinery",
+            "slug": "carpentry-and-joinery",
+            "short_desc": "First-fix structural framing, concrete formwork, premium second-fix finishing, and bespoke cabinetry.",
+            "desc": (
+                "From structural skeletal frames to high-end architectural finishes, our carpentry services cover all timber requirements. "
+                "We execute first-fix roofing frameworks, heavy concrete shuttering formwork, and precise window/door installations. "
+                "Our joiners also craft premium second-fix details including skirting, bespoke fitted cabinetry, and high-end millwork pieces."
+            ),
+            "benefits_list": [
+                "Structural precision for perfectly plumb walls and roofs.",
+                "Bespoke, custom-tailored storage and design layout options.",
+                "Utilizes premium timber species for lasting aesthetic beauty.",
+                "Increases the luxurious feel and value of interior spaces.",
+                "Seamless integration with electrical and plumbing access pathways."
+            ]
+        },
+        {
+            "title": "Plumbing & Heating Engineering",
+            "slug": "plumbing-and-heating-engineering",
+            "short_desc": "Gas-safe boiler installations, complex central heating layout optimization, pipework, and appliance repairs.",
+            "desc": (
+                "Keep your building's water network and thermal infrastructure running with absolute reliability. "
+                "Our comprehensive mechanical services encompass high-efficiency boiler system commissions, complete copper or multi-layer pipework re-routes, and commercial gas safety operations. "
+                "We emphasize custom system balancing to optimize heat distribution and maximize fuel economy."
+            ),
+            "benefits_list": [
+                "Certified Gas Safe compliance for complete peace of mind.",
+                "Drastically reduces utility spending via modern boiler setups.",
+                "Provides instantaneous, high-pressure hot water distribution.",
+                "Protects structural fabrics from slow, destructive plumbing leaks.",
+                "Lengthens system lifespan through scheduled hydronic flushing."
+            ]
+        },
+        {
+            "title": "Bricklaying & Structural Masonry",
+            "slug": "bricklaying-and-structural-masonry",
+            "short_desc": "Load-bearing brickwork, blockwork partitions, structural stone masonry, and precision pointing.",
+            "desc": (
+                "Establish solid building parameters with our specialist bricklaying and structural masonry solutions. "
+                "We construct load-bearing exterior brick envelopes, internal blockwork acoustic partitions, retaining earth walls, and elegant natural stone features. "
+                "Our bricklayers focus heavily on meticulous alignment, structurally verified mortar mixes, and seamless historical pointing matching."
+            ),
+            "benefits_list": [
+                "Maximum load-bearing capacities for multi-story additions.",
+                "Outstanding built-in fire-resistance characteristics.",
+                "Virtually zero long-term degradation or maintenance costs.",
+                "Superior thermal mass attributes for climate regulation.",
+                "Excellent acoustic dampening between adjacent spaces."
+            ]
+        },
+        {
+            "title": "Drywall, Insulation & Ceiling Systems",
+            "slug": "drywall-insulation-and-ceiling-systems",
+            "short_desc": "Metal stud partition assembly, acoustic ceiling tiles, thermal insulation barriers, and drywall taping.",
+            "desc": (
+                "Craft interior space plans with our high-speed drywall and ceiling installation workflows. "
+                "We erect heavy-duty metal stud frame networks, hang specialized fire/moisture drywall boards, and lay down extensive high-performance acoustic and thermal insulation batts. "
+                "Our tapers and jointers finish with flawless joint sanding, ensuring surfaces are ready for fast decorating."
+            ),
+            "benefits_list": [
+                "Rapid internal room configuration and layout adjustments.",
+                "Enforces strict fire-retardant barriers between rooms.",
+                "Traps internal ambient heat to cut structural energy waste.",
+                "Creates flat, uniform surfaces free from structural buckling.",
+                "Conceals ugly electrical feeds and mechanical ventilation lines."
+            ]
+        },
+        {
+            "title": "Floor Coverings Installation",
+            "slug": "floor-coverings-installation",
+            "short_desc": "Subfloor preparation and expert fitting of engineered hardwood, luxury vinyl tiles, carpets, and laminates.",
+            "desc": (
+                "Get a professional floor transformation using our comprehensive covering and installation services. "
+                "We carefully analyze subfloor moisture levels, lay down high-grade marine ply or self-leveling screed overlays, and install premium floor cosmetics. "
+                "Our fitters excel in solid hardwood layouts, intricately patterned Luxury Vinyl Tiles (LVT), commercial carpets, and durable safety vinyl wrappers."
+            ),
+            "benefits_list": [
+                "Flawlessly level floor planes without squeaks or structural dips.",
+                "Hard-wearing compositions designed for punishing foot traffic.",
+                "Provides an insulated underfoot barrier that dampens impact sound.",
+                "Elevates the interior styling and luxuriousness of the build.",
+                "Moisture-proof options that prevent underlying floorboards from rotting."
+            ]
+        },
+        {
+            "title": "Painting & Decorating",
+            "slug": "painting-and-decorating",
+            "short_desc": "Flawless internal paint coatings, robust external weather shield treatments, and fine wallpaper hanging.",
+            "desc": (
+                "Bring your spaces to life with our comprehensive painting and decorating services. "
+                "We specialize in meticulous surface preparation—including power sanding, defect filling, and specialized stain-blocking primers—to guarantee a long-lasting finish. "
+                "From interior walls and woodwork trim to weather-resistant exterior rendering coatings and professional wallpaper hanging, we use premium materials to achieve a stunning aesthetic."
+            ),
+            "benefits_list": [
+                "Dramatically improves overall property curb appeal.",
+                "Complete color and space customization to your unique taste.",
+                "Erases surface wear and tear while protecting structural substrates.",
+                "Makes aged living and working environments feel brand new.",
+                "Boosts competitive buyer interest when listing on the market."
+            ]
+        },
+        {
+            "title": "Glazing & Curtain Wall Systems",
+            "slug": "glazing-and-curtain-wall-systems",
+            "short_desc": "High-performance window installations, structural glass doors, storefronts, and architectural curtain walls.",
+            "desc": (
+                "Maximize natural light capture and thermal performance with our advanced glazing solutions. "
+                "We coordinate the safe installation of structural double/triple glazed window frameworks, glass bi-fold entries, robust retail storefront facades, and sprawling multistory curtain walls. "
+                "Our glass technicians enforce perfect weatherproofing seals and heavy-duty hardware alignment on every pane."
+            ),
+            "benefits_list": [
+                "Advanced U-value optimization to trap internal ambient heat.",
+                "Outstanding noise reduction from bustling urban streets.",
+                "Dramatically maximizes natural day-lighting into core rooms.",
+                "High-security toughened glass combinations to stop intrusions.",
+                "Imparts a highly striking, modern architectural facade appearance."
+            ]
+        },
+        {
+            "title": "Site Preparation & General Labour",
+            "slug": "site-preparation-and-general-labour",
+            "short_desc": "Rigorous logistics support, safe material management, site preparation, and strict waste cleanups.",
+            "desc": (
+                "Maintain an organized, high-efficiency build site with our general labor and logistics services. "
+                "Our teams orchestrate initial ground clearing, safe unloading and tracking of technical trade materials, and relentless waste management sweeps. "
+                "By keeping paths clear and staging trades perfectly, we drastically minimize accidents and maximize tool uptime."
+            ),
+            "benefits_list": [
+                "Maintains an orderly, clean site that cuts safety hazards.",
+                "Frees up expensive specialized trades to focus on their core crafts.",
+                "Guarantees seamless material flow and staging efficiency.",
+                "Ensures swift, responsible distribution of building waste fractions.",
+                "Provides instant responsive backup for challenging site tasks."
+            ]
+        },
+        {
+            "title": "Heavy Plant & Equipment Operations",
+            "slug": "heavy-plant-and-equipment-operations",
+            "short_desc": "Precision crane rigging, forklift logistics, forklift earthworks, and asphalt plant operations.",
+            "desc": (
+                "Deploy serious machinery assets safely with our certified plant operator services. "
+                "We supply highly skilled, fully licensed operators to manage heavy structural cranes, rough-terrain forklifts, site bulldozers, deep boring equipment, and asphalt machinery. "
+                "Every operator works with tight focus on risk assessments, loading parameters, and precision mechanical placement."
+            ),
+            "benefits_list": [
+                "Flawless handling of massive structural components.",
+                "Multiplies structural earth-moving speeds compared to manual work.",
+                "Strict adherence to heavy machinery lifting safety protocols.",
+                "Maintains equipment mechanical integrity through pre-use checklists.",
+                "Enables advanced subterranean boring and heavy civil tasks."
+            ]
+        },
+        {
+            "title": "Groundworks & Structural Concrete",
+            "slug": "groundworks-and-structural-concrete",
+            "short_desc": "Bulk excavation, deep foundation trenches, site drainage networks, and cast-in-situ concrete ground beams.",
+            "desc": (
+                "Set the fundamental parameters of your structure with our high-intensity groundworks and concrete division. "
+                "We execute deep topographical excavations, install complex subsurface drainage paths, construct robust earth-retaining walls, and pour steel-reinforced concrete ground beams. "
+                "Our engineers focus entirely on geotechnically sound preparation to eliminate future settlement risks."
+            ),
+            "benefits_list": [
+                "Provides an unyielding, geotechnically verified structural footprint.",
+                "Diverts destructive surface stormwater safely away from foundations.",
+                "Prevents dangerous structural shifting or uneven building settlement.",
+                "Creates perfect structural datums for subsequent frame trades.",
+                "Excellent sub-base preparation for roads, paths, and slabs."
+            ]
+        },
+        {
+            "title": "Architectural Stonemasonry",
+            "slug": "architectural-stonemasonry",
+            "short_desc": "Premium stone structural work, external limestone dressings, and custom marble or granite installations.",
+            "desc": (
+                "Add timeless sophistication and structural permanence with our architectural stonemasonry solutions. "
+                "We specialize in the building of traditional dry or mortared stone walls, high-end limestone exterior dressings, and the precision installation of internal marble, granite, and quartz surfaces. "
+                "Our masons expertly handle custom dressing, texturing, and fixing techniques."
+            ),
+            "benefits_list": [
+                "Incredible aesthetic luxury that stands out from standard brick.",
+                "Unparalleled physical durability spanning generations.",
+                "High structural resistance to impact, fire, and extreme weather.",
+                "Elevates the premium luxury profile and resale value of the asset.",
+                "Excellent natural colorfastness that will never fade in sunlight."
+            ]
+        },
+        {
+            "title": "Construction Management & Subcontracting",
+            "slug": "construction-management-and-subcontracting",
+            "short_desc": "Comprehensive project oversight, budget controls, subcontractor scheduling, and building delivery.",
+            "desc": (
+                "Take the stress out of building with our master construction management services. "
+                "We oversee critical path timelines, enforce strict budget metrics, assign and coordinate specialized trade teams, and interface with building inspectors. "
+                "Our management framework bridges the gap between architectural plans and actual site handovers, guaranteeing smooth execution."
+            ),
+            "benefits_list": [
+                "Delivers complex projects strictly on time and within budget parameters.",
+                "Erases client stress via single-point-of-contact site accounting.",
+                "Enforces uncompromising quality control across all sub-trades.",
+                "Maintains full adherence to health, safety, and legal structures.",
+                "Maintains smooth project momentum through active problem-solving."
+            ]
+        },
+        {
+            "title": "Engineering Surveying & Layout Layouts",
+            "slug": "engineering-surveying-and-layout-layouts",
+            "short_desc": "Millimeter-precise site dimensions mapping, topographical analysis, and laser-guided grid staking.",
+            "desc": (
+                "Erase spatial margins of error with our engineering surveying and layout services. "
+                "Using advanced robotic total stations and GPS laser leveling, we map site boundaries, record topographical variances, and establish laser-precise grid staking lines. "
+                "This provides your structural, ground, and frame teams with zero-tolerance benchmarks to follow safely."
+            ),
+            "benefits_list": [
+                "Eliminates expensive building placement or boundary legal disputes.",
+                "Guarantees that physical assemblies perfectly match design CAD files.",
+                "Provides hyper-accurate calculations for required earthwork shifting.",
+                "Establishes precise vertical datums for flawless floor leveling.",
+                "Identifies hidden structural or terrain challenges prior to excavation."
+            ]
+        },
+        {
+            "title": "Site Supervision & Safety Foreman",
+            "slug": "site-supervision-and-safety-foreman",
+            "short_desc": "Daily site command, rigorous trade safety oversight, quality benchmarks tracking, and day-to-day logistics.",
+            "desc": (
+                "Ensure everyday tasks run with complete compliance and high efficiency. "
+                "Our site supervisors and foremen provide constant field oversight, leading morning briefings, verifying task safety methods, and inspecting work quality as it happens. "
+                "They act as the immediate link between project managers and field labor, dissolving supply bottlenecks instantly."
+            ),
+            "benefits_list": [
+                "Maintains a high-alert safety culture to minimize accidents.",
+                "Catches and fixes minor trade errors before they get covered over.",
+                "Optimizes day-to-day tool, trade, and plant asset productivity.",
+                "Provides accurate, transparent daily logs of build progress.",
+                "Maintains pristine tool and material inventory checks on site."
+            ]
+        },
+        {
+            "title": "Cost Planning & Estimation",
+            "slug": "cost-planning-and-estimation",
+            "short_desc": "Rigorous bills of quantities compilation, raw material pricing analysis, and financial risk mitigation.",
+            "desc": (
+                "Secure financial clarity for your project before the first shovel hits the dirt. "
+                "Our estimating and cost planning services break down architectural plans into precise bills of quantities, tracking market materials variations and structural labor rates. "
+                "We establish tight, data-backed cost foundations that guard your budget against unexpected overruns."
+            ),
+            "benefits_list": [
+                "Provides hyper-realistic, fixed pricing outlines for project bidding.",
+                "Identifies value-engineering avenues to reduce cost without dropping quality.",
+                "Prevents mid-build cash-flow shortfalls or sudden budget shocks.",
+                "Allows for precise material procurement timing to lock in rates.",
+                "Provides a clear financial yardstick to track trade outlays."
+            ]
+        },
+        {
+            "title": "Project Management & Strategic Delivery",
+            "slug": "project-management-and-strategic-delivery",
+            "short_desc": "High-level lifecycle strategy, stakeholder communications, regulatory approvals, and post-occupancy delivery.",
+            "desc": (
+                "Govern your building asset lifecycle from inception through to the final key handover. "
+                "Our project managers direct high-level delivery strategy, coordinate engineering and design consultants, handle local authority building approvals, and untangle structural logistics. "
+                "We focus heavily on controlling critical path parameters, navigating risk matrices, and delivering transparent reports to stakeholders."
+            ),
+            "benefits_list": [
+                "Unifies multiple professional groups under a single delivery goal.",
+                "Maintains proactive, structured responses to macroeconomic project delays.",
+                "Coordinates all legal sign-offs and structural occupancy handovers.",
+                "Optimizes long-term asset value through strategic planning.",
+                "Guarantees a clean, snag-free handover experience for building owners."
             ]
         }
     ]
+
 
     projects_data = [
         {
@@ -317,7 +605,7 @@ def seed_database():
             "title": "TRUSTED BUILDERS ACROSS THE SOUTHEAST",
             "tag": "Home",
             "subtitle" : (
-                "The Rok Group delivers home extensions, renovations, new builds and project management across Sussex, Surrey, Kent and Greater London with a calmer, more carefully managed approach to workmanship, sequencing and finish quality."
+                "The Rok Group unifies the full spectrum of building trades under one master standard of management. Whether coordinating structural concrete groundworks, precision brick masonry, gas-safe mechanical engineering, or bespoke interior joinery, our integrated team provides a calmer, more calculated approach to delivery across London and the Home Counties."
             )
               
         },
@@ -648,7 +936,7 @@ def seed_database():
 
     # 3. Process and insert Projects
     print("Populating Projects...")
-    all_services = Service.query.all()
+    all_services = Service.query.limit(4).all()
     first_location = Location.query.first()
     for item in projects_data:
         existing_project = Project.query.filter_by(slug=item["slug"]).first()

@@ -9,7 +9,8 @@ class Service(db.Model):
     slug = db.Column(db.String(255), nullable=False)
     benefits_list_id = db.Column(db.Integer, db.ForeignKey('lisits.id'), nullable=True)
     benefits_list = db.relationship('List', backref=db.backref('service', uselist=False))
-
+    featured_media_id = db.Column(db.Integer,  db.ForeignKey('media.id'), nullable=True)
+    featured_media = db.relationship('Media', backref=db.backref('featured_service_images', lazy=True))
     def __repr__(self):
         return self.title
 

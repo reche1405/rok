@@ -10,7 +10,7 @@
         <div class="hero__body content grid center-y g-3 full-height col-2 md-collapse pt-4">
             <div>
                 <h1 class="display white-text x-large-text">Contact The Rok Group</h1>
-                <p class="white-text my-6">
+                <p class="white-text my-6 sm-my-3">
                     Ready to discuss your extension, renovation or new build? Share a few details and we will be in touch.
                 </p>
             </div>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card soft p-6 sm-p3 shadow-4 mt-3">
+            <div class="card soft p-6 sm-p-0 shadow-4 sm-shadow-0 sm-transparent  mt-3">
                 <form method="POST" action="">
                 {{form.csrf_token }}
                 <div class="grid col-2 g-3 pb-3">
@@ -68,11 +68,11 @@
 
                     <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
                     {{form.message}}
+                    <p class="small-text pt-2">Share a few details and we will be in touch within two business days.</p>
                 <div class="grid col-2 g-6 mt-3">
-                    <p>Share a few details and we will be in touch within two business days.</p>
                     <div>
                         
-                        <button role="submit" class="cta primary">Start Your Enquiry</button>
+                        <button role="submit" class="cta primary">ENQUIRE NOW</button>
                     </div>
                 </div>
             </form>

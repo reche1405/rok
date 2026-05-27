@@ -24,8 +24,8 @@
                      {{page.subtitle}}
                 </p>
                 <div class="grid col-2 g-3">
-                    <button class="cta primary">REQUEST CONSULTATION</button>
-                    <button class="cta secondary">FEATURED WORK</button>
+                    <a href="/contact" class="cta primary">REQUEST CONSULTATION</a>
+                    <a href="/projects" class="cta secondary">FEATURED WORK</a>
                 </div>
             </div>
 
@@ -51,11 +51,14 @@
                 <div class="sticky-top">
                     <h3 class="small-text spaced-text gold-text semi-bold caps">what we do</h3>
                     <h2 class="display large-text">
-                        Residential building work that feels resolved, not rushed.
+                        TOTAL CONSTRUCTION INTELLIGENCE. REFINED EXECUTION.
                     </h2>
                     <p class="pt-4">
-                        We work with homeowners who want more than a basic contractor experience. The focus is on clear planning, thoughtful execution and a finish that stands up to daily life as well as first impressions.
+                        From initial topographical survey and cost planning to heavy plant operations and fine architectural decorating, The Rok Group provides a completely unified approach to construction.
                     </p>
+                    <div class="grid col-2 md-collapse mt-3">
+                    <a href="/services" class="cta ternary mt-4">EXPLORE SERVICES</a>
+                    </div>
                 </div>
             </div>
             <div>
@@ -71,7 +74,7 @@
                                         height="30"
                                         width="30" />
                             </div>
-                            <a class="caps grey-text small-text spaced-text semi-bold" href="">See Examples</a>
+                            <a class="caps grey-text small-text spaced-text semi-bold" href="/services/{{ service.slug }}">More Info</a>
                         </div>
                         <h2 class="mt-4 mb-3">{{ service.title }}</h2>
                         <p class="pb-4">{{ service.short_desc }}</p>
@@ -90,15 +93,15 @@
         <div class="grid content py-6 g-6 col-2 md-collapse align-center">
             <div>
                 <div class="sticky-top">
-                    <h3 class="small-text spaced-text gold-text semi-bold caps">Featured work</h3>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Featured Protfolio</h3>
                     <h2 class="display large-text">
-                        Spaces that show the standard, not just the service list.
+                            Spaces built on architectural precision, from foundation to finish.
                     </h2>
                 </div>
             </div>
             <div>
                 <p>
-                    We work with homeowners who want more than a basic contractor experience. The focus is on clear planning, thoughtful execution and a finish that stands up to daily life as well as first impressions.
+                    We partner with clients who expect more than a standard contractor experience. For The Rok Group, an elite finish is only possible due to what lies beneath it.</p><p class="pt-2"> Our portfolio demonstrates how we sequence heavy groundworks, structural engineering, and master-tier finishing trades under a single management framework.
                 </p>
             </div>
         </div>
@@ -130,17 +133,17 @@
         </div>
     </section>
     <section class="dark py-6">
-        <div class="grid content py-6 my-3 g-6 col-2 md-collapse align-center">
+        <div class="grid content py-6 sm-py-0 my-3 g-6 sm-g-3 col-2 md-collapse align-center">
             <div>
                 <div>
-                    <h3 class="small-text spaced-text gold-text semi-bold caps">Why choose Rok</h3>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">THE ROK ADVANTAGE</h3>
                     <h2 class="display large-text">
                         A measured approach to quality, communication and control.
                     </h2>
                     <p>
-                        High-value residential projects require more than trade capability.
-                        They require sequencing, judgement, site discipline and consistent 
-                        communication so the process feels dependable from start to finish.
+                        Complex construction and civil engineering projects require far more than raw trade capability.
+                        They demand millimeter-precise layout surveying, accurate cost estimation, rigid site discipline,
+                        and seamless trade sequencing.
                     </p>
                 </div>
             </div>
@@ -185,7 +188,7 @@
                         
                         <li class="process__item">
                             <h3 class="my-2">Initial consultation</h3>
-                            <p class="pb-3">We discuss your plans, priorities, timescales and the kind of finished home you want to create.</p>
+                            <p class="pb-3">We discuss your plans, priorities, timescales and the kind of project you visualise.</p>
                         </li>
                         <li class="process__item">
                             <h3 class="my-2">Scope and programme</h3>
@@ -213,7 +216,7 @@
                         Serving clients across the South East.
                     </h2>
                     <p>
-                        We support homeowners across Sussex, Surrey, Kent and Greater London who want a residential contractor that combines careful site management with a polished, high-quality finish.
+                        We support homeowners and businesses across Sussex, Surrey, Kent and Greater London who want a residential contractor that combines careful site management with a polished, high-quality finish.
                     </p>
                 </div>
             </div>
@@ -239,17 +242,15 @@
         </div>
     </section>
     <section class="dark">
-        <div class="grid content col-2--right md-collapse g-6 py-6">
+        <div class="grid content col-2--right md-collapse g-6 sm-g-3 py-6">
         <div>
                     <h3 class="small-text spaced-text gold-text semi-bold caps">Contact</h3>
-            <h2 class="display white-text large-text">Ready to discuss your project?</h2>
-            <p class="white-text my-6">
-                    Speak with The Rok Group about your extension, renovation or new build.
-                    We can arrange an initial conversation and advise on the most practical 
-                    next step for your plans.
+            <h2 class="display white-text large-text">Let’s build with calculation, control, and clarity.</h2>
+            <p class="white-text my-6 sm-my-3">
+                    Ready to bring structural precision, transparent cost planning, and elite trade execution to your next development? Contact The Rok Group to discuss your upcoming residential, commercial, or civil engineering plans.
             </p>
         </div>
-        <div class="card clear p-6 sm-p3 shadow-4">
+        <div class="card clear p-6 sm-p-0 shadow-4 sm-shadow-0 sm-transparent">
             <form method="POST" action="/contact">
                 {{form.csrf_token }}
                 <div class="grid col-2 g-3 pb-3">
@@ -268,11 +269,11 @@
 
                     <label class="spaced-text caps" for="message">{{form.message.label.text}}</label>
                     {{form.message}}
+                    <p class="small-text pt-2">Share a few details and we will be in touch within two business days.</p>
                 <div class="grid col-2 g-6 mt-3">
-                    <p>Share a few details and we will be in touch within two business days.</p>
                     <div>
                         
-                        <button role="submit" class="cta primary">Start Your Enquiry</button>
+                        <button role="submit" class="cta primary">ENQUIRE NOW</button>
                     </div>
                 </div>
             </form>

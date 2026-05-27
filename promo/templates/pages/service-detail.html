@@ -5,12 +5,16 @@
     <section class="hero short">
         
          <div class="slider light">
-            <img alt="The Rok Group Van" title="A Van bearing the ROK Group logo." src="/static/img/slider/service-placeholder.jpg"/>
+            {% if service.featured_media %}
+            <img alt="{{service.title}}" alt="{{service.title}}" title="{{service.title}}" src="{{ service.featured_media.get_absolute_url() }}"/>
+            {% else %}
+            <img  alt="A Van bearing the ROK Group logo." title="A Van bearing the ROK Group logo." src="/static/img/slider/service-placeholder.jpg"/>
+            {% endif %}
         </div>
         <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
             <div>
                 <h1 class="display  x-large-text">{{ service.title }}</h1>
-                <p class=" my-6">{{ service.short_desc }}</p>
+                <p class=" my-6 sm-my-3">{{ service.short_desc }}</p>
             </div>
             <div>
                 <div class="hero-children card-stack">

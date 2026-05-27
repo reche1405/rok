@@ -29,7 +29,10 @@ def create_app():
     app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
     app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'noreply@yourdomain.local')
     app.config['INBOUND_MAIL'] = os.environ.get('INBOUND_MAIL')
-
+    app_env = os.environ.get('FLASK_ENV')
+    if app_env is None:
+        app_env = 'production'
+    app.config['FLASK_ENV'] = app_env
 
     app.config['CACHE_TYPE'] = 'SimpleCache'
     app.config['CACHE_DEFAULT_TIMEOUT'] = 86400 # Cache for 24 hours by default
@@ -88,8 +91,7 @@ def create_app():
 
 
 
-
 if __name__ == '__main__':
     # Setting debug=True activates the auto-reloader
     app = create_app()
-    app.run(debug=False)
+    app.run(debug=app.config['FLASK_ENV'] == 'development')

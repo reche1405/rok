@@ -1,6 +1,6 @@
 <div class="breadcrumbs">
     <div class="content flex row g-4 py-2 wrap center-y">
-        <a href="/">Home</a>
+        <a title="Home" href="/">Home</a>
        {% if page %}
             {% if page.tag == "Services" %}
                     <span>Services</span>
@@ -14,25 +14,25 @@
                     <span>Blog</span>
             {% endif %}  
         {% elif project %}    
-            <a href="/projects">Projects</a>
+            <a title="Projects" href="/projects">Projects</a>
             <span>{{ project.title|truncate(10) }}</span>
          {% elif area %}
-            <a href="/areas">Areas</a>
+            <a title="Areas" href="/areas">Areas</a>
             <span>{{ area.title }}</span>
         {% elif service and location %}
-            <a href="/services">Services</a>
+            <a title="Services" href="/services">Services</a>
 
-            <span>{{ service.title }} in {{ location.title }}</span>
+            <span>{{ service.title|truncate(10) }}</span>
          {% elif service %}
-            <a href="/services">Services</a>
-            <span>{{ service.title }}</span>
+            <a title="Services" href="/services">Services</a>
+            <span>{{ service.title|truncate(10) }}</span>
         {% elif article %}
-            <a href="/blog">Blog</a>
-            <span>{{ article.title|truncate(35) }}</span>
+            <a title="Blog" href="/blog">Blog</a>
+            <span>{{ article.title|truncate(10) }}</span>
             {% elif location %}
-            <a href="/areas">Areas</a>
-             <a href="/areas/{{ location.area.slug }}">{{ location.area.title }}</a>
-            <span>{{ location.title }}</span>
+            <a title="Areas" href="/areas">Areas</a>
+             <a title="{{ location.area.title }}" href="/areas/{{ location.area.slug }}">{{ location.area.title }}</a>
+            <span>{{ location.title|truncate(10) }}</span>
         {% elif policy %}
             <span>{{ policy.title }}</span>
         {% endif %} 

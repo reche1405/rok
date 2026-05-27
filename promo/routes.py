@@ -81,7 +81,8 @@ def get_footer():
 @main_bp.route("/media/<string:rel_path>")
 def serve_media(rel_path):
     media_item = Media.query.filter_by(relative_path=rel_path).first_or_404()
-    
+    if not media_item:
+        return abort(404)
     path = current_app.config['UPLOAD_PATH']
     
     # 3. Stream the file securely
