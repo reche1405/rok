@@ -672,6 +672,7 @@ section.hero {
         opacity:1;
         overflow:clip;
         translate: 0 0;
+        max-width:250px;
         &:nth-of-type(1) {
             transition-delay: 1.3s;
         }
@@ -1040,7 +1041,9 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .g-6.sm-g-2, .g-5.sm-g-2, .g-4.sm-g-2 {
         gap: var(--space-2) !important;
     }
-
+    .sm-text-center {
+        text-align: center;
+    }
     .sm-transparent {
         border:none;
         background-color: transparent !important;
