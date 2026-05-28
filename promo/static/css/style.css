@@ -672,7 +672,7 @@ section.hero {
         opacity:1;
         overflow:clip;
         translate: 0 0;
-        max-width:250px;
+        max-width:350px;
         &:nth-of-type(1) {
             transition-delay: 1.3s;
         }
@@ -721,6 +721,7 @@ section.pale {
     letter-spacing: 1px;
     text-align:center;
     text-decoration: none;
+    max-width:350px;
     &.primary {
         border-color:var(--color-gold);
         background-color:var(--color-gold);
@@ -1055,6 +1056,9 @@ section:has(div.slider.light) ~ .breadcrumbs {
         & .card__image {
             aspect-ratio: unset;
         }
+    }
+    .cta, a.cta {
+        margin-inline:auto;
     }
     .grid.col-4 {
         grid-template-columns: 1fr 1fr;
