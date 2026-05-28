@@ -33,51 +33,36 @@
     {% block main %}
 
     <section class="light pb-6">
-        <div class="grid content pb-4 pt-6 g-6 col-2--right">
+        <div class="grid content pb-4 pt-6 g-6 col-2">
+            <div></div>
             <div>
-                <div class="sticky-top">
-                    <h3 class="small-text spaced-text gold-text semi-bold caps">Project overview</h3>
-                    <h2 class="display large-text">{{ project.title }}</h2>
+                <div class="">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">About the Project</h3>
+                    <h2 class="display large-text">Project Overview</h2>
                     <p>{{ project.full_desc or project.desc }}</p>
-                </div>
-            </div>
-            <div>
-                <div class="grid col-2 my-4 mx-3 g-4">
-                    <div class="card white p-4 shadow-4">
-                        <h2 class="mt-2 mb-2 light-weight">Scope</h2>
-                        <p>{{ project.scope or "Design, planning and construction management for a carefully finished residential project." }}</p>
-                    </div>
-                    <div class="card white p-4 shadow-4">
-                        <h2 class="mt-2 mb-2 light-weight">Services</h2>
-                        <ul class="project-services">
-                            {% for service in project.services %}
-                                <li>{{ service.title }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    <div class="flex wrap g-2 pt-4">
+                        {% for service in project.services %}
+                            <span title="{{ service.title }}" class="card__tag white-text">{{ service.title|truncate(12) }}</span>
+                        {% endfor %}
+                    </div> 
                 </div>
             </div>
         </div>
     </section>
 
     <section class="soft py-4">
-        <div class="grid content py-6 g-6 col-2 align-center">
-            <div>
-                <div class="sticky-top">
-                    
-                </div>
-            </div>
+        <div class=" content py-6  align-center text-center">
             <div>
                 <h3 class="small-text spaced-text gold-text semi-bold caps">Gallery</h3>
-                    <h2 class="display large-text">The finished space in detail</h2>
-                <p>{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
+                    <h2 class="display large-text inline-auto">The finished space in detail</h2>
+                <p class="inline-auto">{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
             </div>
         </div>
         <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="7000" data-transition-duration="1500">
             {% if project.media %}
                 {% for image in project.media %}
                     <div class="slide"  data-slide-number="{{loop.index0}}" >
-                        <img class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
+                        <img loading="lazy" class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
 
 
                     </div>
@@ -100,11 +85,11 @@
     </section>
 {% if project.units %}
   
-<section class="dark">
-    <div class="grid content py-6 g-6 col-2 align-center">
+<section class="dark pt-3">
+    <div class="grid content py-6 sm-py-3 g-6 sm-g-3 col-2 align-center">
         <div>
             <h3 class="small-text spaced-text gold-text semi-bold caps">Units</h3>
-            <h2 class="display white-text large-text">The components that made up the project</h2>
+            <h2 class="display white-text large-text">A deeper Dive</h2>
             <p class="white-text">{{ project.delivery or "Clear communication, careful sequencing and finish quality kept the build on track and aligned to the client’s expectations." }}</p>
         </div>
         <div >
@@ -118,8 +103,13 @@
             <div class="card clear">
                 <div class="card__image">
                     {% if unit.featured_media %}
-                    <img src="{{ unit.featured_media.get_absolute_url() }}" title="{{unit.featured_media.title or unit.title + ' Media'}} " alt="{{unit.featured_media.title or unit.title + ' Media'}}">                      
+                    <img loading="lazy" src="{{ unit.featured_media.get_absolute_url() }}" title="{{unit.featured_media.title or unit.title + ' Media'}} " alt="{{unit.featured_media.title or unit.title + ' Media'}}">                      
                     {% endif %}
+                    <div class="card__image-overlay">
+                        <a href="/projects/{{ unit.project.slug }}/{{ unit.slug }}" title="{{ unit.title }}">
+                            <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ unit.title }}</h2>
+                        </a>
+                    </div>
                 </div>
                
             </div>

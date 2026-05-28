@@ -1,7 +1,7 @@
 import os,  datetime
 from promo.app import create_app  # Imports your Flask app instance
 from promo.models import db  # Imports your SQLAlchemy instance
-from promo.models.service import Service  # Adjust path to your actual Service model
+from promo.models.service import Service, Category  # Adjust path to your actual Service model
 from promo.models.project import Project, Unit  # Adjust path to your actual Project model
 from promo.models.area import Area
 from promo.models.location import Location
@@ -16,10 +16,24 @@ def seed_database():
     print("Initializing database seeding process with slug fields...")
     # 1. Complete dataset with custom URL slugs included
     
+    cat_data = [
+        {
+            "title" : "Structural",
+        },
+        {
+            "title" : "Decorative",
+
+        },
+        {
+            "title" : "Management",
+            
+        }
+    ]
     
     services_data = [
         {
             "title": "Groundworks, Excavation & Concrete Structures",
+            "category_id" : 1,
             "slug": "groundworks-excavation-and-concrete-structures",
             "short_desc": "We engineer stable structural baselines, executing deep excavations and pouring reinforced foundations to eliminate future settlement risks.",
             "desc": (
@@ -38,6 +52,7 @@ def seed_database():
         },
         {
             "title": "Structural Bricklaying & Architectural Stonemasonry",
+            "category_id" : 1,
             "slug": "structural-bricklaying-and-architectural-stonemasonry",
             "short_desc": "We build high-capacity load-bearing envelopes and hand-dress premium facades to secure the physical durability of your building asset.",
             "desc": (
@@ -56,6 +71,7 @@ def seed_database():
         },
         {
             "title": "Carpentry, Joinery & Structural Framing",
+            "category_id" : 1,
             "slug": "carpentry-joinery-and-structural-framing",
             "short_desc": "We erect precision structural timber frameworks, configure complex heavy formwork, and install bespoke millwork to optimize internal space layouts.",
             "desc": (
@@ -74,6 +90,7 @@ def seed_database():
         },
         {
             "title": "Roofing Systems & External Envelopes",
+            "category_id" : 1,
             "slug": "roofing-systems-and-external-envelopes",
             "short_desc": "We seal the entire building envelope against harsh elements, deploying multi-layer waterproofing barriers to eliminate water damage vectors.",
             "desc": (
@@ -92,6 +109,7 @@ def seed_database():
         },
         {
             "title": "Drywall, Partitioning & Advanced Insulation",
+            "category_id" : 1,
             "slug": "drywall-partitioning-and-advanced-insulation",
             "short_desc": "We isolate internal thermal and acoustic pathways, assembling specialized fire-rated partitions to maximize room-to-room containment.",
             "desc": (
@@ -110,6 +128,7 @@ def seed_database():
         },
         {
             "title": "Plastering, Rendering & Surface Skimming",
+            "category_id" : 1,
             "slug": "plastering-rendering-and-surface-skimming",
             "short_desc": "We flatten and restore damaged structural substrates, applying crisp skim coats and external render to establish ideal paint-ready surfaces.",
             "desc": (
@@ -128,6 +147,7 @@ def seed_database():
         },
         {
             "title": "Certified Electrical & Mechanical Engineering",
+            "category_id" : 1,
             "slug": "certified-electrical-and-mechanical-engineering",
             "short_desc": "We eliminate power and gas hazards, implementing fully certified rewires, modern consumer units, and energy-efficient heating networks.",
             "desc": (
@@ -146,6 +166,7 @@ def seed_database():
         },
         {
             "title": "Glazing, Curtain Walls & Storefront Facades",
+            "category_id" : 2,
             "slug": "glazing-curtain-walls-and-storefront-facades",
             "short_desc": "We reinforce building frontages and optimize daylight capture, installing high-security double/triple glazing with strict weather seals.",
             "desc": (
@@ -164,6 +185,7 @@ def seed_database():
         },
         {
             "title": "Floor Coverings & Wall Tiling Installations",
+            "category_id" : 2,
             "slug": "floor-coverings-and-wall-tiling-installations",
             "short_desc": "We level subfloors and seal wet zones, installing precision-aligned hardwood, porcelain, and safety vinyl to handle heavy daily wear.",
             "desc": (
@@ -182,6 +204,7 @@ def seed_database():
         },
         {
             "title": "Fine Painting, Decorating & Coatings",
+            "category_id" : 2,
             "slug": "painting-decorating-and-coatings",
             "short_desc": "We resolve substrate defects via power sanding and priming, delivering premium architectural paint and wallpaper coatings.",
             "desc": (
@@ -200,6 +223,7 @@ def seed_database():
         },
         {
             "title": "Controlled Demolition & Site Clearance",
+            "category_id" : 1,
             "slug": "controlled-demolition-and-site-clearance",
             "short_desc": "We isolate site hazards and fast-track development timelines, executing clean structural strip-outs and certified waste clearance.",
             "desc": (
@@ -218,6 +242,7 @@ def seed_database():
         },
         {
             "title": "Heavy Plant Logistics & Material Handling",
+            "category_id" : 3,
             "slug": "heavy-plant-logistics-and-material-handling",
             "short_desc": "We accelerate mechanical site workflows, mobilizing licensed operators and machinery to safely maneuver massive structural loads.",
             "desc": (
@@ -236,6 +261,7 @@ def seed_database():
         },
         {
             "title": "Engineering Surveying & Digital Layout Mapping",
+            "category_id" : 3,
             "slug": "engineering-surveying-and-digital-layout-mapping",
             "short_desc": "We erase spatial margins of error, executing millimeter-accurate boundary tracking and laser-guided grid staking to guide your build.",
             "desc": (
@@ -254,6 +280,7 @@ def seed_database():
         },
         {
             "title": "Commercial Estimating & Financial Risk Planning",
+            "category_id" : 3,
             "slug": "commercial-estimating-and-financial-risk-planning",
             "short_desc": "We establish bulletproof commercial blueprints, breaking down plans into rigid bills of quantities to insulate you from budget overruns.",
             "desc": (
@@ -272,6 +299,7 @@ def seed_database():
         },
         {
             "title": "Project Management & Site Supervision",
+            "category_id" : 3,
             "slug": "turnkey-project-management-and-site-supervision",
             "short_desc": "We control the critical path lifecycle, assigning dedicated foremen to enforce safety, interface with building control, and guarantee delivery.",
             "desc": (
@@ -294,7 +322,7 @@ def seed_database():
 
     projects_data = [
         {
-            "title": "Multi-Unit Flat Renovation",
+            "title": "Collingwood Batchelor",
             "slug": "multi-unit-flat-renovation",
             "short_desc": "Full-scale interior and exterior renovation of a block of residential flats, transforming dilapidated units into modern, compliant, and highly rentable living spaces.",
             "desc": (
@@ -306,20 +334,45 @@ def seed_database():
             "type": "Residential",
             "units": [
                 {
-                    "title": "Flat 1a",
+                    "title": "Flat One",
                     "description": "The first of the set of flats, with some extra text here that explains it...",   
+                    "slug" : "flat-one"
                 },
                 {
-                    "title": "Flat 1b",
+                    "title": "Flat Two",
                     "description": "The second of the set of flats, with some extra text here that explains it...",   
+                    "slug" : "flat-two"
+
                 },
                 {
-                    "title": "Flat 2",
+                    "title": "Flat Three",
                     "description": "The third of the set of flats, with some extra text here that explains it...",   
+                    "slug" : "flat-three"
+
                 },
                 {
-                    "title": "Flat 3",
+                    "title": "Flat Four",
                     "description": "The third of the set of flats, with some extra text here that explains it...",   
+                    "slug" : "flat-four"
+
+                },
+                {
+                    "title": "Flat Five",
+                    "description": "The third of the set of flats, with some extra text here that explains it...",   
+                    "slug" : "flat-five"
+
+                },
+                {
+                    "title": "Flat Six",
+                    "description": "The third of the set of flats, with some extra text here that explains it...",   
+                    "slug" : "flat-six"
+
+                },
+                 {
+                    "title": "Penthouse",
+                    "description": "Overlooking the ... with some other desciption here about the unit.",   
+                    "slug" : "penthouse"
+
                 },
 
             ]
@@ -334,25 +387,7 @@ def seed_database():
             ),
             "featured": True,
             "type" : "Residential",
-            "units": [
-                {
-                    "title": "Flat 1a",
-                    "description": "The first of the set of flats, with some extra text here that explains it...",   
-                },
-                {
-                    "title": "Flat 1b",
-                    "description": "The second of the set of flats, with some extra text here that explains it...",   
-                },
-                {
-                    "title": "Flat 2",
-                    "description": "The third of the set of flats, with some extra text here that explains it...",   
-                },
-                {
-                    "title": "Flat 3",
-                    "description": "The third of the set of flats, with some extra text here that explains it...",   
-                },
-
-            ]
+            
         },
         {
             "title": "Nightclub Build",
@@ -364,25 +399,6 @@ def seed_database():
             ),
             "featured": True,
             "type": "Commerical",
-            "units": [
-                {
-                    "title": "Flat 1a",
-                    "description": "The first of the set of flats, with some extra text here that explains it...",   
-                },
-                {
-                    "title": "Flat 1b",
-                    "description": "The second of the set of flats, with some extra text here that explains it...",   
-                },
-                {
-                    "title": "Flat 2",
-                    "description": "The third of the set of flats, with some extra text here that explains it...",   
-                },
-                {
-                    "title": "Flat 3",
-                    "description": "The third of the set of flats, with some extra text here that explains it...",   
-                },
-
-            ]
         }
     ]
 
@@ -797,6 +813,16 @@ def seed_database():
     ]
     
     # 2. Process and insert Services
+    print("Populating Categories...")
+    for item in cat_data:
+        existing_cat = Category.query.filter_by(title=item['title']).first()
+        if not existing_cat:
+            new_cat = Category(
+                title=item['title']
+            )
+            db.session.add(new_cat)
+            db.session.commit()
+
     print("Populating Services...")
     for item in services_data:
         existing_service = Service.query.filter_by(slug=item["slug"]).first()
@@ -824,6 +850,7 @@ def seed_database():
                 desc=item["desc"],
                 svg=item['svg'],
                 benefits_list_id = new_list.id,
+                category_id =item['category_id']
             )
             db.session.add(new_service)
             print(f" -> Added Service: {item['title']} [{item['slug']}]")
@@ -899,6 +926,7 @@ def seed_database():
                         title=unit['title'],
                         description=unit['description'],
                         project_id=new_project.id, 
+                        slug = unit['slug']
 
                     )
                     db.session.add(new_unit)

@@ -1,5 +1,6 @@
 const menuToggle = document.getElementById('mobile-nav-toggle');
 const mobileNav = document.getElementById('mobile-nav')
+const menuClose = document.getElementById('mobile-nav-close');
 const SHOWN_STATE_CLASS = 'show';
 
 const toggleState = (event) => {
@@ -38,6 +39,7 @@ const menuEscape = (event) => {
 }
 
 menuToggle.addEventListener('click',  toggleState)
+menuClose.addEventListener('click', toggleState)
 document.addEventListener('keydown',  menuEscape)
 
 

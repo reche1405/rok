@@ -74,10 +74,14 @@ class Unit(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
     project = db.relationship('Project', backref=db.backref('units', lazy=True))
+    slug = db.Column(db.String(255), nullable=True)
     description = db.Column(db.Text, nullable=False)
     title = db.Column(db.String(255), nullable=False)
     featured_media_id = db.Column(db.Integer,  db.ForeignKey('media.id'), nullable=True)
     featured_media = db.relationship('Media', backref=db.backref('featured_unit_images', lazy=True))
+
+    def __repr__(self):
+        return self.title
 
     media = db.relationship(
         'Media',
@@ -86,4 +90,8 @@ class Unit(db.Model):
         lazy='subquery'
     )
 
+    @classmethod
+    def get_by_slug(cls, slug):
+        """Returns a project by its slug."""
+        return cls.query.filter_by(slug=slug).first()
 

@@ -19,32 +19,36 @@
     {% block main %}
 
     <section class="pale py-6 sm-py-3">
-        
-        <div class="grid content col-3 md-col-2 py-4 mt-3 g-4 sm-g-2">
-            {% for service in services %}
-            
-            <div class="card white shadow-3">
-                <div class="card__image">
-                    {% if service.featured_media %}
-                    <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
-                    {% else %}
-                    <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
-                    {% endif %}
-                    <div class="card__image-overlay">
-                        <div class="flex align-center g-3">
-                            {{ service.svg|safe }}
-                            <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }}</h2>
-                        </div>
-                        <p class="py-2 wrap-pretty">{{ service.short_desc }}</p>
-                        
-                        <div>
-                            <a href="/services/{{service.slug}}" class="cta secondary mt-3 white-text">MORE INFO</a>
+        {% for category in categories %}
+            <div class="contnt">
+            <h2 class="inline-auto text-center mt-6 large-text display">{{category.title}}</h2>
+            </div>
+            <div class="grid content col-3 md-col-2 py-4 mt-3 g-4 sm-g-2">
+                {% for service in category.services %}
+                
+                <div class="card white shadow-3">
+                    <div class="card__image">
+                        {% if service.featured_media %}
+                        <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                        {% else %}
+                        <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                        {% endif %}
+                        <div class="card__image-overlay">
+                            <div class="flex align-center g-3">
+                                {{ service.svg|safe }}
+                                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }}</h2>
+                            </div>
+                            <p class="py-2 wrap-pretty">{{ service.short_desc }}</p>
+                            
+                            <div>
+                                <a href="/services/{{service.slug}}" class="cta secondary mt-3 white-text">MORE INFO</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                    {% endfor %}
             </div>
-                {% endfor %}
-            </div>
+        {% endfor %}
     </section>
     
     <section class="dark">

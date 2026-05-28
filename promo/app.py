@@ -59,7 +59,7 @@ def create_app():
 
     with app.app_context():
         from promo.models.list import List, ListItem
-        from promo.models.service import Service
+        from promo.models.service import Service, Category
         from promo.models.project import Project, Unit
         from promo.models.media import Media
         from promo.models.area import Area
@@ -73,7 +73,9 @@ def create_app():
         db.create_all()
         admin.add_view(ListAdminView(List, db.session, category="Static"))
         admin.add_view(SlugifyAdminView(Service, db.session, category="Services"))
-        admin.add_view(ProjectAdminView(Project, db.session))
+        admin.add_view(BaseSecureView(Category, db.session, category="Services"))
+        admin.add_view(ProjectAdminView(Project, db.session, category="Projects"))
+        admin.add_view(SlugifyAdminView(Unit, db.session, category="Projects"))
         admin.add_view(MediaAdminView(Media, db.session, category="Services"))
         admin.add_view(BaseSecureView(Area, db.session, category="Services"))
         admin.add_view(SlugifyAdminView(Location, db.session, category="Services"))

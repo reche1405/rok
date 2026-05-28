@@ -1,6 +1,7 @@
 const form = document.querySelector('form');
-
-
+let inputs;
+let submit; 
+let spinner;
 const handlePost = (e) => {
     e.preventDefault();
     inputs.forEach(input => {
@@ -17,10 +18,9 @@ const handlePost = (e) => {
 }
 
 if(form) {
-
-    const inputs = form.querySelectorAll("input, textarea");
-    const submit = form.querySelector("button");
-    const spinner = form.nextElementSibling;
+    inputs = form.querySelectorAll("input, textarea");
+    submit = form.querySelector("button");
+    spinner = form.nextElementSibling;
     form.addEventListener('submit', handlePost)
 }
 

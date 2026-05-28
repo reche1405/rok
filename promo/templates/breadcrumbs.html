@@ -35,6 +35,10 @@
             <span>{{ location.title|truncate(10) }}</span>
         {% elif policy %}
             <span>{{ policy.title }}</span>
+        {% elif unit %}
+            <a title="Projects" href="/projects">Projects</a>
+                <a title="{{ unit.project.title }}" href="/projects/{{ unit.project.slug }}">{{ unit.project.title|truncate(10) }}</a>
+            <span>{{ unit.title|truncate(10) }}</span>
         {% endif %} 
 
     </div>

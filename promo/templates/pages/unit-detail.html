@@ -1,0 +1,111 @@
+
+{% extends 'base.html' %}
+{% block hero %}
+    <section class="hero short">
+        <div class="slider dark">
+            {% if unit.featured_media %}
+                <img alt="{{ unit.title }}" title="{{ unit.title }}" src="{{ unit.featured_media.get_absolute_url() }}"/>
+            {% else %}
+                <img alt="{{ unit.title }}" title="{{ unit.title }}" src="/static/img/slider/rok-van-hero.jpg"/>
+            {% endif %}
+        </div>
+        <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
+            <div>
+                <h3 class="small-text gold-text semi-bold spaced-text caps">{{ unit.project.title }}</h3>
+                <h1 class="display white-text x-large-text">{{ unit.title }}</h1>
+                <p class="white-text my-6 sm-my-3">{{ unit.project.short_desc }}</p>
+                
+            </div>
+            <div>
+                <div class="hero-children card-stack">
+                    <div class="card clear p-3">
+                        <h3 class="gold-text caps small-text spaced-text">Project</h3>
+                        <p class="white-text">{{ unit.project.type or "Residential" }}</p>
+                    </div>
+                    <div class="card clear p-3">
+                        <h3 class="gold-text caps small-text spaced-text">Location</h3>
+                        <p class="white-text">{{ unit.project.location.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock hero %}
+    {% block main %}
+
+
+
+    <section class="soft py-4">
+        <div class="grid content py-6 g-6 col-2 align-center">
+            <div>
+                <div class="sticky-top">
+                    
+                </div>
+            </div>
+            <div>
+                <h3 class="small-text spaced-text gold-text semi-bold caps">Gallery</h3>
+                    <h2 class="display large-text">A collection of images</h2>
+                <p>{{ unit.gallery_intro or "A closer look at the unit, and how it was delivered." }}</p>
+            </div>
+        </div>
+        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="7000" data-transition-duration="1500">
+            {% if unit.media %}
+                {% for image in unit.media %}
+                    <div class="slide"  data-slide-number="{{loop.index0}}" >
+                        <img loading="lazy" class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or unit.title }}" title="{{ image.title or unit.title }}"/>
+
+
+                    </div>
+                {% endfor %}
+                <div class="slideshow__overlay">
+                    <div class="slide-progress__wrapper">
+                        <div class="slide-progress__container">
+
+                        </div>
+                    </div> 
+                </div> 
+            {% else %}
+                
+                <div class="no-results">
+                    <p>No Images</p>
+                
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+  
+<section class="dark">
+    <div class="grid content py-6 g-6 col-2 align-center">
+        <div>
+            <h3 class="small-text spaced-text gold-text semi-bold caps">In Detail</h3>
+            <h2 class="display white-text large-text">More units from {{ unit.project.title }}</h2>
+        </div>
+        <div >
+            
+        </div>
+    </div>
+    <div class="grid content pb-6 col-3">
+        
+          
+    {% for other_unit in unit.project.units %}
+    {% if other_unit.id != unit.id %}
+    <div class="card clear">
+        <div class="card__image">
+            {% if other_unit.featured_media %}
+            <img loading="lazy" src="{{ other_unit.featured_media.get_absolute_url() }}" title="{{other_unit.featured_media.title or other_unit.title + ' Media'}} " alt="{{other_unit.featured_media.title or other_unit.title + ' Media'}}">                      
+            {% endif %}
+            <div class="card__image-overlay">
+                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ other_unit.title }}</h2>
+            </div>
+        </div>
+        
+    </div>
+    {% endif %}
+    {% endfor %}
+        
+    </div>
+</section>
+
+
+   {% endblock main %}

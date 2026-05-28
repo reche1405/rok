@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/static/img/rok-favicon.ico">
     {% if page %}
-    <title>{{ page.meta.title }}</title>
-    <meta name="description" content="{{ page.meta.description }}">
-    <meta name="keywords" content="{{ page.meta.keywords }}">
+    <title>{{ page.meta_obj.title }}</title>
+    <meta name="description" content="{{ page.meta_obj.description }}">
+    <meta name="keywords" content="{{ page.meta_obj.keywords }}">
     {% elif project %}
     <title>{{  project.title}}</title>
     <meta name="description" content="{{ project.short_desc }}">

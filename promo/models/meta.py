@@ -16,7 +16,7 @@ class Page(db.Model):
     title = db.Column(db.String(255), nullable=False)
     subtitle = db.Column(db.Text, nullable=True)
     meta_id = db.Column(db.Integer, db.ForeignKey("metas.id"), nullable=False, unique=True)
-    meta = db.relationship("Meta", backref=db.backref("page", uselist=False), uselist=False)
+    meta_obj = db.relationship("Meta", backref=db.backref("page", uselist=False), uselist=False)
     tag = db.Column(db.String(100), nullable=False)
     def __repr__(self):
         return self.title   

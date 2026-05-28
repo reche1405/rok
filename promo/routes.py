@@ -5,7 +5,7 @@ from flask_mailman import EmailMessage
 from promo.admin.forms import LoginForm
 from promo.extensions import login_manager, cache, mail
 from promo.models.list import List, ListItem
-from promo.models.service import Service
+from promo.models.service import Service, Category
 from promo.models.project import Project, Unit
 from promo.models.media import Media
 from promo.models.area import Area
@@ -110,7 +110,7 @@ def hello_rok():
 @main_bp.route("/services")
 def service_list():
     context = {
-        'services' : Service.get_all(),
+        'categories' : Category.get_all(),
         'page' : Page.get_by_tag('Services'),
         'why_this_matters' : List.get_for_tag('why-this-matters')
 
@@ -160,6 +160,17 @@ def project_detail(slug):
     'project' : project
     }
     return render_template("pages/project-detail.html", **context)
+
+@main_bp.route("/projects/<string:p_slug>/<string:u_slug>")
+def unit_detail(p_slug, u_slug):
+    project = Project.get_by_slug(p_slug)
+    unit = Unit.get_by_slug(u_slug)
+    if unit not in project.units:
+        return abort(404)
+    context = {
+        'unit' : unit
+    }
+    return render_template("pages/unit-detail.html", **context)
 
 @main_bp.route("/areas")
 def area_list():
@@ -252,7 +263,7 @@ def contact():
                 print(error)
             flash("There was an error parsing your message, please try again.", "error")
 
-        return redirect(url_for('hello_rok'))       
+        return redirect(url_for('main.hello_rok'))       
     context = {
 
         'page' : page,
