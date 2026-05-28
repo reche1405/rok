@@ -30,8 +30,10 @@
         <div class="grid content pt-4 g-6 col-2--left">
             <div>
                 <div class="sticky-top">
-                    <h3 class="small-text spaced-text gold-text semi-bold caps mb-3">Service overview</h3>
-                    <p>{{ service.desc }}</p>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">In detail</h3>
+                    <h2 class="display large-text">Overview</h2>
+
+                    <p class="pt-3">{{ service.desc }}</p>
                 </div>
             </div>
             <div>
@@ -40,11 +42,11 @@
                         <p class=" spaced-text gold-text caps mb-2">Benefits</p>
                         {% for benefit in service.benefits_list.items %}
                         <div class="flex row center-y mb-3 g-3 py-1">
-                            <svg style="margin-right:10px;" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#9a7441" stroke-width="2"/>
-                            <path d="M9 12L10.6828 13.6828V13.6828C10.858 13.858 11.142 13.858 11.3172 13.6828V13.6828L15 10" stroke="#9a7441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg  width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#9a7441" stroke-width="2"/>
+                                <path d="M9 12L10.6828 13.6828V13.6828C10.858 13.858 11.142 13.858 11.3172 13.6828V13.6828L15 10" stroke="#9a7441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <p class=" small-text bold-text caps " style="line-height:1">{{ benefit.text }}</p>
+                            <p class=" " style="line-height:1.2; max-width:40ch; padding-left:.5rem;">{{ benefit.text }}</p>
                         </div>
                         {% endfor %}
                     </div>
@@ -52,37 +54,48 @@
             </div>
         </div>
     </section>
-
-    <section class="light pt-4">
-        <div class="grid content py-6 g-6 col-2 align-center">
+    {% if service.projects.count() > 0 %}
+    <section>
+        <div class="grid content pt-4 g-6 col-2--left">
             <div>
-                <h3 class="small-text spaced-text gold-text semi-bold caps">How we work</h3>
-                <h2 class="display large-text">A clear and consistent delivery process</h2>
-                <p>Every service is delivered with thoughtful planning, regular communication and a focus on quality outcomes.</p>
-            </div>
-            <div class="card soft p-6 shadow-4">
-                <div class="grid col-2 g-4">
-                    <div class="card white px-3 py-5">
-                        <h3 class="gold-text caps small-text spaced-text">Consultation</h3>
-                        <p>We begin by understanding your goals and tailoring the service to your project requirements.</p>
-                    </div>
-                    <div class="card white px-3 py-5">
-                        <h3 class="gold-text caps small-text spaced-text">Planning</h3>
-                        <p>We define a structured approach and deliver the service with transparent milestones.</p>
-                    </div>
-                    <div class="card white px-3 py-5">
-                       <h3 class="gold-text caps small-text spaced-text">Execution</h3>
-                       <p>We maintain quality throughout and keep you informed at every stage of the process.</p>
-                   </div>
-                    <div class="card white px-3 py-5">
-                        <h3 class="gold-text caps small-text spaced-text">Delivery</h3>
-                        <p>We maintain quality throughout and keep you informed at every stage of the process.</p>
-                    </div>
+                <div class="sticky-top">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps mb-3">Projects</h3>
+                    <h2 class="display large-text">See it in Action</h2>
+                    <p>Some examples of our {{service.title}} projects.</p>
                 </div>
             </div>
         </div>
+        
+        <div class="grid content pb-6 pt-4 g-6 mb-6 col-3 md-col-2">
+            {% for project in service.projects%}
+            <div class="card white pb-3 shadow-4">
+                <div class="card__image">
+                {% if project.featured_media %}
+                <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
+                {% else %}
+                    <img  src="/static/img/slider/project-placeholder.jpg" alt="{{ project.title }}" title="{{ project.title }}"/>
+                {% endif %}
+                </div>
+                
+                <div class="card__body pb-3 px-3">
+                    <div class="flex space-between align-center">
+                    <h3 class="small-text spaced-text gold-text semi-bold caps pt-3">{{project.type}}</h3>
+                </div>
+                <a href="/projects/{{ project.slug }}" ><h3 class="py-1 normal-weight">
+                    {{ project.title }}
+                </h3></a>
+                <p class="pt-1" style="margin-top:auto;">
+                    {{ project.desc|truncate(150) }}
+                </p>
+                </div>
+                
+            </div>
+            {% endfor %}
+        
+            
+        </div>
     </section>
-
+        {% endif %}
     <section class="dark">
         <div class="content grid col-2 py-6">
             <div class="py-3 ">

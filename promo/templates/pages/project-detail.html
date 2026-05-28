@@ -111,7 +111,7 @@
             
         </div>
     </div>
-    <div class="grid content pb-6 g-3 col-3">
+    <div class="grid content pb-6 col-3">
         {% if project.units %}
           
             {% for unit in project.units %}
@@ -121,10 +121,7 @@
                     <img src="{{ unit.featured_media.get_absolute_url() }}" title="{{unit.featured_media.title or unit.title + ' Media'}} " alt="{{unit.featured_media.title or unit.title + ' Media'}}">                      
                     {% endif %}
                 </div>
-                <div class="card__body p-4">
-                    <h2>{{unit.title}}</h2>
-                    <p>{{unit.description}}</p>
-                </div>
+               
             </div>
 
             {% endfor %}

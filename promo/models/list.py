@@ -37,4 +37,5 @@ class ListItem(db.Model):
     order = db.Column(db.Integer, nullable=False)
     text = db.Column(db.String(255), nullable=False)
     subtext = db.Column(db.Text, nullable=True)
+    svg = db.Column(db.Text, nullable=True)
     list_id = db.Column(db.Integer, db.ForeignKey('lisits.id'), nullable=False)

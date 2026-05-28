@@ -18,59 +18,81 @@
     {% endblock hero %}
     {% block main %}
 
-    <section class="pale pb-6 pt-6">
+    <section class="pale py-6 sm-py-3">
         
-        <div class="grid content col-3 md-col-2 py-4 mt-3 g-4 ">
+        <div class="grid content col-3 md-col-2 py-4 mt-3 g-4 sm-g-2">
             {% for service in services %}
             
-            <div>
-                <div class="icon-block">
-                    <img
-                        src="/static/svg/tools.svg"
-                        alt="triangle with all three sides equal"
-                        height="30"
-                        width="30" />
-                </div>
-                    <h1 class="mt-4 display semilarge-text mb-3">{{ service.title }}</h1>
-                    <p class="pb-4">{{ service.short_desc }}</p>
-                    <div class="flex full-width">
-
-                        <a href="/services/{{service.slug}}" class="cta secondary pt-3 white-text">MORE INFO</a>
+            <div class="card white shadow-3">
+                <div class="card__image">
+                    {% if service.featured_media %}
+                    <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                    {% else %}
+                    <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                    {% endif %}
+                    <div class="card__image-overlay">
+                        <div class="flex align-center g-3">
+                            {{ service.svg|safe }}
+                            <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }}</h2>
+                        </div>
+                        <p class="py-2 wrap-pretty">{{ service.short_desc }}</p>
+                        
+                        <div>
+                            <a href="/services/{{service.slug}}" class="cta secondary mt-3 white-text">MORE INFO</a>
+                        </div>
                     </div>
-                    
                 </div>
-            
+            </div>
                 {% endfor %}
             </div>
     </section>
     
     <section class="dark">
-        <div class="grid content col-2--right md-collapse g-6 py-6">
+        <div class="grid content col-2--right md-collapse g-6 sm-g-3 py-6">
         <div>
-                    <h3 class="small-text spaced-text gold-text semi-bold caps">Why this matters</h3>
-            <h2 class="display white-text medium-text">The right contractor experience should feel organised, not opaque.</h2>
-            <p class="white-text my-6">
-                    Better service pages should reassure clients that the project will be understood properly,
-                    structured clearly and delivered with care. That means setting expectations early and keeping
-                    quality visible throughout the job.
+                    <h3 class="small-text spaced-text gold-text semi-bold caps">Our target audience</h3>
+            <h2 class="display white-text large-text">Everyone is welcome</h2>
+            <p class="white-text py-6 sm-py-3">
+                Alongside homeowners, we also work with construction professionals and property developers who want a reliable, high-quality contractor to partner with on residential projects across the South East. Our clients value our expertise, our commitment to a polished finish and our clear communication throughout the project lifecycle.
             </p>
         </div>
-        <div>
+        
 
-            <div class="grid col-3 g-3">
-                {% for item in why_this_matters.items  %}
+            <div class="grid col-3 g-3 center-y">
+                
                   
-                <div class="card clear p-3 shadow-4">
+                <div class="card clear p-3 shadow-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-inline:auto;" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                     <h3 class="small-text spaced-text caps gold-text py-2">
-                       {{ item.text}}
+                       Residential
                     </h3>
-                    <p>{{item.subtext}}</p>
+                    <p> 
+                        Homeowners looking for a residential contractor.
+                    </p>
                 </div>
-                {% endfor %}
+                <div class="card clear p-3 shadow-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-store-icon lucide-store" style="margin-inline:auto;"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg>
+                    <h3 class="small-text spaced-text caps gold-text py-2">
+                        Commercial
+                    </h3>
+                    <p> 
+                        Property developers and construction professionals.
+                    </p>
+                </div>
+                <div class="card clear p-3 shadow-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-user-icon lucide-file-user" style="margin-inline:auto;"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/></svg>
+                    <h3 class="small-text spaced-text caps gold-text py-2">
+                        Site Managers
+                    </h3>
+                    <p> 
+                        Looking for skilled workers across various fields.
+                    </p>
+                </div>
+                
                 
                
             </div>
-        </div>
+       
     </div>
     </section>
     {% endblock main %}

@@ -6,6 +6,7 @@ class Service(db.Model):
     title = db.Column(db.String(255), unique=True, nullable=False )
     short_desc = db.Column(db.String(500), nullable=False)
     desc = db.Column(db.Text, nullable=False)
+    svg = db.Column(db.Text, nullable=True)
     slug = db.Column(db.String(255), nullable=False)
     benefits_list_id = db.Column(db.Integer, db.ForeignKey('lisits.id'), nullable=True)
     benefits_list = db.relationship('List', backref=db.backref('service', uselist=False))

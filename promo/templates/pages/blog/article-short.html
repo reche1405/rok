@@ -3,11 +3,14 @@
 {% block hero %}
 
 	<style>
-		.container { max-width: 900px; margin: 0 auto; }
-		.abstract { font-style: italic; margin: 1rem 0; }
+		.container { max-width: 70ch; margin: 0 auto; }
+		.abstract { font-style: italic; margin: 0; background-color:#cfcfcf; }
 		.body { margin: 1.5rem 0; }
 		.supplementary { margin: 1.5rem 0; text-align: center; }
 		.supplementary img { max-width: 100%; height: auto; }
+		main p, .abstract p { font-size: 1.1rem; margin-inline:auto; max-width:65ch}
+		main ul { padding-left: 2rem; list-style-type: disc; max-width: 60ch; margin-inline:auto;}
+		main h1, main h2 {max-width: 60ch; margin-inline:auto;}
 	</style>
 
 	<section class="hero short">
@@ -40,20 +43,21 @@
 {% endblock hero %}
 	{% block main %}
 
-	<main class="container">
-		{% if article.abstract %}
-		<section class="abstract">
-			<h2>Abstract</h2>
+	{% if article.abstract %}
+	<section class="abstract py-4">
+		<div class="container">
 			<p>{{ article.abstract }}</p>
-		</section>
-		{% endif %}
+		</div>
+	</section>
+	{% endif %}
+	<main class="container">
 
 		<section class="body">
-			<h2>Article</h2>
 			{# primary body field requested as article.body_one on the context object #}
 			
 			{% if article.body_one %}
 				{{ article.body_one.replace('\n', '<br>') | safe }}
+				
 			{% else %}
 				<p>No content available.</p>
 			{% endif %}

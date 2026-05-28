@@ -32,20 +32,27 @@
     <section class="light pt-4">
         <div class="grid content py-6 g-6 col-3 align-center">
             {% for service in services %}
-                <div class="card white p-3 flex col justify-center shadow-4 text-center">
-                    <div class="icon-block">
-                        <img
-                            src="/static/svg/tools.svg"
-                            alt="triangle with all three sides equal"
-                            height="30"
-                            width="30" />
-                    </div>
-                    <h3 class="mt-6 mb-3">{{ service.title }} in {{ location.title|title }}</h3>
-                    <p>{{service.short_desc}}</p>
-                    <div>
-                    <a class="cta secondary p-1" href="/services/{{ service.slug }}/{{location.slug}}">See More</a>
+                <div class="card white shadow-3">
+                <div class="card__image">
+                    {% if service.featured_media %}
+                    <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                    {% else %}
+                    <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                    {% endif %}
+                    <div class="card__image-overlay">
+                        <div class="flex align-center g-3">
+                            {{ service.svg|safe }}
+                            <a href="/services/{{service.slug}}/{{location.slug}}" class="">
+                                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }} in {{ location.title }}</h2>
+                            </a>
+                        </div>
+                        <!-- <p class="py-2 wrap-pretty">{{ service.short_desc }}</p> -->
+                        
+                        <div>
+                        </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </section>
