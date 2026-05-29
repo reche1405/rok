@@ -167,7 +167,7 @@ def process_zip_upload( zip_file_storage):
             
                 # 3. Define and handle paths
                 # To prevent filename collisions on disk, you can append the slug to the filename
-                final_filename = f"{name_without_ext}.jpg"
+                final_filename = f"{cleaned_name}"
                 relative_path = f'{final_filename}'
                 absolute_path = filepath
                 
