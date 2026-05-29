@@ -191,7 +191,7 @@ def process_zip_upload( zip_file_storage):
                     img.thumbnail((MAX_WIDTH, MAX_HEIGHT), Image.Resampling.LANCZOS)
                     
                     # 3. Save directly to disk with optimization parameters
-                    img.save(absolute_path, "JPEG", optimize=True, quality=IMAGE_QUALITY)
+                    img.save(absolute_path, "jpg", optimize=True, quality=IMAGE_QUALITY)
                 # -------------------------------
                 
                 media_item = Media(
@@ -312,7 +312,7 @@ class UnitAdminView(BaseSecureView):
                         # 2. Append to the many-to-many relationship
                         # 'media' is the relationship attribute on your Project model
                         model.media.extend(new_media_items)
-                        
+                        model.project.media.extend(new_media_items)
                         # Inform the admin user of success
                         flash(f'Successfully extracted and linked {len(new_media_items)} images.', 'success')
                     else:
