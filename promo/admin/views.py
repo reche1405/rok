@@ -283,7 +283,7 @@ class ProjectAdminView(BaseSecureView):
                 flash('Uploaded file was not a valid ZIP archive.', 'error')
        
 class UnitAdminView(BaseSecureView):
-    form_columns = ['title', 'description', 'media', 'project', 'zip_file' ]
+    form_columns = ['title', 'description', 'featured_media', 'media', 'project', 'zip_file' ]
     form_extra_fields = {
         'zip_file': FileField('Bulk Upload Images (.zip)', validators=[Optional()])
     }
