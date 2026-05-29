@@ -191,7 +191,7 @@ def process_zip_upload( zip_file_storage):
                     img.thumbnail((MAX_WIDTH, MAX_HEIGHT), Image.Resampling.LANCZOS)
                     
                     # 3. Save directly to disk with optimization parameters
-                    img.save(absolute_path, "jpg", optimize=True, quality=IMAGE_QUALITY)
+                    img.save(absolute_path, optimize=True, quality=IMAGE_QUALITY)
                 # -------------------------------
                 
                 media_item = Media(
