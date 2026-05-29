@@ -13,7 +13,7 @@ def create_app():
     from promo.admin.views import (
     MediaAdminView, SlugifyAdminView,
     ListAdminView, BaseSecureView,
-     ProjectAdminView, CachedAdminView, SecuredAdminIndexView)
+     ProjectAdminView, UnitAdminView, CachedAdminView, SecuredAdminIndexView)
     from promo.routes import main_bp
 
     app = Flask(__name__)
@@ -75,7 +75,7 @@ def create_app():
         admin.add_view(SlugifyAdminView(Service, db.session, category="Services"))
         admin.add_view(BaseSecureView(Category, db.session, category="Services"))
         admin.add_view(ProjectAdminView(Project, db.session, category="Projects"))
-        admin.add_view(SlugifyAdminView(Unit, db.session, category="Projects"))
+        admin.add_view(UnitAdminView(Unit, db.session, category="Projects"))
         admin.add_view(MediaAdminView(Media, db.session, category="Services"))
         admin.add_view(BaseSecureView(Area, db.session, category="Services"))
         admin.add_view(SlugifyAdminView(Location, db.session, category="Services"))
