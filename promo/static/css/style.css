@@ -487,6 +487,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     text-align:center;
     background-color: var(--color-ink);
     color:var(--color-stone);
+    min-height: 600px;
 }
 
 .content {
