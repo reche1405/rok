@@ -15,6 +15,7 @@ from wtforms.fields import FileField
 from wtforms.validators import Optional
 from zipfile import ZipFile
 from PIL import Image, ImageOps
+from promo.admin.forms import ImagePreviewWidget
 
 
 # Define where your uploads live on the server
@@ -54,7 +55,8 @@ class MediaAdminView(BaseSecureView):
             'relative_path': {
                 'label': 'Upload Media File',
                 'base_path': current_app.config['UPLOAD_PATH'], # Dynamic import!
-                'allow_overwrite': False
+                'allow_overwrite': False,
+                'widget': ImagePreviewWidget()
             }
         }
         super(MediaAdminView, self).__init__(model, session, *args, **kwargs)
