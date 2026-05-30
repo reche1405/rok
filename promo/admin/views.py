@@ -15,7 +15,7 @@ from wtforms.fields import FileField
 from wtforms.validators import Optional
 from zipfile import ZipFile
 from PIL import Image, ImageOps
-from promo.admin.forms import ImagePreviewWidget
+from promo.admin.forms import ImagePreviewWidget, PreviewFileUploadField
 
 
 # Define where your uploads live on the server
@@ -56,7 +56,6 @@ class MediaAdminView(BaseSecureView):
                 'label': 'Upload Media File',
                 'base_path': current_app.config['UPLOAD_PATH'], # Dynamic import!
                 'allow_overwrite': False,
-                'widget': ImagePreviewWidget()
             }
         }
         super(MediaAdminView, self).__init__(model, session, *args, **kwargs)
@@ -65,7 +64,7 @@ class MediaAdminView(BaseSecureView):
 
     # 2. Tell Flask-Admin to render a file upload input instead of a text field
     form_overrides = {
-        'relative_path': ImagePreviewWidget
+        'relative_path': PreviewFileUploadField
     }
 
    
