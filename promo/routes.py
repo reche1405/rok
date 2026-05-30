@@ -25,6 +25,16 @@ def load_user(user_id):
     return User.query.get(str(user_id))
 
 
+@main_bp.app_errorhandler(404)
+def page_not_found(e):
+    # This will catch ALL 404 errors across your entire app
+    return render_template('errors/404.html'), 404
+
+@main_bp.app_errorhandler(500)
+def internal_server_error(e):
+    # This will catch ALL unhandled exceptions across your entire app
+    return render_template('errors/500.html'), 500
+
 
 @main_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -60,9 +70,6 @@ def login():
         
     return render_template('admin/login.html', form=form)
 
-
-
-
 @main_bp.context_processor
 def get_footer():
     cached_links = cache.get('global_site_links')
@@ -80,7 +87,7 @@ def get_footer():
 
 @main_bp.route("/media/<string:rel_path>")
 def serve_media(rel_path):
-    media_item = Media.query.filter_by(relative_path=rel_path).first_or_404()
+    media_item = Media.query.filter_by(relative_path=rel_path).first()
     if not media_item:
         return abort(404)
     path = current_app.config['UPLOAD_PATH']
@@ -89,13 +96,15 @@ def serve_media(rel_path):
     try:
         return send_from_directory(path, rel_path)
     except FileNotFoundError:
-        abort(404)
+        return abort(404)
+
 
 @main_bp.route("/")
 def hello_rok():
     form = ContactForm(request.form, meta={'csrf_context': session})
     lists = List.get_for_tags(['why-rok', 'home-hero'])
-
+    if not lists:
+        return abort(404)
     context = {
         'projects' : Project.get_featured(),
         'services' : Service.get_home(),
@@ -121,7 +130,7 @@ def service_list():
 def service_detail(slug):
     service = Service.get_by_slug(slug)
     if not service:
-        return redirect(url_for('service_list'))
+        return abort(404)
     context ={
         'service' : service,
         'service_areas' : Area.get_all()
@@ -132,6 +141,8 @@ def service_detail(slug):
 def service_location(s_slug, l_slug):
     service = Service.get_by_slug(s_slug)
     location = Location.get_by_slug(l_slug)
+    if not service or not location:
+        return abort(404)
     form = ContactForm(request.form, meta={'csrf_context': session})
     
     context = {
@@ -153,8 +164,9 @@ def project_list():
 @main_bp.route("/projects/<path:slug>")
 def project_detail(slug):
     project = Project.get_by_slug(slug)
+
     if not project:
-        return redirect(url_for('project_list'))
+        return abort(404)
     context = {
 
     'project' : project
@@ -165,8 +177,10 @@ def project_detail(slug):
 def unit_detail(p_slug, u_slug):
     project = Project.get_by_slug(p_slug)
     unit = Unit.get_by_slug(u_slug)
-    if unit not in project.units:
+    if project is None or unit is None:
         return abort(404)
+    if unit not in project.units:
+        return redirect(url_for('project_list'))
     context = {
         'unit' : unit
     }
@@ -185,7 +199,7 @@ def area_list():
 def location_detail(slug):
     location = Location.get_by_slug(slug)
     if not location:
-        return redirect(url_for('area_list'))
+        return abort(404)
 
     context = {
         'location' : location,
@@ -225,6 +239,8 @@ def article_list():
 @main_bp.route("/blog/<string:slug>")
 def article_detail(slug):
     article = Article.get_by_slug(slug)
+    if article is None:
+        return abort(404)
     context = {
         'article':  article
     }
@@ -273,8 +289,11 @@ def contact():
 
 @main_bp.get('/policy/<string:slug>')
 def policy(slug):
+    policy = Policy.get_by_slug(slug)
+    if not policy:
+        return abort(404)
     context = {
-        'policy' : Policy.get_by_slug(slug)
+        'policy' : policy
     }
     return render_template('pages/policy.html', **context)
 

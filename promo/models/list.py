@@ -22,7 +22,9 @@ class List(db.Model):
     @classmethod
     def get_for_tags(cls, tags):
         tag_list = cls.query.filter(cls.tag.in_(tags)).all()
-        return {x.tag: x for x in tag_list}
+        if tag_list:
+            return {x.tag: x for x in tag_list}
+        return None
 
     @classmethod
     def get_home(cls):
