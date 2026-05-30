@@ -232,7 +232,7 @@ def generate_unique_slug( base_title):
 class ProjectAdminView(BaseSecureView):
     """Admin view for Project with inline Units in the form."""
     # Show units inline on the project edit/create form
-    form_columns = ['title', 'featured', 'location', 'desc', 'short_desc', 'media', 'featured_media', 'zip_file', 'type', 'zip_file']
+    form_columns = ['title', 'featured', 'location', 'desc', 'services' , 'short_desc', 'media', 'featured_media', 'zip_file', 'type', 'zip_file']
     inline_models = [ 
         (Media, {
             'label' : "Featured Media",
