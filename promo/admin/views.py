@@ -65,7 +65,7 @@ class MediaAdminView(BaseSecureView):
 
     # 2. Tell Flask-Admin to render a file upload input instead of a text field
     form_overrides = {
-        'relative_path': form.FileUploadField
+        'relative_path': ImagePreviewWidget
     }
 
    
