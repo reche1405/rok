@@ -228,7 +228,7 @@ def generate_unique_slug( base_title):
     return slug
  
 class ArticleAdminView(SlugifyAdminView):
-    column_excluded_list = ['body_one', 'body_two', 'body_three']
+    column_exclude_list = ['body_one', 'body_two', 'body_three']
 
 class ProjectAdminView(BaseSecureView):
     """Admin view for Project with inline Units in the form."""
