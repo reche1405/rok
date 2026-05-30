@@ -83,7 +83,7 @@ def create_app():
         admin.add_view(SlugifyAdminView(Location, db.session, category="Areas"))
         admin.add_view(BaseSecureView(Meta, db.session, category="Static"))
         admin.add_view(BaseSecureView(Page, db.session, category="Static"))
-        admin.add_view(ArticleAdminView(Article, db.session), category="Blog")
+        admin.add_view(ArticleAdminView(Article, db.session, category="Blog"))
         admin.add_view(CachedAdminView(Social, db.session, category="Static"))
         admin.add_view(BaseSecureView(User, db.session, category="Auth"))
         admin.add_view(CachedAdminView(Policy, db.session, category="Static"))
