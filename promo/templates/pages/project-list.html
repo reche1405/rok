@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <a href="/projects/{{ project.slug }}" class="card__link">
-                    <div class="card__body py-1 px-3">
+                    <div class="card__body py-1 px-4">
                         <div class="flex align-center g-4 space-between">
                             {% if project.featured %}
                             <div class="flex center-y">
@@ -52,7 +52,7 @@
                             {% endif %}
                         </div>
                         
-                        <p class="pb-2" style="">{{ project.short_desc|truncate(200) }}</p>
+                        <p class="py-3" style="">{{ project.short_desc|truncate(200) }}</p>
                         
                             
                         
