@@ -2,6 +2,7 @@ from wtforms import Form, validators
 from wtforms.fields import StringField, TextAreaField
 from wtforms.fields.html5 import TelField, EmailField
 from wtforms.csrf.session import SessionCSRF
+from flask_wtf import RecaptchaField
 class ContactForm(Form):
     class Meta:
         csrf = True
@@ -46,3 +47,4 @@ class ContactForm(Form):
             "placeholder" : "Tell us about your project...",
             "class" : ""
         })
+    recaptcha = RecaptchaField()

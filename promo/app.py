@@ -23,6 +23,9 @@ def create_app():
     app.cli.add_command(create_admin)
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+    app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+    app.config['RECAPTCHA_SECRET_KEY'] = os.environ.get('RECAPTCHA_SECRET_KEY')
+
     app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', '127.0.0.1')
     app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 1025))
     app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'False').lower() in ['true', '1']
