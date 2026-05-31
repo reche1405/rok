@@ -31,7 +31,7 @@
                     {% else %}
                         <img  src="/static/img/slider/project-placeholder.jpg" alt="{{ project.title }}" title="{{ project.title }}"/>
                     {% endif %}
-                    <div class="card__image-overlay">
+                    <div class="card__image-overlay gentle">
                         <div class="flex g-2 align-center">
                             {% for service in project.services %}
                                 {{ service.svg|safe }}
