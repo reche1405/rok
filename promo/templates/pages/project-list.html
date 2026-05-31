@@ -45,14 +45,14 @@
                     <div class="card__body py-1 px-4">
                         <div class="flex align-center g-4 space-between">
                             {% if project.featured %}
-                            <div class="flex center-y">
+                            <div class="flex center-y pt-2">
     
                                 <span class="card__tag white-text">FEATURED</span>
                             </div>
                             {% endif %}
                         </div>
                         
-                        <p class="py-3" style="">{{ project.short_desc|truncate(200) }}</p>
+                        <p class="py-3" style="">{{ project.short_desc|truncate(150) }}</p>
                         
                             
                         
