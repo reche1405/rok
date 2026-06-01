@@ -30,7 +30,7 @@
         </picture>
         </div>
         <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
-            <div class="sm-center-y sm-text-center full-width">
+            <div class="sm-center-y full-width">
                 <h1 class="display white-text x-large-text welcome">{{page.title}}</h1>
                 <p class="white-text my-6">
                      {{page.subtitle}}
@@ -137,7 +137,7 @@
             </div>
             <div>
                 <p>
-                 Our portfolio demonstrates how we sequence heavy groundworks, structural engineering, and master-tier finishing trades under a single management framework.
+                    Our portfolio demonstrates how we sequence heavy groundworks, structural engineering, and master-tier finishing trades under a single management framework.
                 </p>
                     <div class="grid col-2 g-6 mt-3">
                         <a title="Explore our projects" href="/projects" class="cta ternary mt-4">EXPLORE PROJECTS</a>
@@ -159,20 +159,19 @@
                 
                 <div class="card__body pb-3 px-3">
                     <div class="flex space-between align-center">
-                    <h3 class="small-text spaced-text gold-text semi-bold caps pt-3">{{project.type}}</h3>
+                    <h3 class="small-text spaced-text gold-text semi-bold caps pt-3 " style="line-height:1;">{{project.type}}</h3>
                 </div>
-                <a href="/projects/{{ project.slug }}" ><h3 class="py-1 normal-weight">
+                <a href="/projects/{{ project.slug }}" ><h3 class="pb-1 normal-weight">
                     {{ project.title }}
                 </h3></a>
-                <p class="pt-1">
+                <p class="">
                     {{ project.desc|truncate(150) }}
                 </p>
                 </div>
                 
             </div>
             {% endfor %}
-        
-            
+           
         </div>
     </section>
     

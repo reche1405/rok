@@ -58,30 +58,44 @@
                 <p class="inline-auto">{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
             </div>
         </div>
-        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="2000" data-transition-duration="700">
+        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="4000" data-transition-duration="1500">
             {% if project.media %}
+            <div class="slides-container">
                 {% for image in project.media %}
-                    <div class="slide scroll"  data-slide-number="{{loop.index0}}" >
-                        <img loading="lazy" class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
-
-
-                    </div>
+                <div class="slide fade"  data-slide-number="{{loop.index0}}" >
+                    <img loading="lazy" class="slide__image"
+                        src="{{ image.get_absolute_url() }}"
+                        alt="{{ image.alt or project.title }}" 
+                        title="{{ image.title or project.title }}"
+                    />
+                </div>
                 {% endfor %}
                 <div class="slideshow__overlay">
-                            <div class="slide-progress__wrapper">
-                                <div class="slide-progress__container">
-
-                                </div>
-                            </div> 
-                        </div> 
-            {% else %}
+                    <div class="slide-progress__wrapper">
+                        <div class="slide-progress__container">
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        {% else %}
                 
-                <div class="no-results">
-                    <p>No Images</p>
-                
+                    <div class="no-results">
+                        <p>No Images</p>
+                    </div>
                 </div>
             {% endif %}
         </div>
+
+        <div class="content flex wrap g-2">
+            {% for image in project.media %}
+                <div class="p-0">
+                    <button data-slide-number="{{loop.index0}}" class="gallery__thumbnail p-0 border-0">
+                        <img loading="lazy" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+            
     </section>
 {% if project.units %}
   
@@ -96,7 +110,7 @@
             
         </div>
     </div>
-    <div class="grid content pb-6 col-3">
+    <div class="grid content pb-6 col-3 g-2">
         {% if project.units %}
           
             {% for unit in project.units %}

@@ -14,7 +14,7 @@ class ContactForm(Form):
             validators.input_required()
         ], 
         render_kw= {
-            "placeholder" : "Joe Bloggs",
+            "placeholder" : "",
             "class" : ""
         }
     )
@@ -24,7 +24,7 @@ class ContactForm(Form):
             validators.input_required()
         ], 
         render_kw= {
-            "placeholder" : "joe.bloggs@email.com",
+            "placeholder" : "",
             "class" : ""
         }
     )
@@ -34,7 +34,7 @@ class ContactForm(Form):
             validators.input_required()
         ],
         render_kw= {
-            "placeholder" : "07912 345 678",
+            "placeholder" : "",
             "class" : " mb-3"
         }
     )
@@ -44,7 +44,7 @@ class ContactForm(Form):
             validators.input_required()
         ],
         render_kw= {
-            "placeholder" : "Tell us about your project...",
+            "placeholder" : "",
             "class" : ""
         })
     recaptcha = RecaptchaField()

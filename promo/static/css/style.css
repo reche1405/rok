@@ -1107,12 +1107,11 @@ section:has(div.slider.light) ~ .breadcrumbs {
         grid-template-columns: 1fr 1fr;
     }
     .hero__body h1 {
-        margin-inline:auto;
+
     }
     .hero__body p {
-        padding-inline:1.5rem;
+        padding-right:1.5rem;
         max-width: 35ch;
-        margin-inline:auto;
     }
     .welcome {
         padding-top:1rem;
@@ -1142,3 +1141,4 @@ section:has(div.slider.light) ~ .breadcrumbs {
         padding-inline:1rem;
     }
 }
+
