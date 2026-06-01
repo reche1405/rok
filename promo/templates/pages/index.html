@@ -93,29 +93,28 @@
             </div>
             <div>
                 <div class="grid col-2 my-4 g-4">
-                    {% for service in services %}
-                    
-                    <div class="card white shadow-3">
-                       
-                        <div class="card__body p-3">
-                            <div class="flex space-between align-center">
-                                <div class="icon-block">
-                                        {{ service.svg|safe }}
-                                </div>
-                                <a  class="caps grey-text small-text spaced-text semi-bold" href="/services/{{ service.slug }}">More Info</a>
+                     {% for service in services %}
+                
+                <div class="card white shadow-3">
+                    <div class="card__image">
+                        {% if service.featured_media %}
+                        <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                        {% else %}
+                        <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                        {% endif %}
+                        <div class="card__image-overlay">
+                            <div class="flex align-center g-3">
+                                {{ service.svg|safe }}
+                                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }}</h2>
                             </div>
-                            <h2 class="mt-3 px-4 mb-2 light-weight text-center" style="font-size:1.2rem;">{{ service.title }}</h2>
-                        </div>
-                         <div class="card__image">
-                            {% if service.featured_media %}
-                            <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
-                            {% else %}
-                            <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
-                            {% endif %}
-                            <div class="card__image-overlay gentle">
+                            <p class="py-2 wrap-pretty">{{ service.short_desc }}</p>
+                            
+                            <div>
+                                <a href="/services/{{service.slug}}" class="cta secondary mt-3 white-text">MORE INFO</a>
                             </div>
                         </div>
                     </div>
+                </div>
                     {% endfor %}
                 
                    
