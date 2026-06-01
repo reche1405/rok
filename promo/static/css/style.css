@@ -1128,7 +1128,6 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .hero__body {
         position: relative;
         height:100%;
-        text-align:center;
     }
     .hero-actions {
         padding-top:2rem;
