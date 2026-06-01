@@ -129,7 +129,7 @@ def service_list():
 @main_bp.route("/services/<string:slug>")
 def service_detail(slug):
     service = Service.get_by_slug(slug)
-    if service:
+    if not service:
         return abort(404)
     context ={
         'service' : service,
