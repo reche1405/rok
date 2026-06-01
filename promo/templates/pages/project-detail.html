@@ -58,10 +58,10 @@
                 <p class="inline-auto">{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
             </div>
         </div>
-        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="7000" data-transition-duration="1500">
+        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="2000" data-transition-duration="700">
             {% if project.media %}
                 {% for image in project.media %}
-                    <div class="slide"  data-slide-number="{{loop.index0}}" >
+                    <div class="slide scroll"  data-slide-number="{{loop.index0}}" >
                         <img loading="lazy" class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
 
 
