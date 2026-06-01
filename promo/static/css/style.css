@@ -847,7 +847,7 @@ ol.process {
     &.justify-center {
         justify-content:center;
     }
-    .wrap {
+    &.wrap {
         flex-wrap: wrap;
     }
     &.no-shrink {
