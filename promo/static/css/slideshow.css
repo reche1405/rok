@@ -257,12 +257,17 @@
 
 .gallery__thumbnail {
     max-width:80px;
+    min-width: 40px;
+    padding:0;
     aspect-ratio: 1/1; 
     position:relative; 
     & img {
         object-fit: cover;
         width:100%;
         height:100%;
+        position:absolute;
+        top:0;
+        left:0;
 
     }
 }
