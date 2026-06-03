@@ -48,8 +48,9 @@
                 <p>{{ unit.gallery_intro or "A closer look at the unit, and how it was delivered." }}</p>
             </div>
         </div>
-        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="7000" data-transition-duration="1500">
+        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="4000" data-transition-duration="1500">
             {% if unit.media %}
+            <div class="slides-container">
                 {% for image in unit.media %}
                     <div class="slide"  data-slide-number="{{loop.index0}}" >
                         <img loading="lazy" class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or unit.title }}" title="{{ image.title or unit.title }}"/>
@@ -64,6 +65,7 @@
                         </div>
                     </div> 
                 </div> 
+            </div>
             {% else %}
                 
                 <div class="no-results">
@@ -71,6 +73,18 @@
                 
                 </div>
             {% endif %}
+        </div>
+
+        <div class="image-selectors content">
+            <div class="selector__scroll-wrapper flex g-2">
+            {% for image in unit.media %}
+                <div class="p-0">
+                    <button data-slide-number="{{loop.index0}}" class="gallery__thumbnail p-0 border-0">
+                        <img loading="lazy" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or unit.title }}" title="{{ image.title or unit.title }}"/>
+                    </button>
+                </div>
+            {% endfor %}
+            </div>
         </div>
     </section>
 
@@ -85,7 +99,7 @@
             
         </div>
     </div>
-    <div class="grid content pb-6 col-3">
+    <div class="grid content pb-6 g-2 col-3">
         
           
     {% for other_unit in unit.project.units %}

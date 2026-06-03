@@ -20,7 +20,7 @@
     {% block main %}
     <section class="pale py-6 sm-py-3">
         
-        <div class="grid content col-3 py-4 mt-3 g-6 sm-g-3 ">
+        <div class="grid content col-3 py-4 mt-3 g-6 sm-g-3 " id="project-list">
             {% for project in projects %}
             
             
@@ -62,6 +62,19 @@
                 </a>
             </div>
             {% endfor %}
+        </div>
+        <div class="content full-width center mt-3">
+            <nav class="pagination">
+                {% if has_prev %}
+                    <a title="Projects Page {{ prev_page_no }}" class="btn" href="?page={{ prev_page_no }}#project-list">{{ prev_page_no }}</a>
+                {% endif %}
+
+                <span class="btn active">{{ page_no }}</span>
+
+                {% if has_next %}
+                    <a title="Projects Page {{ next_page_no }}" class="btn" href="?page={{ next_page_no }}#project-list">{{ next_page_no }}</a>
+                {% endif %}
+            </nav>
         </div>
     </section>
 

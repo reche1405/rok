@@ -30,7 +30,7 @@
     {% block main %}
 	<section class="light pt-4">
 		<div class="content grid py-6">
-			<div class="grid col-3 g-6">
+			<div id="article-list" class="grid col-3 g-6">
 				{# Show six articles (controller should provide 'articles' sliced to six) #}
 				{% for article in articles %}
 				<div class="card white pb-3 shadow-4">
@@ -52,10 +52,10 @@
 				{% endfor %}
 			</div>
 
-			<div class="content full-width center mt-6">
+			<div class="content full-width center mt-3">
 				<nav class="pagination">
 					{% if has_prev %}
-						<a class="btn" href="?page={{ prev_page_no }}">{{ prev_page_no }}</a>
+						<a class="btn" title="Blog Page {{ prev_page_no }}" href="?page={{ prev_page_no }}#article-list">{{ prev_page_no }}</a>
                     {% endif %}
 
 					{# simple page number buttons #}
@@ -63,7 +63,7 @@
                     {# Next button #}
 
 					{% if has_next %}
-						<a class="btn" href="?page={{ next_page_no }}">{{ next_page_no }}</a>
+						<a class="btn" title="Blog Page {{ next_page_no }}" href="?page={{ next_page_no }}#article-list">{{ next_page_no }}</a>
 					{% endif %}
 				</nav>
 			</div>

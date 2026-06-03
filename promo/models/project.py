@@ -61,6 +61,19 @@ class Project(db.Model):
         """Returns a project by its slug."""
         return cls.query.filter_by(slug=slug).first()
     
+    @classmethod
+    def get_page(cls, page, items_per_page):
+        if page is None or page < 1:
+            page = 1
+        if items_per_page is None or items_per_page < 1:
+            items_per_page = 10
+        offset = (page - 1) * items_per_page
+        return cls.query.order_by(cls.id).offset(offset).limit(items_per_page).all()
+    
+    @classmethod
+    def count(cls):
+        return cls.query.count()
+    
 
 unit_media = db.Table('unit_media',
     db.Column('unit_id', db.Integer, db.ForeignKey('units.id'), primary_key=True),

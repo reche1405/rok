@@ -2,7 +2,9 @@ export default class Slideshow {
     constructor(wrapperElement, showIndicators = true) {
         this.wrapperElement = wrapperElement;
         this.slides = this.wrapperElement.querySelectorAll('.slide');
-        
+        this.slideSelcetorWrapper = this.wrapperElement.nextElementSibling;
+        this.slideSelcetors = this.slideSelcetorWrapper.querySelectorAll('button');
+
         if (this.slides.length < 1) return;
 
         // Parse dataset values properly
@@ -46,8 +48,28 @@ export default class Slideshow {
         if (this.slides.length > 1) {
             this.startSlideshow();
         }
+
+        this.slideSelcetors.forEach(s => {
+            s.addEventListener('click', (event) => {
+                const target = event.target.closest('button');
+                if (this.isPlaying) {
+                    this.playPauseButton.click();
+                }
+                this.slides.forEach(s => {
+                    s.classList.remove('next');
+                    if (s.dataset.slideNumber == target.dataset.slideNumber ){
+                        s.classList.add('current');
+
+                    } else {
+                        s.classList.remove('current');
+                    }
+                });
+            
+            })
+        })
     }
 
+    
     setupFadeMode() {
         if (this.slides.length === 1) {
             this.slides[0].classList.add("current");
@@ -304,6 +326,7 @@ export default class Slideshow {
 
         playPauseButton.appendChild(pauseSVG);
         playPauseButton.addEventListener('click', this.togglePlayPauseButton);
+        this.playPauseButton = playPauseButton;
     }
     
     togglePlayPauseButton = event => {
@@ -321,4 +344,15 @@ export default class Slideshow {
             this.startSlideshow();
         }
     }
+
+    selectImage(event) {
+        this.stopSlideshow();
+        this.slides.forEach((idx, s) => {
+            s.classList.remove('current');
+            s.classList.remove('next');
+        });
+        const slide = slides.filter(s => s.dataset.slideNumber == event.target.dataset.slideNumer);
+        slide.classList.add('current');
+    }
+
 }

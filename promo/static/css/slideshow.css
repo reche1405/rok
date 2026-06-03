@@ -255,11 +255,17 @@
     right: 3.5rem;
 }
 
+.image-selectors {
+    overflow-x: auto; 
+    width:100%;
+
+}
+
 .gallery__thumbnail {
-    max-width:80px;
-    min-width: 40px;
+    max-width:230px;
+    min-width: 180px;
     padding:0;
-    aspect-ratio: 1/1; 
+    aspect-ratio: 16/9; 
     position:relative; 
     & img {
         object-fit: cover;

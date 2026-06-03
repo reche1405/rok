@@ -154,8 +154,34 @@ def service_location(s_slug, l_slug):
 
 @main_bp.route("/projects")
 def project_list():
+    page_no = request.args.get('page')
+    page_no = 1 if page_no is  None else int(page_no)
+    per_page = 9
+    project_count = max(1, Project.count())
+    print(f"Project Count: {project_count}")
+    _page_count = project_count / per_page
+    if _page_count < 1:
+        _page_count = 1
+    elif _page_count % 1 != 0:
+        _page_count = math.floor(_page_count + 1)
+    else: 
+        _page_count = int(_page_count) 
+    page_count = _page_count
+    print(f"Page Count: {page_count}")
+    has_prev = True if page_no > 1 else False
+    prev_page_no = page_no - 1 if page_no > 1 else None
+
+    has_next = True if page_no + 1 <= page_count else False
+    next_page_no = page_no + 1 if page_no + 1 <= page_count else None
+    print(f"Page Number: {page_no}\nHas Next: {has_next}\n Next Page: {next_page_no}")
     context = {
-        'projects' : Project.get_all(),
+        'projects' : Project.get_page(page_no, per_page),
+        'page_no' : page_no,
+        'page_count' : page_count,
+        'has_prev' : has_prev,
+        'prev_page_no' : prev_page_no,
+        'has_next' : has_next,
+        'next_page_no' : next_page_no,
         'page' : Page.get_by_tag('Projects')
 
     }
@@ -213,8 +239,17 @@ def article_list():
     page_no = 1 if page_no is  None else int(page_no)
     per_page = 6
 
+
     article_count = max(1,Article.count())
-    page_count = max(1, math.floor(article_count / per_page))
+
+    _page_count = article_count / per_page
+    if _page_count < 1:
+        _page_count = 1
+    elif _page_count % 1 != 0:
+        _page_count = math.floor(_page_count + 1)
+    else: 
+        _page_count = int(_page_count) 
+    page_count = _page_count
     print(f"Page Count: {page_count}")
     has_prev = True if page_no > 1 else False
     prev_page_no = page_no - 1 if page_no > 1 else None
@@ -223,7 +258,7 @@ def article_list():
     next_page_no = page_no + 1 if page_no + 1 <= page_count else None
     print(f"Page Number: {page_no}\nHas Next: {has_next}\n Next Page: {next_page_no}")
     context = {
-        'articles' : Article.get_page(page_no, per_page),
+        'articles' : Article.get_page(page=page_no, items_per_page=per_page),
         'page_no' : page_no,
         'page_count' : page_count,
         'has_prev' : has_prev,
