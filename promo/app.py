@@ -34,6 +34,7 @@ def create_app():
     app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
     app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'noreply@yourdomain.local')
     app.config['INBOUND_MAIL'] = os.environ.get('INBOUND_MAIL')
+    app.config['MAIL_DEBUG'] = True
     app_env = os.environ.get('FLASK_ENV')
     if app_env is None:
         app_env = 'production'
