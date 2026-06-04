@@ -1081,6 +1081,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     }
     .large-text {
         font-size:2rem;
+        text-wrap:balance;
     }
     .sm-hide {
         display:none !important;
