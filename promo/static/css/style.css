@@ -1130,7 +1130,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
             aspect-ratio: unset;
         }
     }
-    .text-section, section.hero {
+    .text-section {
         padding-inline:.5rem;
     }
 
@@ -1153,6 +1153,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     }
     section.hero {
         padding-top:6.5rem;
+        padding-inline:1rem;
     }
     .hero__body {
         position: relative;
