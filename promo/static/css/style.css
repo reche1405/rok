@@ -436,7 +436,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     max-width:10ch;
 }
 .large-text {
-    font-size: 3.2rem;
+    font-size: 3.7rem;
     max-width: 23ch;
 }
 .average-text {
@@ -1080,7 +1080,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
         font-size:3.5rem;
     }
     .large-text {
-        font-size:2.7rem;
+        font-size:2rem;
     }
     .sm-hide {
         display:none !important;
