@@ -24,7 +24,7 @@ def create_app():
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
     app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
-    app.config['RECAPTCHA_SECRET_KEY'] = os.environ.get('RECAPTCHA_SECRET_KEY')
+    app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('RECAPTCHA_SECRET_KEY')
 
     app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', '127.0.0.1')
     app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 1025))
