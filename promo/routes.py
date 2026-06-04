@@ -306,7 +306,7 @@ def contact():
                 flash("Message sent successfully, we will respond within 2 business days..", "success")
             except Exception as e:
                 print(f"Email failed to send: {e}")
-                flash("Email failed  to send. Please try again.", "error")
+                flash(f"Email failed  to send. {e}", "error")
                
         else: 
             print("Error parsing form data!!!!")
