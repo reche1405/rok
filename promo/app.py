@@ -26,13 +26,13 @@ def create_app():
     app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
     app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('RECAPTCHA_SECRET_KEY')
 
-    app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', '127.0.0.1')
-    app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 1025))
+    app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+    app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 465))
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
     app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
     app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-    app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'noreply@yourdomain.local')
+    app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'info@therokgroup.co.uk')
     app.config['INBOUND_MAIL'] = os.environ.get('INBOUND_MAIL')
     app.config['MAIL_DEBUG'] = True
     app_env = os.environ.get('FLASK_ENV')
