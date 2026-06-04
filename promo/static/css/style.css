@@ -1142,7 +1142,6 @@ section:has(div.slider.light) ~ .breadcrumbs {
     }
     .hero__body p {
         padding-right:1.5rem;
-        max-width: 35ch;
     }
     .welcome {
         padding-top:1rem;
