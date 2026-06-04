@@ -28,8 +28,8 @@ def create_app():
 
     app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', '127.0.0.1')
     app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 1025))
-    app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'False').lower() in ['true', '1']
-    app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL', 'False').lower() in ['true', '1']
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
     app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
     app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
     app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'noreply@yourdomain.local')
