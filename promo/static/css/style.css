@@ -1063,6 +1063,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     }
     .content, header.content {
         max-width:980px !important;
+
     }
     .card-stack {
         justify-self: stretch;
@@ -1127,6 +1128,9 @@ section:has(div.slider.light) ~ .breadcrumbs {
         & .card__image {
             aspect-ratio: unset;
         }
+    }
+    .text-section, section.hero {
+        padding-inline:.5rem;
     }
 
     .grid.col-4 {
