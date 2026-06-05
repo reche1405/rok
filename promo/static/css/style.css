@@ -656,7 +656,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     font-size: .6rem;
     font-weight: var(--fw-semibold);
     background-color: var(--color-gold);
-    line-break: none;
+    line-height: 1;
     border:2px solid var(--color-gold);
     &.alt {
         background-color: transparent;
