@@ -619,6 +619,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     width:100%;
     height:100%;
     z-index:3;
+            background: linear-gradient(to bottom left, transparent 55%, rgb(33, 63, 99));
     
     line-height: 1.1;
     padding:1rem;
