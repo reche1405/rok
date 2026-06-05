@@ -28,8 +28,8 @@ def create_app():
 
     app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
     app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 465))
-    app.config['MAIL_USE_TLS'] = False
-    app.config['MAIL_USE_SSL'] = True
+    app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS') in ['True', 'true', '1', 1]
+    app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL') in ['False', 'false', '0', 0]
     app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
     app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
     app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'info@therokgroup.co.uk')
