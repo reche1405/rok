@@ -15,7 +15,8 @@ class ContactForm(Form):
         ], 
         render_kw= {
             "placeholder" : "",
-            "class" : ""
+            "class" : "",
+            "name" : "entry.845568049"
         }
     )
     email = EmailField(
@@ -25,7 +26,9 @@ class ContactForm(Form):
         ], 
         render_kw= {
             "placeholder" : "",
-            "class" : ""
+            "class" : "",
+            "name" : "entry.169352832"
+
         }
     )
     number = TelField(
@@ -35,7 +38,9 @@ class ContactForm(Form):
         ],
         render_kw= {
             "placeholder" : "",
-            "class" : " mb-3"
+            "class" : " mb-3",
+            "name" : "entry.1928429605"
+            
         }
     )
     message = TextAreaField(
@@ -45,6 +50,7 @@ class ContactForm(Form):
         ],
         render_kw= {
             "placeholder" : "",
-            "class" : ""
+            "class" : "",
+            "name" : "entry.1495316646"
         })
     recaptcha = RecaptchaField()
