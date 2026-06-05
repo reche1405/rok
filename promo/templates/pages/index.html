@@ -100,7 +100,7 @@
                      {% for service in services %}
                 
                 <div class=" round-1">
-                        <div class="card shadow-3">
+                        <div class="card no-border shadow-3">
                             <div class="card__image">
                                 {% if service.featured_media %}
                                 <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
@@ -121,7 +121,7 @@
                             <h2 class="mt-4 normal-weight mb-1 wrap-pretty display pt-2" style="font-size:1.55rem; letter-spacing: 0.05rem; line-height:1;">{{ service.title }}</h2>
                             <p class="pr-6">{{ service.short_desc }}</p>
                             
-                                <a href="/services/{{service.slug}}" class="spaced-text bold-text caps gold-text mb-2">MORE INFO</a>
+                                <a href="/services/{{service.slug}}" class="semi-bold caps gold-text mb-2">MORE INFO</a>
                         
                         </div>
                     

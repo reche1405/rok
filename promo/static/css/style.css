@@ -561,6 +561,9 @@ header .nav-logo, .mobile-menu .nav-logo {
     &.round-1 {
         border-radius:.5rem;
     }
+    &.no-border {
+        border:none;
+    }
 }
 .card__bg {
     position:absolute; 
