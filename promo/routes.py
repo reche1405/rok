@@ -299,10 +299,11 @@ def contact():
                 subject="New Website Contact Query",
                 body=f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}",
                 to=[current_app.config['INBOUND_MAIL']]
+                
             )
             try:
                 
-                msg.send()
+                msg.send(fail_silently=False)
                 flash("Message sent successfully, we will respond within 2 business days..", "success")
             except Exception as e:
                 print(f"Email failed to send: {e}")

@@ -87,7 +87,11 @@
                         From initial topographical survey and cost planning to heavy plant operations and fine architectural decorating, The Rok Group provides a completely unified approach to construction.
                     </p>
                     <div class="grid col-2 md-collapse mt-3">
-                    <a title="Explore our services" href="/services" class="cta ternary mt-4">EXPLORE SERVICES</a>
+                    <a title="Explore our services" href="/services" class="cta ternary mt-4">
+                        
+                        <span>EXPLORE SERVICES</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
                     </div>
                 </div>
             </div>
@@ -95,25 +99,35 @@
                 <div class="grid col-2 my-4 g-4">
                      {% for service in services %}
                 
-                <div class="card white shadow-3">
-                    <div class="card__image">
-                        {% if service.featured_media %}
-                        <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
-                        {% else %}
-                        <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
-                        {% endif %}
-                        <div class="card__image-overlay">
-                            <div class="flex align-center g-3">
-                                {{ service.svg|safe }}
-                                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }}</h2>
-                            </div>
-                            <p class="py-2 wrap-pretty">{{ service.short_desc }}</p>
-                            
-                            <div>
-                                <a href="/services/{{service.slug}}" class="cta secondary mt-3 white-text">MORE INFO</a>
+                <div class=" round-1 text-center">
+                        <div class="card shadow-3">
+                            <div class="card__image">
+                                {% if service.featured_media %}
+                                <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                                {% else %}
+                                <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                                {% endif %}
+                                <div class="card__image-overlay">
+                                    <div class="full-width flex align-center g-3 pt-2 justify-center">
+                                        {{ service.svg|safe }}
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                        <div class="px-3">
+
+                            <div class="flex align-center  g-3">
+                                <h2 class="mt-4 normal-weight mb-1 wrap-pretty display px-2 pb-4 pt-2" style="font-size:1.55rem; letter-spacing: 0.05rem;">{{ service.title }}</h2>
+                            </div>
+                            <div class="px-3">
+                            
+                                <a href="/services/{{service.slug}}" class="cta ternary no-border mt-3 full-width">MORE INFO</a>
+                            </div>
+                        
+                        </div>
+                    
                 </div>
                     {% endfor %}
                 
@@ -140,7 +154,12 @@
                     Our portfolio demonstrates how we sequence heavy groundworks, structural engineering, and master-tier finishing trades under a single management framework.
                 </p>
                     <div class="grid col-2 g-6 mt-3">
-                        <a title="Explore our projects" href="/projects" class="cta ternary mt-4">EXPLORE PROJECTS</a>
+                        <a title="Explore our projects" href="/projects" class="cta ternary mt-4">
+                            
+                            <span>EXPLORE PROJECTS</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        
+                        </a>
                     </div>
             </div>
         </div>
@@ -153,17 +172,16 @@
                     {% else %}
                         <img  src="/static/img/slider/project-placeholder.jpg" alt="{{ project.title }}" title="{{ project.title }}"/>
                     {% endif %}
-                    <div class="card__image-overlay gentle">
-                    </div>
+                    
                 </div>
                 
                 <div class="card__body pb-3 px-3">
                     <div class="flex space-between align-center">
                     <h3 class="small-text spaced-text gold-text semi-bold caps pt-3 " style="line-height:1;">{{project.type}}</h3>
                 </div>
-                <a href="/projects/{{ project.slug }}" ><h3 class="pb-1 normal-weight">
-                    {{ project.title }}
-                </h3></a>
+                <a href="/projects/{{ project.slug }}" ><h2 class=" normal-weight">
+                    <span class="display spacedish-text">{{ project.title }}</span>
+                </h2></a>
                 <p class="">
                     {{ project.desc|truncate(150) }}
                 </p>

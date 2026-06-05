@@ -558,6 +558,16 @@ header .nav-logo, .mobile-menu .nav-logo {
         color:unset;
         cursor:pointer;
     }
+    &.round-1 {
+        border-radius:.5rem;
+    }
+}
+.card__bg {
+    position:absolute; 
+    bottom:0;
+    left:0;
+    width:100%; 
+    height:80%;
 }
 
 .hero-footer {
@@ -606,8 +616,6 @@ header .nav-logo, .mobile-menu .nav-logo {
     width:100%;
     height:100%;
     z-index:3;
-    background: linear-gradient(to top, rgb(33, 63, 99, 0.55) 25%, transparent),
-                linear-gradient(45deg, rgba(33, 63, 99, 0.55) 25%, transparent);
     
     color: white;
     line-height: 1.1;
@@ -783,6 +791,10 @@ section.pale {
     letter-spacing: 1px;
     text-align:center;
     text-decoration: none;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
     &.primary {
         border-color:var(--color-gold);
         background-color:var(--color-gold);
@@ -798,6 +810,13 @@ section.pale {
         border-color:var(--color-gold-deep);
         color:var(--color-gold-deep);
 
+    }
+    &.no-border {
+        border:none;
+    }
+    &.full-width {
+        width:100%;
+        display:block;
     }
 }
 .icon-block {
@@ -1074,7 +1093,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
 
 @media (max-width:768px) {
     .gallery {
-        min-height: 350px;
+        min-height: 270px;
     }
     .x-large-text {
         font-size:3.7rem;
