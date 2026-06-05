@@ -657,6 +657,12 @@ header .nav-logo, .mobile-menu .nav-logo {
     font-weight: var(--fw-semibold);
     background-color: var(--color-gold);
     line-break: none;
+    border:2px solid var(--color-gold);
+    &.alt {
+        background-color: transparent;
+        color: var(--color-gold);
+
+    }
 
 }
 section:not(.no-pad) {
