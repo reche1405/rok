@@ -68,27 +68,48 @@
         
         <div class="grid content pb-6 pt-4 g-6 mb-6 col-3 md-col-2">
             {% for project in service.projects%}
-            <div class="card white pb-3 shadow-4">
+            <div class="card white shadow-4">
                 <div class="card__image">
-                {% if project.featured_media %}
-                <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
-                {% else %}
-                    <img  src="/static/img/slider/project-placeholder.jpg" alt="{{ project.title }}" title="{{ project.title }}"/>
-                {% endif %}
+                    {% if project.featured_media %}
+                        <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
+                    {% else %}
+                        <img  src="/static/img/slider/project-placeholder.jpg" alt="{{ project.title }}" title="{{ project.title }}"/>
+                    {% endif %}
+                    <div class="card__image-overlay gold-text">
+                        <div class="flex g-2 align-center">
+                            {% for service in project.services %}
+                                {{ service.svg|safe }}
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
                 </div>
-                
-                <div class="card__body pb-3 px-3">
-                    <div class="flex space-between align-center">
-                    <h3 class="small-text spaced-text gold-text semi-bold caps pt-3">{{project.type}}</h3>
-                </div>
-                <a href="/projects/{{ project.slug }}" ><h3 class="py-1 normal-weight">
-                    {{ project.title }}
-                </h3></a>
-                <p class="pt-1" style="margin-top:auto;">
-                    {{ project.desc|truncate(150) }}
-                </p>
-                </div>
-                
+                <a href="/projects/{{ project.slug }}" class="card__link">
+                    <div class="card__body py-1 px-4">
+                       
+                            <div class="flex space-between align-start pt-4">
+                                <h2 class="normal-weight display  " style="line-height:1;">{{ project.title }}</h2>
+                                {% if project.featured %}
+                                    <div>
+                                        <span class="card__tag white-text">FEATURED</span>
+                                    </div>
+                                {% else %}
+                           
+                                    <div>
+                                        <span class="card__tag alt caps">{{ project.type or 'Residential' }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                      
+                        
+                        <p class="pb-2 pt-1" style="">{{ project.short_desc|truncate(135) }}</p>
+                            <div class="pb-2">
+                            <span class="caps spaced-text small-text gold-text" >Learn More</span>
+                            </div>
+                            
+                        
+                    </div>
+                </a>
             </div>
             {% endfor %}
         
