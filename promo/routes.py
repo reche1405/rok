@@ -292,9 +292,9 @@ def contact():
             client_name = form.name.data
             client_tel = form.number.data
             message_body = form.message.data
-            print("MAIL PORT: " + current_app.config['MAIL_PORT'])
-            print("MAIL USE SSL: " + current_app.config['MAIL_USE_SSL'])
-            print("MAIL USE TLS: " + current_app.config['MAIL_USE_TLS'])
+            print(f"MAIL PORT:  {current_app.config['MAIL_PORT']}")
+            print(f"MAIL USE SSL:  {current_app.config['MAIL_USE_SSL']}")
+            print(f"MAIL USE TLS:   {current_app.config['MAIL_USE_TLS']}")
             #TEMP: Print the form data
             print(f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}")
             msg = EmailMessage(
