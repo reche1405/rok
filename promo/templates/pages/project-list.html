@@ -43,19 +43,19 @@
                 <a href="/projects/{{ project.slug }}" class="card__link">
                     <div class="card__body py-1 px-4">
                         <div class="flex align-center g-4 space-between">
+                            <div class="flex justify-between pt-2">
+                                <h2 class="normal-weight display pt-3 " style="line-height:1.2;">{{ project.title }}</h2>
                             {% if project.featured %}
-                            <div class="flex center-y pt-2">
                                 
                                 <span class="card__tag white-text">FEATURED</span>
-                            </div>
+                            
                             {% else %}
-                            <div class="flex center-y pt-2">
+                           
                                 
                                 <span class="card__tag alt caps">{{ project.type or 'Residential' }}</span>
+                                {% endif %}
                             </div>
-                            {% endif %}
                         </div>
-                        <h2 class="normal-weight display pt-3 " style="line-height:1.2;">{{ project.title }}</h2>
                         
                         <p class="pb-2 pt-1" style="">{{ project.short_desc|truncate(135) }}</p>
                             <div class="pb-2">
