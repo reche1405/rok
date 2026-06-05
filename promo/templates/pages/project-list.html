@@ -45,15 +45,15 @@
                        
                             <div class="flex space-between pt-2">
                                 <h2 class="normal-weight display pt-3 " style="line-height:1.2;">{{ project.title }}</h2>
-                            {% if project.featured %}
-                                <div>
-                                <span class="card__tag white-text">FEATURED</span>
-                                </div>
-                            {% else %}
+                                {% if project.featured %}
+                                    <div>
+                                        <span class="card__tag white-text">FEATURED</span>
+                                    </div>
+                                {% else %}
                            
-                                <div>
-                                <span class="card__tag alt caps">{{ project.type or 'Residential' }}</span>
-                                </div>
+                                    <div>
+                                        <span class="card__tag alt caps">{{ project.type or 'Residential' }}</span>
+                                    </div>
                                 {% endif %}
                             </div>
                       
