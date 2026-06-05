@@ -652,7 +652,7 @@ header .nav-logo, .mobile-menu .nav-logo {
 }
 .card__tag {
     display:block; 
-    padding:.1rem .35rem;
+    padding:.08rem .35rem;
     font-size: .6rem;
     font-weight: var(--fw-semibold);
     background-color: var(--color-gold);
