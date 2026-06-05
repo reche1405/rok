@@ -97,35 +97,35 @@
             </div>
             <div>
                 <div class="grid col-2 my-4 g-4">
-                     {% for service in services %}
+                    {% for service in services %}
                 
-                <div class=" round-1">
-                        <div class="card no-border shadow-3">
-                            <div class="card__image">
-                                {% if service.featured_media %}
-                                <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
-                                {% else %}
-                                <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
-                                {% endif %}
-                                <div class="card__image-overlay">
-                                    <div class="full-width flex gold-text  g-3 pt-2">
-                                        {{ service.svg|safe }}
+                    <div class=" round-1">
+                            <div class="card no-border shadow-3">
+                                <div class="card__image">
+                                    {% if service.featured_media %}
+                                    <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                                    {% else %}
+                                    <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                                    {% endif %}
+                                    <div class="card__image-overlay">
+                                        <div class="full-width flex gold-text  g-3 pt-2">
+                                            {{ service.svg|safe }}
+                                        </div>
+
                                     </div>
 
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="pl-2 pr-3">
+                            <div class="pl-2 pr-3">
 
-                            <h2 class="mt-4 normal-weight mb-1 wrap-pretty display pt-2" style="font-size:1.55rem; letter-spacing: 0.05rem; line-height:1;">{{ service.title }}</h2>
-                            <p class="pr-6">{{ service.short_desc }}</p>
+                                <h2 class="mt-4 normal-weight mb-1 wrap-pretty display pt-2" style="font-size:1.55rem; letter-spacing: 0.05rem; line-height:1;">{{ service.title }}</h2>
+                                <p class="pr-6">{{ service.short_desc }}</p>
+                                
+                                    <a href="/services/{{service.slug}}" class="semi-bold caps gold-text mb-2">MORE INFO</a>
                             
-                                <a href="/services/{{service.slug}}" class="semi-bold caps gold-text mb-2">MORE INFO</a>
+                            </div>
                         
-                        </div>
-                    
-                </div>
+                    </div>
                     {% endfor %}
                 
                    
