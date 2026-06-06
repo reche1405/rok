@@ -542,6 +542,24 @@ header .nav-logo, .mobile-menu .nav-logo {
     line-height: 1.4 !important;
     font-size:1.2rem;
     letter-spacing: 0.025rem;
+    position:relative;
+    padding-inline:2rem;
+    &::before {
+        content: '"';
+        position:absolute;
+        top:.5rem; 
+        left:.5rem; 
+        font-size:2rem; 
+        font-family:var(--ff-display);
+    }
+    &::after {
+        content: '"';
+        position:absolute;
+        bottom:.5rem; 
+        right:.5rem; 
+        font-size:2rem; 
+        font-family:var(--ff-display);
+    }
 
 }
 
