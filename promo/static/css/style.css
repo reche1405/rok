@@ -546,21 +546,21 @@ header .nav-logo, .mobile-menu .nav-logo {
     padding-inline:1rem;
     padding-block:.5rem;
     &::before {
-        content: '"';
+        content: '‟';
         position:absolute;
         top:0rem; 
         left:-0.5rem; 
-        font-size:8rem; 
+        font-size:6rem; 
         font-family:var(--ff-display);
         opacity:.2;
         line-height: 1;
     }
     &::after {
-        content: '"';
+        content: '„';
         position:absolute;
         bottom:-1rem; 
         right:.25rem; 
-        font-size:8rem; 
+        font-size:6rem; 
         font-family:var(--ff-display);
         opacity:.2;
         line-height: 1;
