@@ -543,7 +543,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     font-size:1.2rem;
     letter-spacing: 0.025rem;
     position:relative;
-    padding-inline:1.5rem;
+    padding-inline:2rem;
     padding-block:.5rem;
     &::before {
         content: '‟';
@@ -1208,7 +1208,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .hero__body h1 {
 
     }
-    .hero__body p {
+    .hero__body p:not(.review) {
         padding-right:1.5rem;
     }
     .welcome {
