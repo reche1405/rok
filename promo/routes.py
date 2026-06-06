@@ -336,7 +336,7 @@ def policy(slug):
     return render_template('pages/policy.html', **context)
 
 
-main_bp.route("/sitemap.txt")
+@main_bp.route("/sitemap.txt")
 def sitemap():
     base_url = "https://therokgroup.co.uk"
     urls = [
