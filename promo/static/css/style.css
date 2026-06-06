@@ -650,6 +650,9 @@ header .nav-logo, .mobile-menu .nav-logo {
         height:100%;
         z-index:1;
     }
+    &.dark {
+        background-color: var(--color-ink-soft);
+    }
 }
 .card__image-overlay {
     position:absolute;
