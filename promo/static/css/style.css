@@ -557,8 +557,8 @@ header .nav-logo, .mobile-menu .nav-logo {
     &::after {
         content: '"';
         position:absolute;
-        bottom:0rem; 
-        right:.5rem; 
+        bottom:-0.5rem; 
+        right:.25rem; 
         font-size:3rem; 
         font-family:var(--ff-display);
         opacity:.5;
