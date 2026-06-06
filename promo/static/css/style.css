@@ -537,7 +537,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     align-self:flex-end;
     
 }
-.review-card {
+.review-card p {
     font-family: 'OohBaby';
     line-height: 1.2 !important;
 }
