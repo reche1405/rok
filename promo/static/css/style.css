@@ -543,23 +543,25 @@ header .nav-logo, .mobile-menu .nav-logo {
     font-size:1.2rem;
     letter-spacing: 0.025rem;
     position:relative;
-    padding-inline:2rem;
+    padding-inline:1rem;
     padding-block:2rem;
     &::before {
         content: '"';
         position:absolute;
         top:.5rem; 
         left:.5rem; 
-        font-size:2rem; 
+        font-size:3rem; 
         font-family:var(--ff-display);
+        opacity:.5;
     }
     &::after {
         content: '"';
         position:absolute;
-        bottom:.5rem; 
+        bottom:0rem; 
         right:.5rem; 
-        font-size:2rem; 
+        font-size:3rem; 
         font-family:var(--ff-display);
+        opacity:.5;
     }
 
 }
