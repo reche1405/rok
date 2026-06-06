@@ -1113,20 +1113,22 @@ section:has(div.slider.light) ~ .breadcrumbs {
 }
 
 
-
-
-
-.animate-on-scroll {
-    opacity:0; 
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-    will-change: opacity, transform; 
-    &.in-frame {
-        opacity: 1;
-        transform: translateY(0);
+@media (prefers-reduced-motion: no-preference) {
+    
+    .animate-on-scroll {
+        opacity:0; 
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        will-change: opacity, transform; 
+        &.in-frame {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
+
+
 
 @media(min-width:1035px) {
     .lg-hide {
@@ -1225,9 +1227,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .grid.col-4 {
         grid-template-columns: 1fr 1fr;
     }
-    .hero__body h1 {
 
-    }
     .hero__body p:not(.review) {
         padding-right:1.5rem;
     }
