@@ -544,6 +544,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     letter-spacing: 0.025rem;
     position:relative;
     padding-inline:2rem;
+    padding-block:2rem;
     &::before {
         content: '"';
         position:absolute;
