@@ -550,18 +550,20 @@ header .nav-logo, .mobile-menu .nav-logo {
         position:absolute;
         top:0rem; 
         left:-0.5rem; 
-        font-size:3rem; 
+        font-size:4rem; 
         font-family:var(--ff-display);
-        opacity:.5;
+        opacity:.3;
+        line-height: 1;
     }
     &::after {
         content: '"';
         position:absolute;
         bottom:-1rem; 
         right:.25rem; 
-        font-size:3rem; 
+        font-size:4rem; 
         font-family:var(--ff-display);
-        opacity:.5;
+        opacity:.3;
+        line-height: 1;
     }
 
 }
