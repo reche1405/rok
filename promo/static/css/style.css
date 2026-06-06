@@ -1111,6 +1111,23 @@ section:has(div.slider.light) ~ .breadcrumbs {
 .md-show {
     display:none;
 }
+
+
+
+
+
+.animate-on-scroll {
+    opacity:0; 
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; 
+    &.in-frame {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media(min-width:1035px) {
     .lg-hide {
         display:none !important;

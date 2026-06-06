@@ -162,7 +162,7 @@
         </div>
         <div class="grid content py-4 sm-py-2 g-6 sm-g-3 mb-6 col-3 md-col-2">
             {% for project in projects%}
-            <div class="card white pb-3 shadow-4">
+            <div class="card white pb-3 shadow-4 animate-on-scroll">
                 <div class="card__image">
                     {% if project.featured_media %}
                     <img alt="{{ project.title }}" title="{{ project.title }}" src="{{ project.featured_media.get_absolute_url() }}"/>
