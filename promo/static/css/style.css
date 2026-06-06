@@ -548,8 +548,8 @@ header .nav-logo, .mobile-menu .nav-logo {
     &::before {
         content: '"';
         position:absolute;
-        top:.5rem; 
-        left:0rem; 
+        top:0rem; 
+        left:-0.5rem; 
         font-size:3rem; 
         font-family:var(--ff-display);
         opacity:.5;
@@ -557,7 +557,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     &::after {
         content: '"';
         position:absolute;
-        bottom:-0.5rem; 
+        bottom:-1rem; 
         right:.25rem; 
         font-size:3rem; 
         font-family:var(--ff-display);
