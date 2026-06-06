@@ -539,8 +539,10 @@ header .nav-logo, .mobile-menu .nav-logo {
 }
 .review-card p {
     font-family: 'Story';
-    line-height: 1.2 !important;
-    font-size:1.4rem;
+    line-height: 1.4 !important;
+    font-size:1.2rem;
+    letter-spacing: 0.025rem;
+
 }
 
 .card {
