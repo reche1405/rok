@@ -23,8 +23,8 @@
 }
 
 @font-face {
-    font-family: 'OohBaby';
-    src: url('../fonts/OohBaby/OoohBaby-Regular.woff2');
+    font-family: 'Story';
+    src: url('../fonts/Story/StoryScript-Regular.woff2');
     font-style:normal;
     font-weight:400;
 }
@@ -538,7 +538,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     
 }
 .review-card p {
-    font-family: 'OohBaby';
+    font-family: 'Story';
     line-height: 1.2 !important;
     font-size:1.4rem;
 }
