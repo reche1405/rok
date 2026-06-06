@@ -1,5 +1,5 @@
 import datetime, math
-from flask import Blueprint, render_template, flash, request, abort, session, redirect, url_for, send_from_directory, current_app
+from flask import Blueprint, Response, render_template, flash, request, abort, session, redirect, url_for, send_from_directory, current_app
 from flask_login import current_user, login_user
 from flask_mailman import EmailMessage
 from promo.admin.forms import LoginForm
@@ -335,8 +335,44 @@ def policy(slug):
     }
     return render_template('pages/policy.html', **context)
 
-@main_bp.post("/submit-query")
-def contact_form():
-    form = ContactForm(request.form, meta={'csrf_context': session})
+
+main_bp.route("/sitemap.txt")
+def sitemap():
+    base_url = "https://therokgroup.co.uk"
+    urls = [
+        base_url,
+        create_url(base_url, 'services'),
+        create_url(base_url, 'projects'),
+        create_url(base_url, 'areas'),
+        create_url(base_url, 'blog'),
+        
+    ]
+    locations  = Location.get_all()
+    policies = Policy.get_all()
+    services = Service.get_all()
+    projects = Project.get_all()
+    articles = Article.get_all()
+    for location in locations:
+        urls.append(create_url(base_url, f"locations/{location.slug}"))
+
+    for policy in policies:
+        urls.append(create_url(base_url, f"policy/{policy.slug}"))
+
+    for service in services:
+        urls.append(create_url(base_url, f"services/{service.slug}"))
+
+    for project in projects:
+        urls.append(create_url(base_url, f'projects/{project.slug}'))
+
+    for article in articles:
+        urls.append(create_url(base_url, f'blog/{article.slug}'))
+
+    sitemap_content = "\n".join(urls)
+    return Response(sitemap_content, mimetype="text/plain")
+
+def create_url(base, relative):
+    return f"{base}/{relative}"
+
+
    
    

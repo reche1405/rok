@@ -18,3 +18,6 @@ class Location(db.Model):
     def get_by_slug(cls, slug):
         """Returns a project by its slug."""
         return cls.query.filter_by(slug=slug).first()
+    @classmethod
+    def get_all(cls):
+        return cls.query.all()
