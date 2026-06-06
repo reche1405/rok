@@ -75,6 +75,7 @@ def create_app():
         from promo.models.social import Social
         from promo.models.user import User
         from promo.models.policy import Policy
+        from promo.models.review import Review
 
         db.create_all()
         admin.add_view(ListAdminView(List, db.session, category="Static"))
@@ -91,6 +92,7 @@ def create_app():
         admin.add_view(CachedAdminView(Social, db.session, category="Static"))
         admin.add_view(BaseSecureView(User, db.session, category="Auth"))
         admin.add_view(CachedAdminView(Policy, db.session, category="Static"))
+        admin.add_view(BaseSecureView(Review, db.session, category="Projects"))
 
 
     app.register_blueprint(main_bp)
