@@ -342,6 +342,7 @@ def sitemap():
     urls = [
         base_url,
         create_url(base_url, 'services'),
+        create_url(base_url, 'contact'),
         create_url(base_url, 'projects'),
         create_url(base_url, 'areas'),
         create_url(base_url, 'blog'),
@@ -360,6 +361,8 @@ def sitemap():
 
     for service in services:
         urls.append(create_url(base_url, f"services/{service.slug}"))
+        for location in locations:
+            urls.append(create_url(base_url, f"services/{service.slug}/{location.slug}"))
 
     for project in projects:
         urls.append(create_url(base_url, f'projects/{project.slug}'))
@@ -373,6 +376,13 @@ def sitemap():
 def create_url(base, relative):
     return f"{base}/{relative}"
 
-
+@main_bp.route("/robots.txt")
+def robots():
+    content_str = """User-aagent: *
+Disallow: /admin/
+Disallow: /login/
+Sitemap: https://therokgroup.co.uk/sitemap.txt
+"""
+    return Response(content_str, mimetype="text/plain")
    
    
