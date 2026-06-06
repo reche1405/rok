@@ -540,6 +540,7 @@ header .nav-logo, .mobile-menu .nav-logo {
 .review-card p {
     font-family: 'OohBaby';
     line-height: 1.2 !important;
+    font-size:1.4rem;
 }
 
 .card {
