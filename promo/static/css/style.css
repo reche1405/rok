@@ -1120,7 +1120,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     opacity:0; 
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     will-change: opacity, transform; 
     &.in-frame {
         opacity: 1;

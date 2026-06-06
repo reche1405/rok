@@ -2,7 +2,7 @@
 const observerOptions = {
   root: null,         // Use the browser viewport as the container
   rootMargin: '0px',  // No shrinking/growing of the viewport bounds
-  threshold: 0.1      // Trigger when 10% of the card is visible
+  threshold: 0.2      // Trigger when 10% of the card is visible
 };
 
 // 2. Define the callback function
