@@ -230,6 +230,7 @@ def location_detail(slug):
     context = {
         'location' : location,
         'services' : Service.get_all(),
+        'categories' : Category.get_all()
     }
     return render_template("pages/location-detail.html", **context)
 

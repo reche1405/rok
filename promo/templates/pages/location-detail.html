@@ -30,31 +30,43 @@
     {% block main %}
 
     <section class="light pt-4">
-        <div class="grid content py-6 g-6 col-3 align-center">
-            {% for service in services %}
-                <div class="card white shadow-3">
-                <div class="card__image">
-                    {% if service.featured_media %}
-                    <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
-                    {% else %}
-                    <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
-                    {% endif %}
-                    <div class="card__image-overlay">
-                        <div class="flex align-center g-3">
-                            {{ service.svg|safe }}
-                            <a href="/services/{{service.slug}}/{{location.slug}}" class="">
-                                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ service.title }} in {{ location.title }}</h2>
-                            </a>
-                        </div>
-                        <!-- <p class="py-2 wrap-pretty">{{ service.short_desc }}</p> -->
-                        
-                        <div>
+        {% for category in categories %}
+            <div class="contnt">
+            <h2 class="inline-auto text-center mt-6 large-text display">{{category.title}}</h2>
+            </div>
+            <div class="grid content col-3 md-col-2 py-4 mt-3 g-4 sm-g-2">
+                {% for service in category.services %}
+                
+                <div class=" round-1">
+                    <div class="card no-border shadow-3">
+                        <div class="card__image">
+                            {% if service.featured_media %}
+                            <img alt="{{ service.title }}" title="{{ service.title }}" src="{{ service.featured_media.get_absolute_url() }}"/>
+                            {% else %}
+                            <img  src="/static/img/slider/service-placeholder.jpg" alt="{{ service.title }}" title="{{ service.title }}"/>
+                            {% endif %}
+                            <div class="card__image-overlay">
+                                <div class="full-width flex gold-text  g-3 pt-2">
+                                    {{ service.svg|safe }}
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
+                        <div class="pl-2 pr-3">
+
+                            <h2 class="mt-4 normal-weight mb-1 wrap-pretty display pt-2" style="font-size:1.55rem; letter-spacing: 0.05rem; line-height:1;">{{ service.title }} in {{ location.title }}</h2>
+                            <p class="pr-6">{{ service.short_desc }}</p>
+                            
+                                <a href="/services/{{service.slug}}/{{location.slug}}" class="semi-bold caps gold-text mb-2">MORE INFO</a>
+                        
+                        </div>
+                    
                 </div>
+                    {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+        {% endfor %}
     </section>
 
     <section class="dark">
