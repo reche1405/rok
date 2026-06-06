@@ -545,7 +545,6 @@ header .nav-logo, .mobile-menu .nav-logo {
     position:relative;
     padding-inline:2rem;
     padding-block:.5rem;
-    text-align:center;
     &::before {
         content: '‟';
         position:absolute;
