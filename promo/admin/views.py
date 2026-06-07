@@ -128,8 +128,8 @@ def process_zip_upload( zip_file_storage):
     saves them, and returns a list of created Media objects.
     """
     MAX_WIDTH = 1920
-    MAX_HEIGHT = 1080
-    IMAGE_QUALITY = 82 # 80-85 is the sweet spot for web optimization
+    MAX_HEIGHT = 1920
+    IMAGE_QUALITY = 95 # 80-85 is the sweet spot for web optimization
     media_objects = []
     
     # Read the zip file into memory

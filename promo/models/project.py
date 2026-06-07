@@ -74,6 +74,16 @@ class Project(db.Model):
     def count(cls):
         return cls.query.count()
     
+    def to_carousel_json(self):
+        """Convert project media to carousel JSON format"""
+        if not self.media: return
+        return {
+            'items': [media.to_carousel_dict() for media in self.media],
+            'project_id': self.id,
+            'project_title': self.title,
+            'autoplay_interval': 4000  # or get from project settings
+        }
+    
 
 unit_media = db.Table('unit_media',
     db.Column('unit_id', db.Integer, db.ForeignKey('units.id'), primary_key=True),
@@ -102,6 +112,16 @@ class Unit(db.Model):
         backref=db.backref('units', lazy='dynamic'),
         lazy='subquery'
     )
+
+    def to_carousel_json(self):
+        """Convert project media to carousel JSON format"""
+        if not self.media: return
+        return {
+            'items': [media.to_carousel_dict() for media in self.media],
+            'project_id': self.id,
+            'project_title': self.title,
+            'autoplay_interval': 4000  # or get from project settings
+        }
 
     @classmethod
     def get_by_slug(cls, slug):

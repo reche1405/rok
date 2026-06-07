@@ -64,53 +64,44 @@
         </div>
     </section>
 
-    <section class="soft py-4">
+    <section class="soft py-4 no-pad">
         <div class=" content py-6  align-center text-center">
-            <div>
+            <div class="pb-5">
                 <h3 class="small-text spaced-text gold-text semi-bold caps">Gallery</h3>
                     <h2 class="display large-text inline-auto">The finished space in detail</h2>
-                <p class="inline-auto">{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
+                <p class="inline-auto pt-3">{{ project.gallery_intro or "A closer look at how the project was delivered, from material choices to the finished arrangement." }}</p>
             </div>
-        </div>
-        <div class=" mx-2 card soft shadow-4  mb-3  g-3 slideshow gallery content" data-slide-duration="4000" data-transition-duration="1500">
-            {% if project.media %}
-            <div class="slides-container">
-                {% for image in project.media %}
-                <div class="slide fade"  data-slide-number="{{loop.index0}}" >
-                    <img loading="lazy" class="slide__image"
-                        src="{{ image.get_absolute_url() }}"
-                        alt="{{ image.alt or project.title }}" 
-                        title="{{ image.title or project.title }}"
-                    />
-                </div>
-                {% endfor %}
-                <div class="slideshow__overlay">
-                    <div class="slide-progress__wrapper">
-                        <div class="slide-progress__container">
-                        </div>
-                    </div> 
-                </div> 
-            </div>
-        {% else %}
-                
-                    <div class="no-results">
-                        <p>No Images</p>
+            <div class="gallery-frame">
+                <div class="carousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Slides will be dynamically inserted here -->
+                    </div>
+                    <button class="nav-arrow prev" id="prevBtn">◀</button>
+                    <button class="nav-arrow next" id="nextBtn">▶</button>
+                    <div class="carousel-overlay">
+                        <button class="carousel-play-pause" id="playPauseBtn">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-            {% endif %}
-        </div>
+                <div>
 
-        <div class="image-selectors content">
-            <div class="selector__scroll-wrapper flex g-2">
-            {% for image in project.media %}
-                <div class="p-0">
-                    <button data-slide-number="{{loop.index0}}" class="gallery__thumbnail p-0 border-0">
-                        <img loading="lazy" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or project.title }}" title="{{ image.title or project.title }}"/>
-                    </button>
+                    <div class="gallery-selector__viewbox">
+                        <div class="gallery-selector__scrollbox" id="thumbnailContainer">
+                            <!-- Thumbnails will be dynamically inserted here -->
+                        </div>
+                    </div>
+
                 </div>
-            {% endfor %}
             </div>
         </div>
+    </div>
+
             
     </section>
 {% if project.units %}
@@ -151,3 +142,20 @@
 {% endif %}
 
    {% endblock main %}
+
+   {% block extra_scripts %}
+   <script>
+    const carouselData = {{ carousel|tojson|safe }};
+    console.log(carouselData);
+    document.addEventListener('DOMContentLoaded', () => {
+            const carousel = new InfiniteCarousel({
+                autoPlayInterval: carouselData.auto_play_interval,
+                items: carouselData.items,
+            });
+            
+            // Make carousel available globally for debugging (optional)
+            window.carousel = carousel;
+        });
+
+   </script>
+   {% endblock extra_scripts %}

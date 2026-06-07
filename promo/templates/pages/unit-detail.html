@@ -35,7 +35,7 @@
 
 
 
-    <section class="soft py-4">
+    <section class="soft py-4 no-pad">
         <div class="grid content py-6 g-6 col-2 align-center">
             <div>
                 <div class="sticky-top">
@@ -48,42 +48,37 @@
                 <p>{{ unit.gallery_intro or "A closer look at the unit, and how it was delivered." }}</p>
             </div>
         </div>
-        <div class=" mx-2 card soft shadow-4  mb-6  g-3 slideshow gallery content" data-slide-duration="4000" data-transition-duration="1500">
-            {% if unit.media %}
-            <div class="slides-container">
-                {% for image in unit.media %}
-                    <div class="slide"  data-slide-number="{{loop.index0}}" >
-                        <img loading="lazy" class="slide__image" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or unit.title }}" title="{{ image.title or unit.title }}"/>
 
-
+        
+        
+        <div class="content">
+            <div class="gallery-frame">
+                <div class="carousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Slides will be dynamically inserted here -->
                     </div>
-                {% endfor %}
-                <div class="slideshow__overlay">
-                    <div class="slide-progress__wrapper">
-                        <div class="slide-progress__container">
+                    <button class="nav-arrow prev" id="prevBtn">◀</button>
+                    <button class="nav-arrow next" id="nextBtn">▶</button>
+                    <div class="carousel-overlay">
+                        <button class="carousel-play-pause" id="playPauseBtn">
+                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div>
 
+                    <div class="gallery-selector__viewbox">
+                        <div class="gallery-selector__scrollbox" id="thumbnailContainer">
+                            <!-- Thumbnails will be dynamically inserted here -->
                         </div>
-                    </div> 
-                </div> 
-            </div>
-            {% else %}
-                
-                <div class="no-results">
-                    <p>No Images</p>
-                
-                </div>
-            {% endif %}
-        </div>
+                    </div>
 
-        <div class="image-selectors content">
-            <div class="selector__scroll-wrapper flex g-2">
-            {% for image in unit.media %}
-                <div class="p-0">
-                    <button data-slide-number="{{loop.index0}}" class="gallery__thumbnail p-0 border-0">
-                        <img loading="lazy" src="{{ image.get_absolute_url() }}" alt="{{ image.alt or unit.title }}" title="{{ image.title or unit.title }}"/>
-                    </button>
                 </div>
-            {% endfor %}
             </div>
         </div>
     </section>
@@ -123,3 +118,21 @@
 
 
    {% endblock main %}
+
+
+   {% block extra_scripts %}
+   <script>
+    const carouselData = {{ carousel|tojson|safe }};
+    console.log(carouselData);
+    document.addEventListener('DOMContentLoaded', () => {
+            const carousel = new InfiniteCarousel({
+                autoPlayInterval: carouselData.auto_play_interval,
+                items: carouselData.items,
+            });
+            
+            // Make carousel available globally for debugging (optional)
+            window.carousel = carousel;
+        });
+
+   </script>
+   {% endblock extra_scripts %}

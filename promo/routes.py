@@ -190,12 +190,13 @@ def project_list():
 @main_bp.route("/projects/<path:slug>")
 def project_detail(slug):
     project = Project.get_by_slug(slug)
-
+    carousel = project.to_carousel_json()
     if not project:
         return abort(404)
     context = {
 
-    'project' : project
+    'project' : project,
+    'carousel': carousel
     }
     return render_template("pages/project-detail.html", **context)
 
@@ -203,12 +204,15 @@ def project_detail(slug):
 def unit_detail(p_slug, u_slug):
     project = Project.get_by_slug(p_slug)
     unit = Unit.get_by_slug(u_slug)
+    carousel = unit.to_carousel_json()
+
     if project is None or unit is None:
         return abort(404)
     if unit not in project.units:
         return redirect(url_for('project_list'))
     context = {
-        'unit' : unit
+        'unit' : unit,
+        'carousel' : carousel
     }
     return render_template("pages/unit-detail.html", **context)
 
