@@ -26,7 +26,7 @@
             overflow: hidden;
             border-radius: 0.75rem;
             background: #000;
-            aspect-ratio: 9 / 16;
+            aspect-ratio: 12 / 16;
             max-height:calc(100svh - 10rem);
             min-height:700px;
             justify-self: end;
