@@ -905,7 +905,7 @@ ol.process {
             background-color:var(--color-gold);
             width:30px; height:30px; border-radius: 15px;;
             font-weight:var(--fw-semibold);
-            border:5px solid var(--color-gold-deep);
+            border:3px solid var(--color-gold-deep);
 
         }
         &:not(:last-of-type)::before {
