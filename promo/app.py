@@ -66,7 +66,7 @@ def create_app():
     with app.app_context():
         from promo.models.list import List, ListItem
         from promo.models.service import Service, Category
-        from promo.models.project import Project, Unit
+        from promo.models.project import Project, Unit, Orientation, Gallery, Slide
         from promo.models.media import Media
         from promo.models.area import Area
         from promo.models.location import Location
@@ -76,6 +76,7 @@ def create_app():
         from promo.models.user import User
         from promo.models.policy import Policy
         from promo.models.review import Review
+        
 
         db.create_all()
         admin.add_view(ListAdminView(List, db.session, category="Static"))
@@ -93,6 +94,8 @@ def create_app():
         admin.add_view(BaseSecureView(User, db.session, category="Auth"))
         admin.add_view(CachedAdminView(Policy, db.session, category="Static"))
         admin.add_view(BaseSecureView(Review, db.session, category="Projects"))
+        admin.add_view(BaseSecureView(Gallery, db.session, category="Projects"))
+        admin.add_view(BaseSecureView(Slide, db.session, category="Projects"))
 
 
     app.register_blueprint(main_bp)

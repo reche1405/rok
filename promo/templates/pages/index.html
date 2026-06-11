@@ -31,12 +31,12 @@
         </div>
         <div class="hero__body content grid center-y g-3 full-height col-2 pt-4">
             <div class="sm-center-y full-width">
-                <h1 class="display white-text x-large-text welcome">{{page.title}}</h1>
+                <h1 class="display white-text x-large-text sm-text-center sm-inline-auto welcome">{{page.title}}</h1>
                 <p class="white-text my-6">
                      {{page.subtitle}}
                 </p>
                 <div class="grid col-2 g-3 center-y text-center hero-actions">
-                    <a href="/contact" class="cta primary" title="Request a consultation">REQUEST CONSULTATION</a>
+                    <a href="/contact" class="cta primary" title="Request a consultation">GET CONSULTATION</a>
                     <a href="/projects" class="cta secondary" title="View our featured projects">FEATURED WORK</a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="sm-hide">
                 <div class="hero-children card-stack">
                     {% for item in hero_list.items  %}
-                       <div class="card clear p-3 ">
+                       <div class="card clear px-3 pt-3 pb-4 ">
                             <h3 class="gold-text caps small-text spaced-text">{{ item.text }}</h3>
                             <p class="white-text"> {{item.subtext}}</p>
                         </div>
@@ -63,7 +63,7 @@
                 
                     {% endif %}
                     <div>
-                    <h3 class="gold-text caps small-text spacedish-text"> {{ item.text }} </h3>
+                    <span class="gold-text caps small-text spacedish-text"> {{ item.text }} </span>
                     <p class="white-text"> {{item.subtext}} </p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
       
     
     <section class="soft pb-6">
-        <div class="grid content pt-4 g-6 col-2--right md-collapse">
+        <div class="grid content pt-6 g-6 col-2--right md-collapse">
             <div  class="text-section">
                 <div class="sticky-top">
                     <h3 class="small-text spaced-text gold-text semi-bold caps">what we do</h3>
@@ -229,7 +229,7 @@
                             <p class="">We discuss your plans, priorities, timescales and the kind of project you visualise.</p>
                         </li>
                         <li class="process__item">
-                            <h3 class="mb-1 mt-3 caps spacedish-text small-text">Scope and programme</h3>
+                            <span class="mb-1 mt-3 caps spacedish-text small-text">Scope and programme</span>
                             <p class="">We define the project clearly, outline likely sequencing and create a realistic route to delivery.</p>
                         </li>
                         <li class="process__item">

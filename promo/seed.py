@@ -23,18 +23,14 @@ def seed_database():
         {
             "title" : "Decorative",
 
-        },
-        {
-            "title" : "Management",
-            
         }
     ]
     
     services_data = [
         {
-            "title": "Groundworks, Excavation & Concrete Structures",
+            "title": "Groundworks & Excavation",
             "category_id" : 1,
-            "slug": "groundworks-excavation-and-concrete-structures",
+            "slug": "groundworks-and-excavation",
             "short_desc": "We engineer stable structural baselines, executing deep excavations and pouring reinforced foundations to eliminate future settlement risks.",
             "desc": (
                 "Set the fundamental parameters of your structure with our high-intensity groundworks and concrete division. "
@@ -51,9 +47,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Structural Bricklaying & Architectural Stonemasonry",
+            "title": "Bricklaying",
             "category_id" : 1,
-            "slug": "structural-bricklaying-and-architectural-stonemasonry",
+            "slug": "bricklaying",
             "short_desc": "We build high-capacity load-bearing envelopes and hand-dress premium facades to secure the physical durability of your building asset.",
             "desc": (
                 "Establish solid building parameters with our specialist bricklaying and structural masonry solutions. "
@@ -70,9 +66,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Carpentry, Joinery & Structural Framing",
+            "title": "Carpentry",
             "category_id" : 1,
-            "slug": "carpentry-joinery-and-structural-framing",
+            "slug": "carpentry",
             "short_desc": "We erect precision structural timber frameworks, configure complex heavy formwork, and install bespoke millwork to optimize internal space layouts.",
             "desc": (
                 "From structural skeletal frames to high-end architectural finishes, our carpentry services cover all timber requirements. "
@@ -89,9 +85,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Roofing Systems & External Envelopes",
+            "title": "Roofing",
             "category_id" : 1,
-            "slug": "roofing-systems-and-external-envelopes",
+            "slug": "roofing",
             "short_desc": "We seal the entire building envelope against harsh elements, deploying multi-layer waterproofing barriers to eliminate water damage vectors.",
             "desc": (
                 "Protect your asset from the elements with our comprehensive roofing and external envelope services. "
@@ -108,9 +104,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Drywall, Partitioning & Advanced Insulation",
+            "title": "Drywall & Partitioning",
             "category_id" : 1,
-            "slug": "drywall-partitioning-and-advanced-insulation",
+            "slug": "drywall-and-partitioning",
             "short_desc": "We isolate internal thermal and acoustic pathways, assembling specialized fire-rated partitions to maximize room-to-room containment.",
             "desc": (
                 "Craft interior space plans with our high-speed drywall and ceiling installation workflows. "
@@ -127,9 +123,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Plastering, Rendering & Surface Skimming",
+            "title": "Plastering & Rendering",
             "category_id" : 1,
-            "slug": "plastering-rendering-and-surface-skimming",
+            "slug": "plastering-and-rendering",
             "short_desc": "We flatten and restore damaged structural substrates, applying crisp skim coats and external render to establish ideal paint-ready surfaces.",
             "desc": (
                 "Achieve flat, flawless, and highly durable surfaces with our professional plastering and rendering services. "
@@ -146,9 +142,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Certified Electrical & Mechanical Engineering",
+            "title": "Electrical & Mechanical Engineering",
             "category_id" : 1,
-            "slug": "certified-electrical-and-mechanical-engineering",
+            "slug": "electrical-and-mechanical-engineering",
             "short_desc": "We eliminate power and gas hazards, implementing fully certified rewires, modern consumer units, and energy-efficient heating networks.",
             "desc": (
                 "Our certified electrical and mechanical services provide complete safety, compliance, and modern functionality for your property infrastructure. "
@@ -165,9 +161,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Glazing, Curtain Walls & Storefront Facades",
+            "title": "Glazing & Storefront Facades",
             "category_id" : 2,
-            "slug": "glazing-curtain-walls-and-storefront-facades",
+            "slug": "glazing-and-storefront-facades",
             "short_desc": "We reinforce building frontages and optimize daylight capture, installing high-security double/triple glazing with strict weather seals.",
             "desc": (
                 "Maximize natural light capture and thermal performance with our advanced glazing solutions. "
@@ -184,9 +180,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Floor Coverings & Wall Tiling Installations",
+            "title": "Floor & Wall Tiling",
             "category_id" : 2,
-            "slug": "floor-coverings-and-wall-tiling-installations",
+            "slug": "floor-and-wall-tiling",
             "short_desc": "We level subfloors and seal wet zones, installing precision-aligned hardwood, porcelain, and safety vinyl to handle heavy daily wear.",
             "desc": (
                 "Get a professional surface transformation using our comprehensive covering and tiling services. "
@@ -203,9 +199,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Fine Painting, Decorating & Coatings",
+            "title": "Painting & Decorating",
             "category_id" : 2,
-            "slug": "painting-decorating-and-coatings",
+            "slug": "painting-and-decorating",
             "short_desc": "We resolve substrate defects via power sanding and priming, delivering premium architectural paint and wallpaper coatings.",
             "desc": (
                 "Bring your spaces to life with our comprehensive painting and decorating services. "
@@ -222,9 +218,9 @@ def seed_database():
             ]
         },
         {
-            "title": "Controlled Demolition & Site Clearance",
+            "title": "Demolition & Site Clearance",
             "category_id" : 1,
-            "slug": "controlled-demolition-and-site-clearance",
+            "slug": "demolition-and-site-clearance",
             "short_desc": "We isolate site hazards and fast-track development timelines, executing clean structural strip-outs and certified waste clearance.",
             "desc": (
                 "Prepare your site safely and efficiently with our expert demolition and strip-out services. "
@@ -240,90 +236,13 @@ def seed_database():
                 "Promotes green building via meticulous material salvaging."
             ]
         },
-        {
-            "title": "Heavy Plant Logistics & Material Handling",
-            "category_id" : 3,
-            "slug": "heavy-plant-logistics-and-material-handling",
-            "short_desc": "We accelerate mechanical site workflows, mobilizing licensed operators and machinery to safely maneuver massive structural loads.",
-            "desc": (
-                "Maintain an organized, high-efficiency build site with our general labor and machinery services. "
-                "We supply highly skilled, fully licensed operators to manage heavy structural cranes, rough-terrain forklifts, site bulldozers, and deep boring equipment. "
-                "By keeping paths clear and staging materials perfectly, we drastically minimize accidents and maximize tool uptime."
-            ),
-            "svg" : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>',
-            "benefits_list": [
-                "Flawlessly handles and positions massive structural components.",
-                "Multiplies structural earth-moving speeds compared to manual work.",
-                "Strict adherence to heavy machinery lifting safety protocols.",
-                "Maintains an orderly, clean site that cuts safety hazards.",
-                "Frees up expensive specialized trades to focus on their core crafts."
-            ]
-        },
-        {
-            "title": "Engineering Surveying & Digital Layout Mapping",
-            "category_id" : 3,
-            "slug": "engineering-surveying-and-digital-layout-mapping",
-            "short_desc": "We erase spatial margins of error, executing millimeter-accurate boundary tracking and laser-guided grid staking to guide your build.",
-            "desc": (
-                "Erase spatial margins of error with our engineering surveying and layout services. "
-                "Using advanced robotic total stations and GPS laser leveling, we map site boundaries, record topographical variances, and establish laser-precise grid staking lines. "
-                "This provides your structural, ground, and frame teams with zero-tolerance benchmarks to follow safely."
-            ),
-            "svg" : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-locate-fixed-icon lucide-locate-fixed"><line x1="2" x2="5" y1="12" y2="12"/><line x1="19" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="5"/><line x1="12" x2="12" y1="19" y2="22"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3"/></svg>',
-            "benefits_list": [
-                "Eliminates expensive building placement or boundary legal disputes.",
-                "Guarantees that physical assemblies perfectly match design CAD files.",
-                "Provides hyper-accurate calculations for required earthwork shifting.",
-                "Establishes precise vertical datums for flawless floor leveling.",
-                "Identifies hidden structural or terrain challenges prior to excavation."
-            ]
-        },
-        {
-            "title": "Commercial Estimating & Financial Risk Planning",
-            "category_id" : 3,
-            "slug": "commercial-estimating-and-financial-risk-planning",
-            "short_desc": "We establish bulletproof commercial blueprints, breaking down plans into rigid bills of quantities to insulate you from budget overruns.",
-            "desc": (
-                "Secure financial clarity for your project before the first shovel hits the dirt. "
-                "Our estimating and cost planning services break down architectural plans into precise bills of quantities, tracking market materials variations and structural labor rates. "
-                "We establish tight, data-backed cost foundations that guard your budget against unexpected overruns."
-            ),
-            "svg" : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-pound-sterling-icon lucide-badge-pound-sterling"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="M8 12h4"/><path d="M10 16V9.5a2.5 2.5 0 0 1 5 0"/><path d="M8 16h7"/></svg>',
-            "benefits_list": [
-                "Provides hyper-realistic, fixed pricing outlines for project bidding.",
-                "Identifies value-engineering avenues to reduce cost without dropping quality.",
-                "Prevents mid-build cash-flow shortfalls or sudden budget shocks.",
-                "Allows for precise material procurement timing to lock in rates.",
-                "Provides a clear financial yardstick to track trade outlays."
-            ]
-        },
-        {
-            "title": "Project Management & Site Supervision",
-            "category_id" : 3,
-            "slug": "turnkey-project-management-and-site-supervision",
-            "short_desc": "We control the critical path lifecycle, assigning dedicated foremen to enforce safety, interface with building control, and guarantee delivery.",
-            "desc": (
-                "Take the stress out of building with our master project management and site supervision frameworks. "
-                "We manage critical path timelines, assign and coordinate specialized trade teams, conduct rigorous safety checks, and interface with building inspectors. "
-                "We bridge the gap between blueprints and actual site handovers, ensuring a smooth, transparent progression."
-            ),
-            "svg" : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-chart-gantt-icon lucide-square-chart-gantt"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 8h7"/><path d="M8 12h6"/><path d="M11 16h5"/></svg>',
-            "benefits_list": [
-                "Delivers complex projects strictly on time and within budget parameters.",
-                "Erases client stress via single-point-of-contact site accounting.",
-                "Enforces uncompromising quality control and safety standards across all sub-trades.",
-                "Catches and fixes minor errors before they impact subsequent construction phases.",
-                "Coordinates all legal sign-offs and structural occupancy handovers."
-            ]
-        }
+      
     ]
-
-
 
     projects_data = [
         {
-            "title": "Collingwood Batchelor",
-            "slug": "multi-unit-flat-renovation",
+            "title": "Collingwood Bachelor",
+            "slug": "collingwood-bachelor",
             "short_desc": "Full-scale interior and exterior renovation of a block of residential flats, transforming dilapidated units into modern, compliant, and highly rentable living spaces.",
             "desc": (
                 "This extensive project involved the complete strip-out and modernization of a multi-unit residential building, requiring seamless coordination across all major trades. "
@@ -331,7 +250,7 @@ def seed_database():
                 
             ),
             "featured": True,
-            "type": "Residential",
+            "type": "Commerical",
             "units": [
                 {
                     "title": "Flat One",
@@ -378,8 +297,8 @@ def seed_database():
             ]
         },
         {
-            "title": "Barn Restoration",
-            "slug": "historic-barn-restoration-and-landscape-re-engineering",
+            "title": "Air BnB Worthing",
+            "slug": "air-bnb-worthing",
             "short_desc": "Full-scale structural restoration, internal modernization, and extensive environmental landscaping of a traditional agricultural barn and its surrounding acreage.",
             "desc": (
                 "This comprehensive project focused on rescuing and transforming a neglected heritage barn while completely rejuvenating the surrounding topography. "
@@ -390,15 +309,48 @@ def seed_database():
             
         },
         {
-            "title": "Nightclub Build",
-            "slug": "nightclub-build-electrical-engineering-and-interior-design",
+            "title": "Erith Full Refurb",
+            "slug": "erith-full-refurb",
             "short_desc": "Complete commercial fit-out, advanced electrical infrastructure installation, and bespoke interior design transformation for a premium late-night entertainment venue in Eastbourne.",
             "desc": (
                 "This major commercial project involved turning a vacant seaside footprint into a striking, multi-room nightclub experience requiring cutting-edge technological integration and high-end construction. "
                 "The build phase commenced with extensive structural partitioning, acoustic soundproofing, and the erection of custom-built feature bars, VIP booths, and a central, reinforced DJ performance stage. "
             ),
             "featured": True,
-            "type": "Commerical",
+            "type": "Residential",
+        },
+        {
+            "title": "Aylesbury Av Landscape",
+            "slug": "Aylesbury-avenue-landscape",
+            "short_desc": "Complete commercial fit-out, advanced electrical infrastructure installation, and bespoke interior design transformation for a premium late-night entertainment venue in Eastbourne.",
+            "desc": (
+                "This major commercial project involved turning a vacant seaside footprint into a striking, multi-room nightclub experience requiring cutting-edge technological integration and high-end construction. "
+                "The build phase commenced with extensive structural partitioning, acoustic soundproofing, and the erection of custom-built feature bars, VIP booths, and a central, reinforced DJ performance stage. "
+            ),
+            "featured": True,
+            "type": "Residential",
+        },
+        {
+            "title": "The Circus",
+            "slug": "the-circus",
+            "short_desc": "Complete commercial fit-out, advanced electrical infrastructure installation, and bespoke interior design transformation for a premium late-night entertainment venue in Eastbourne.",
+            "desc": (
+                "This major commercial project involved turning a vacant seaside footprint into a striking, multi-room nightclub experience requiring cutting-edge technological integration and high-end construction. "
+                "The build phase commenced with extensive structural partitioning, acoustic soundproofing, and the erection of custom-built feature bars, VIP booths, and a central, reinforced DJ performance stage. "
+            ),
+            "featured": True,
+            "type": "Residential",
+        },
+        {
+            "title": "Render Stones Cross",
+            "slug": "render-stones-cross",
+            "short_desc": "Complete commercial fit-out, advanced electrical infrastructure installation, and bespoke interior design transformation for a premium late-night entertainment venue in Eastbourne.",
+            "desc": (
+                "This major commercial project involved turning a vacant seaside footprint into a striking, multi-room nightclub experience requiring cutting-edge technological integration and high-end construction. "
+                "The build phase commenced with extensive structural partitioning, acoustic soundproofing, and the erection of custom-built feature bars, VIP booths, and a central, reinforced DJ performance stage. "
+            ),
+            "featured": True,
+            "type": "Residential",
         }
     ]
 
@@ -615,11 +567,36 @@ def seed_database():
             
         },
         {
-            "title" : "Top 5 signs your boiler is about to fail",
-            "slug" : "top-5-signs-your-boiler-is-about-to-fail",
+            "title" : "Five igns your boiler is about to fail",
+            "slug" : "five-signs-your-boiler-is-about-to-fail",
             "subtitle" : "Don't wait for a winter freeze to find out your boiler is broken, watch for these early warning signs!",
             "abstract" : "A broken boiler can be a costly emergency. Recognizing early symptoms like strange noises or dropping pressure can save you thousands in repairs.",
-            "body_one" : "Some text will go here.",
+            "body_one" : """
+                <h1>5 Signs Your Boiler Is About to Fail</h1>
+
+                <p class="py-1">There’s nothing quite like the sudden chill of a cold shower or a frosty home to remind you that your boiler might be on its last legs. Boilers work hard, quietly powering our warmth and comfort, so when they start to falter, it’s often unexpected—and inconvenient. But if you know what signs to watch for, you can catch problems early and avoid a full breakdown when you least expect it.</p>
+
+                <p class="py-1">Here are the five key signs that your boiler might be about to fail—and what you can do about it.</p>
+
+                <h2>1. Strange Noises</h2>
+                <p class="py-1">When your boiler starts making unusual sounds like banging, whistling, or gurgling, it’s a clear red flag. These noises can indicate trapped air, corrosion, or limescale buildup inside the system. While a bit of noise here and there might seem harmless, persistent strange sounds often signal that your boiler is struggling and needs a professional check-up.</p>
+
+                <h2>2. Water Leaks</h2>
+                <p class="py-1">Leaks around your boiler or radiators are never a good sign. They can point to corrosion, cracked components, or faulty valves. Even a small drip can lead to bigger problems over time, such as water damage or a total system failure. If you spot puddles or dampness near your boiler, it’s time to call in a technician without delay.</p>
+
+                <h2>3. Inconsistent Heating or Hot Water</h2>
+                <p class="py-1">If you notice that some rooms are colder than others or the hot water supply is patchy, your boiler could be struggling to distribute heat properly. This might be caused by a failing pump, blockages in the system, or a failing thermostat. These issues usually worsen over time, so don’t wait until your home feels like an icebox.</p>
+
+                <h2>4. Pilot Light Keeps Going Out</h2>
+                <p class="py-1">The pilot light is the small flame that ignites the boiler’s burner. If it keeps going out, it could be due to a faulty thermocouple, a gas supply issue, or an underlying problem with the boiler’s ignition system. This isn’t just inconvenient—it’s potentially dangerous and should be fixed by a qualified engineer immediately.</p>
+
+                <h2>5. Rising Energy Bills</h2>
+                <p class="py-1">Boilers that are on the decline often become less efficient, working harder to heat your home and using more fuel in the process. If you’ve noticed a sudden spike in your energy bills without a corresponding change in usage, your boiler might be wasting energy and costing you more than it should.</p>
+
+                <p class="py-1">Keeping an eye out for these signs can save you from unexpected cold snaps and costly emergency repairs. Regular servicing and prompt attention to these warning signals will help ensure your boiler keeps running smoothly for years to come.</p>
+
+                <p class="py-1">Stay warm and cozy, and remember—when in doubt, call a professional. Your boiler (and your peace of mind) will thank you!</p>
+                """,
             "author" : "Fred Durst",
             "published_date" : datetime.date(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day),
             "blog_form" : "article-short",
@@ -629,7 +606,28 @@ def seed_database():
             "slug" : "how-to-prepare-your-garden-for-a-summer-deck-installation",
             "subtitle" : "Thinking of adding a decking area? Getting the groundwork right first is crucial for a long-lasting finish.",
             "abstract" : "Before the timber or composite boards arrive, your garden needs proper preparation. Here is how to clear, level, and treat the ground to avoid future rot.",
-            "body_one" : "Some text will go here.",
+            "body_one" : """
+                <h2>How to Prepare Your Garden for a Summer Deck Installation</h2>
+                <p>Installing a deck in your garden is a fantastic way to enhance outdoor living space, perfect for summer gatherings and relaxation. However, proper preparation is essential to ensure the installation process goes smoothly and your garden remains in great condition. Here’s a step-by-step guide to help you get your garden ready for a summer deck installation.</p>
+
+                <h3>Clear and Measure the Space</h3>
+                <p>Start by clearing the designated area of any plants, furniture, or debris that could obstruct the deck installation. Trim back overgrown bushes and remove any garden ornaments or stones. Next, measure the space carefully to confirm the deck dimensions with your contractor, ensuring the design fits comfortably within your garden layout.</p>
+
+                <h3>Assess and Prepare the Ground</h3>
+                <p>Check the ground condition where the deck will be placed. If the soil is uneven, consider leveling it to create a stable foundation. Remove any large roots or rocks that might interfere with the deck’s support structures. In some cases, you may need to lay a weed barrier or gravel to improve drainage and prevent future weed growth beneath the deck.</p>
+
+                <h3>Plan for Accessibility and Safety</h3>
+                <p>Ensure there is easy access to the site for construction materials and equipment. Clear pathways and make arrangements to protect other parts of your garden from damage during installation. If you have underground utilities or irrigation systems, mark their locations clearly to avoid any accidental disruption.</p>
+
+                <h3>Communicate with Your Installer</h3>
+                <p>Discuss your garden’s specifics with your deck installer. Share any concerns about plants you want to preserve or garden features to avoid. Good communication helps tailor the installation process to your garden’s unique needs, resulting in a seamless and efficient project.</p>
+
+                <h3>Final Touches Before Installation</h3>
+                <p>Water your garden a day before installation to reduce dust and dirt. Remove pets and children from the area during construction for safety. Having a clean, prepared site will facilitate the work and minimize delays.</p>
+                <p>Preparing your garden properly sets the stage for a beautiful and durable deck that will be the centerpiece of your summer outdoor enjoyment.</p>
+
+                <p>If you’re ready to transform your garden with a custom deck, <a href="/contact">contact The ROK Group</a> for a professional quote tailored to your space and vision. Let the experts help you bring your outdoor dreams to life this summer.</p>
+                """,
             "author" : "Fred Durst",
             "published_date" : datetime.date(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day),
             "blog_form" : "article-short",
@@ -639,7 +637,52 @@ def seed_database():
             "slug" : "should-you-diy-your-kitchen-tiling-or-hire-a-professional",
             "subtitle" : "Tiling looks straightforward on video, but a bad layout can ruin the whole room. Weighing the pros and cons.",
             "abstract" : "While painting or basic shelving are great DIY weekend tasks, tiling a kitchen splashback requires precision. We break down when to save cash or call a pro.",
-            "body_one" : "Some text will go here.",
+            "body_one" : """
+                <h2>Should You DIY Your Kitchen Tiling or Hire a Professional?</h2>
+                <p>Tiling your kitchen can dramatically enhance its appearance and functionality. However, when it comes to installing kitchen tiles, many homeowners face the question: should you DIY or hire a professional? Here’s a breakdown of the pros and cons of each approach to help you decide the best option for your kitchen project.</p>
+
+                <h3>DIY Kitchen Tiling: Pros and Cons</h3>
+                <p><strong>Pros:</strong></p>
+                <ul>
+                <li>Cost Savings: Doing it yourself can save on labor costs.</li>
+                <li>Personal Satisfaction: Completing the project on your own can be very rewarding.</li>
+                <li>Flexible Schedule: You can work on the project at your own pace.</li>
+                </ul>
+
+                <p><strong>Cons:</strong></p>
+                <ul>
+                <li>Skill Required: Tiling requires precision and experience to achieve a professional finish.</li>
+                <li>Time-Consuming: Without experience, the job can take much longer than expected.</li>
+                <li>Risk of Mistakes: Improper installation can lead to uneven tiles, water damage, or costly repairs.</li>
+                </ul>
+
+                <h3>Hiring a Professional: Pros and Cons</h3>
+                <p><strong>Pros:</strong></p>
+                <ul>
+                <li>Expertise and Quality: Professionals bring experience and skill, ensuring a flawless finish.</li>
+                <li>Time Efficiency: A professional can complete the job quickly and efficiently.</li>
+                <li>Warranty and Peace of Mind: Many professionals offer guarantees on their work, giving you confidence in the durability of your kitchen tiles.</li>
+                </ul>
+
+                <p><strong>Cons:</strong></p>
+                <ul>
+                <li>Higher Initial Cost: Hiring a pro comes with labor fees.</li>
+                <li>Scheduling: You’ll need to coordinate with the professional’s availability.</li>
+                </ul>
+
+                <h3>What to Consider Before Deciding</h3>
+                <ul>
+                <li>Your experience level with tiling.</li>
+                <li>The complexity and size of the kitchen area.</li>
+                <li>Your budget and timeline.</li>
+                <li>The value you place on quality and long-term durability.</li>
+                </ul>
+
+                <p>For many, hiring a professional is a smart investment that ensures lasting beauty and function in the kitchen. However, if you have the skills, tools, and patience, DIY can be a fulfilling project.</p>
+
+                <p>Ready to get your kitchen tiled with expert precision? Contact <a href="/contact">The ROK Group</a> for professional tiling services tailored to your style and needs. Let us help you create a kitchen that’s both stunning and durable.</p>
+            
+            """,
             "author" : "Fred Durst",
             "published_date" : datetime.date(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day),
             "blog_form" : "article-short",
@@ -649,7 +692,36 @@ def seed_database():
             "slug" : "understanding-smart-home-rewiring-for-older-properties",
             "subtitle" : "Upgrading an old house with modern tech? Your current consumer unit and wiring might need an upgrade first.",
             "abstract" : "Bringing smart lighting, smart thermostats, and EV chargers into a periodic home is exciting, but safety comes first. Here is what your electrician will look for.",
-            "body_one" : "Some text will go here.",
+            "body_one" : """"
+                <h2>Understanding Smart Home Rewiring for Older Properties</h2>
+                <p>Older properties often come with outdated electrical systems that may not support the demands of modern smart home technology. Rewiring these homes is essential to safely integrate smart devices and improve overall electrical performance. Here’s what you need to know about smart home rewiring for older properties.</p>
+
+                <h3>Why Rewire an Older Property for Smart Technology?</h3>
+                <ul>
+                    <li><strong>Safety:</strong> Older wiring may not meet current safety standards, increasing the risk of electrical faults.</li>
+                    <li><strong>Capacity:</strong> Modern smart devices require more power and reliable connections, which old wiring might not provide.</li>
+                    <li><strong>Compatibility:</strong> Updating wiring ensures seamless integration with smart hubs, lighting, security systems, and more.</li>
+                    <li><strong>Future-Proofing:</strong> Rewiring prepares your home for new technologies and energy-efficient solutions.</li>
+                </ul>
+
+                <h3>Key Considerations for Rewiring</h3>
+                <ul>
+                    <li><strong>Assessment:</strong> A professional electrician should inspect your current wiring to identify what needs upgrading.</li>
+                    <li><strong>Planning:</strong> Tailored wiring plans ensure smart devices are properly powered and connected throughout the home.</li>
+                    <li><strong>Minimizing Disruption:</strong> Skilled electricians work efficiently to limit intrusion and restore your home quickly.</li>
+                    <li><strong>Compliance:</strong> All work must meet local electrical codes and regulations for safety and insurance purposes.</li>
+                </ul>
+
+                <h3>Benefits of Professional Smart Home Rewiring</h3>
+                <ul>
+                    <li>Reliable and safe electrical system.</li>
+                    <li>Enhanced smart device performance.</li>
+                    <li>Increased home value and comfort.</li>
+                    <li>Peace of mind knowing the job is done right.</li>
+                </ul>
+
+                <p>Thinking about upgrading your older home with smart technology? Contact The ROK Group for premium electrical services and expert smart home rewiring solutions designed to bring your property into the modern age safely and efficiently.</p>
+            """,
             "author" : "Fred Durst",
             "published_date" : datetime.date(datetime.datetime.now().year, datetime.datetime.now().month, datetime.datetime.now().day),
             "blog_form" : "article-short",
@@ -809,6 +881,14 @@ def seed_database():
                 "<p>We strive to ensure the website is reliable and accessible, but we provide our services on an 'as-is' and 'as-available' basis without warranties of any kind. We reserve the right to modify or discontinue services at any time without prior notice.</p>"
                 "<p>We reserve the right to update these terms periodically. Your continued use of the website following any changes constitutes acceptance of the revised Terms of Service.</p>"
             )
+        }
+    ]
+
+    review_data = [
+        {
+            "project_id": 1,
+            "rating": 5,
+            "text" : "Working with ROK for our interior remodel has been a pain-free experience from start to finish. Excellent service."
         }
     ]
     

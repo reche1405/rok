@@ -11,16 +11,8 @@
             <ul>
                 <li><a class="nav-link normal-weight {% if page and page.tag == 'Home' %}nav-link--active{% endif %}" href="/">Home</a></li>
                 <li><a class="nav-link normal-weight {% if page and page.tag == 'Services' or service %}nav-link--active{% endif %}" href="/services">Services</a></li>
-                <li><a class="nav-link normal-weight {% if page and page.tag == 'Projects' or project %}nav-link--active{% endif %}" href="/projects">Projects</a></li>
-                {% if  service %}
-                    <li><a class="nav-link normal-weight" href="/areas">Areas</a></li>
-                {% else %}
-                    {% if page and page.tag == 'Areas' or location or area  %}
-                        <li><a class="nav-link normal-weight nav-link--active" href="/areas">Areas</a></li>
-                    {% else %}
-                        <li><a class="nav-link normal-weight" href="/areas">Areas</a></li>
-                    {% endif %}
-                {% endif %}
+                <li><a class="nav-link normal-weight {% if page and page.tag == 'Projects' or project or unit %}nav-link--active{% endif %}" href="/projects">Projects</a></li>
+                <li><a class="nav-link normal-weight {% if page and page.tag == 'Blog' or article %}nav-link--active{% endif %}" href="/blog">Blog</a></li>
                 <li><a class="nav-link normal-weight {% if page and page.tag == 'Contact' %}nav-link--active{% endif %}" href="/contact">Contact</a></li>
             </ul>
         </nav>
@@ -70,16 +62,8 @@
         <ul class="px-3 py-3">
             <li><a class="nav-link normal-weight {% if page and page.tag == 'Home' %}nav-link--active{% endif %}" href="/">Home</a></li>
             <li><a class="nav-link normal-weight {% if page and page.tag == 'Services' or service %}nav-link--active{% endif %}" href="/services">Services</a></li>
-            <li><a class="nav-link normal-weight {% if page and page.tag == 'Projects' or project %}nav-link--active{% endif %}" href="/projects">Projects</a></li>
-            {% if  service %}
-                <li><a class="nav-link normal-weight" href="/areas">Areas</a></li>
-            {% else %}
-                {% if page and page.tag == 'Areas' or location or area  %}
-                    <li><a class="nav-link normal-weight nav-link--active" href="/areas">Areas</a></li>
-                {% else %}
-                    <li><a class="nav-link normal-weight" href="/areas">Areas</a></li>
-                {% endif %}
-            {% endif %}
+            <li><a class="nav-link normal-weight {% if page and page.tag == 'Projects' or project or unit  %}nav-link--active{% endif %}" href="/projects">Projects</a></li>
+            <li><a class="nav-link normal-weight {% if page and page.tag == 'Blog' or article %}nav-link--active{% endif %}" href="/blog">Blog</a></li>
             <li><a class="nav-link normal-weight {% if page and page.tag == 'Contact' %}nav-link--active{% endif %}" href="/contact">Contact</a></li>
         </ul>
         <a class="nav-link" href="mailto:info@therokgroup.co.uk">info@therokgroup.co.uk</a>

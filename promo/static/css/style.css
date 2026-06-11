@@ -326,7 +326,7 @@ header {
     border-bottom:1px solid var(--color-ink-soft);
     & .content {
         width:100%;
-        padding:1rem;
+        padding:1rem 0;
         display:flex;
         flex-direction: row;
         align-items:center;
@@ -531,10 +531,12 @@ header .nav-logo, .mobile-menu .nav-logo {
 .card-stack {
     display:flex;
     flex-direction: column;
-    gap:1rem;
+    gap:1.125rem;
     max-width:20rem;
-    justify-self: flex-end;
-    align-self:flex-end;
+    justify-self: end;
+    align-self:end;
+    margin-top:auto;
+    margin-left: auto;
     
 }
 .review-card p {
@@ -712,6 +714,9 @@ section:not(.no-pad) {
     position:relative !important; min-height:650px;
 
 }
+.hero-actions {
+    max-width:500px;
+}
 
 section.hero {
     padding-top:5rem;
@@ -843,6 +848,8 @@ section.pale {
     display:flex;
     align-items: center;
     justify-content: center;
+        white-space: no-wrap;
+
     gap:1rem;
     &.primary {
         border-color:var(--color-gold);
@@ -1086,6 +1093,7 @@ ol.process {
 
 
 .breadcrumbs {
+    display: none;
     background-color: var(--color-soft);
     padding-inline:1rem;
     & a:any-link {
@@ -1167,7 +1175,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
         min-height: 270px;
     }
     .x-large-text {
-        font-size:3.7rem;
+        font-size:3rem;
     }
     .large-text {
         font-size:2rem;
@@ -1176,6 +1184,10 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .sm-hide {
         display:none !important;
     }
+    .sm-inline-auto {
+        margin-inline:auto;
+    }
+
     .grid.col-2, .grid.col-2--left, .grid.col-2--right, .grid.col-3,
     .grid.col-3.md-col-2 {
         grid-template-columns : 1fr;
@@ -1256,8 +1268,12 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .card-stack {
         margin-inline:auto;
     }
-    form {
+    form, header {
         padding-inline:1rem;
     }
+    h2.display.large-text {
+        max-width:25ch;
+    }
+    
 }
 

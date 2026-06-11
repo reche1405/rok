@@ -36,17 +36,13 @@
 
 
     <section class="soft py-4 no-pad">
-        <div class="grid content py-6 g-6 col-2 align-center">
-            <div>
-                <div class="sticky-top">
-                    
-                </div>
-            </div>
-            <div>
+        <div class=" content py-6 g-6 align-center text-center">
+           
+            
                 <h3 class="small-text spaced-text gold-text semi-bold caps">Gallery</h3>
-                    <h2 class="display large-text">A collection of images</h2>
-                <p>{{ unit.gallery_intro or "A closer look at the unit, and how it was delivered." }}</p>
-            </div>
+                    <h2 class="display large-text inline-auto">A collection of images</h2>
+                <p class="inline-auto text-center">{{ unit.gallery_intro or "A closer look at the unit, and how it was delivered." }}</p>
+        
         </div>
 
         
@@ -100,15 +96,17 @@
     {% for other_unit in unit.project.units %}
     {% if other_unit.id != unit.id %}
     <div class="card clear">
-        <div class="card__image">
-            {% if other_unit.featured_media %}
-            <img loading="lazy" src="{{ other_unit.featured_media.get_absolute_url() }}" title="{{other_unit.featured_media.title or other_unit.title + ' Media'}} " alt="{{other_unit.featured_media.title or other_unit.title + ' Media'}}">                      
-            {% endif %}
-            <div class="card__image-overlay">
-                <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ other_unit.title }}</h2>
+        <a href="/projects/{{ other_unit.project.slug }}/{{ other_unit.slug }}" title="{{ other_unit.title }}">
+
+            <div class="card__image">
+                {% if other_unit.featured_media %}
+                <img loading="lazy" src="{{ other_unit.featured_media.get_absolute_url() }}" title="{{other_unit.featured_media.title or other_unit.title + ' Media'}} " alt="{{other_unit.featured_media.title or other_unit.title + ' Media'}}">                      
+                {% endif %}
+                <div class="card__image-overlay">
+                    <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ other_unit.title }}</h2>
+                </div>
             </div>
-        </div>
-        
+        </a>
     </div>
     {% endif %}
     {% endfor %}
@@ -125,14 +123,15 @@
     const carouselData = {{ carousel|tojson|safe }};
     console.log(carouselData);
     document.addEventListener('DOMContentLoaded', () => {
-            const carousel = new InfiniteCarousel({
-                autoPlayInterval: carouselData.auto_play_interval,
-                items: carouselData.items,
-            });
-            
-            // Make carousel available globally for debugging (optional)
-            window.carousel = carousel;
+        const carousel = new InfiniteCarousel({
+            autoPlayInterval: carouselData.auto_play_interval,
+            items: carouselData.items,
+            orientation: carouselData.orientation,
         });
+        
+        // Make carousel available globally for debugging (optional)
+        window.carousel = carousel;
+    });
 
    </script>
    {% endblock extra_scripts %}

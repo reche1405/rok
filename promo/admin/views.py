@@ -8,7 +8,7 @@ from flask import current_app, redirect, url_for, request, flash
 from slugify import slugify
 from promo.models import db
 from promo.models.list import ListItem
-from promo.models.project import Project, Unit
+from promo.models.project import Project, Unit, Orientation, Gallery, Slide
 from promo.models.media import Media
 from promo.extensions import cache
 from wtforms.fields import FileField
@@ -227,6 +227,20 @@ def generate_unique_slug( base_title):
         counter += 1
         
     return slug
+
+def generate_slides(media, gallery_id):
+    slides = []
+    sort_order = 0
+    for item in media:
+        slide = Slide(
+            gallery_id = gallery_id,
+            sort_order = sort_order,
+            media_id = item.id
+        )
+        db.session.add(slide)
+        slides.append(slide)
+        sort_order += 1
+    return slides
  
 class ArticleAdminView(SlugifyAdminView):
     column_exclude_list = ['body_one', 'body_two', 'body_three', 'abstract', 'subtitle']
@@ -234,15 +248,10 @@ class ArticleAdminView(SlugifyAdminView):
 class ProjectAdminView(BaseSecureView):
     """Admin view for Project with inline Units in the form."""
     # Show units inline on the project edit/create form
-    form_columns = ['title', 'featured', 'location', 'desc', 'slug', 'services' , 'short_desc', 'media', 'featured_media', 'zip_file', 'type', 'zip_file']
-    inline_models = [ 
-        (Media, {
-            'label' : "Featured Media",
-            'form_class': InlineMedia,
-            'prop_name': 'featured_media' # The exact name of your model's ForeignKey relationship
-        }),
-        Unit                 
-    ]
+    form_columns = ['title', 'short_desc', 'desc', 'slug', 'type', 'tag', 'featured', 'location', 'services' , 'featured_media', 'zip_file']
+    column_list = ['title', 'short_desc', 'featured', 'type', 'tag']
+    inline_models = [ Unit]
+    
     form_extra_fields = {
         'zip_file': FileField('Bulk Upload Images (.zip)', validators=[Optional()])
     }
@@ -270,8 +279,15 @@ class ProjectAdminView(BaseSecureView):
                     if new_media_items:
                         # 2. Append to the many-to-many relationship
                         # 'media' is the relationship attribute on your Project model
-                        model.media.extend(new_media_items)
                         
+                        gallery = Gallery(
+                            name=model.title,
+                            project_id=model.id,
+                        )
+                        db.session.add(gallery)
+                        db.session.flush()
+                        slides = generate_slides(new_media_items, gallery.id)
+
                         # Inform the admin user of success
                         flash(f'Successfully extracted and linked {len(new_media_items)} images.', 'success')
                     else:
@@ -285,7 +301,7 @@ class ProjectAdminView(BaseSecureView):
                 flash('Uploaded file was not a valid ZIP archive.', 'error')
        
 class UnitAdminView(BaseSecureView):
-    form_columns = ['title', 'description', 'featured_media', 'media', 'project', 'zip_file' ]
+    form_columns = ['title', 'description', 'featured_media', 'project', 'zip_file' ]
     form_extra_fields = {
         'zip_file': FileField('Bulk Upload Images (.zip)', validators=[Optional()])
     }
@@ -313,8 +329,17 @@ class UnitAdminView(BaseSecureView):
                     if new_media_items:
                         # 2. Append to the many-to-many relationship
                         # 'media' is the relationship attribute on your Project model
-                        model.media.extend(new_media_items)
-                        model.project.media.extend(new_media_items)
+                        
+
+                        gallery = Gallery(
+                            unit_id = model.id,
+                            name=model.title,
+                            
+                        )
+                        db.session.add(gallery)
+                        db.session.flush()
+                        slides = generate_slides(new_media_items, gallery.id)
+                        #model.project.media.extend(new_media_items)
                         # Inform the admin user of success
                         flash(f'Successfully extracted and linked {len(new_media_items)} images.', 'success')
                     else:

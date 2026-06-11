@@ -122,17 +122,17 @@
           
             {% for unit in project.units %}
             <div class="card clear">
-                <div class="card__image">
-                    {% if unit.featured_media %}
-                    <img loading="lazy" src="{{ unit.featured_media.get_absolute_url() }}" title="{{unit.featured_media.title or unit.title + ' Media'}} " alt="{{unit.featured_media.title or unit.title + ' Media'}}">                      
-                    {% endif %}
-                    <div class="card__image-overlay">
-                        <a href="/projects/{{ unit.project.slug }}/{{ unit.slug }}" title="{{ unit.title }}">
+                <a href="/projects/{{ unit.project.slug }}/{{ unit.slug }}" title="{{ unit.title }}">
+                    <div class="card__image">
+                        {% if unit.featured_media %}
+                        <img loading="lazy" src="{{ unit.featured_media.get_absolute_url() }}" title="{{unit.featured_media.title or unit.title + ' Media'}} " alt="{{unit.featured_media.title or unit.title + ' Media'}}">                      
+                        {% endif %}
+                        <div class="card__image-overlay">
                             <h2 class="mt-2 normal-weight mb-1 wrap-pretty" style="font-size:1.15rem;">{{ unit.title }}</h2>
-                        </a>
+                        </div>
                     </div>
-                </div>
-               
+                    
+                </a>
             </div>
 
             {% endfor %}
@@ -151,6 +151,7 @@
             const carousel = new InfiniteCarousel({
                 autoPlayInterval: carouselData.auto_play_interval,
                 items: carouselData.items,
+                orientation: carouselData.orientation,
             });
             
             // Make carousel available globally for debugging (optional)

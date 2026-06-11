@@ -1,6 +1,9 @@
 
+body:has(.carousel) {
+    overscroll-behavior-x: none;
+}
 
-        .gallery-container {
+.gallery-container {
             max-width: 1200px;
             width: 100%;
             backdrop-filter: blur(10px);
@@ -12,7 +15,7 @@
         .gallery-frame {
             display: grid;
             justify-content: center;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 1rem;
             border-radius: 0.75rem;
             padding: 1rem;
@@ -29,34 +32,41 @@
             aspect-ratio: 12 / 16;
             max-height:calc(100svh - 10rem);
             min-height:700px;
-            justify-self: end;
+            justify-self: center;
+            &.ladnscape {
+                justify-self:start;
+                aspect-ratio: 16/ 9;
+                min-height:unset; 
+                width:calc(100% - 300px);
+            }
         }
 
         .carousel-track {
-            position: relative;
+            display: flex;
             width: 100%;
             height: 100%;
-            z-index:1;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(0%);
+            touch-action: pan-y pinch-zoom;
         }
+        .carousel-track.no-transition {
+    transition: none !important;
+}
 
         .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
+            flex: 0 0 100%;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 0.9s ease-in-out;
-            background-color:var(--color-ink-soft);
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        .slide.active {
+
+        /* .slide.active {
             opacity: 1;
             z-index: 1;
-        }
+        } */
 
         .carousel-overlay {
             position: absolute;
@@ -70,16 +80,18 @@
             overflow-y: auto;
             width:300px;
             max-height:calc(100svh - 8em);
-            justify-self: start;
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: #cba968 transparent;
             padding-bottom:1rem;
+            position:absolute; 
+            top:1rem; 
+            right:0;
         }
 
 /* WebKit browsers (Chrome, Edge, Safari) */
 .gallery-selector__viewbox::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
     background: transparent;
 }
 
@@ -114,7 +126,7 @@
     }
     
     .gallery-selector__viewbox::-webkit-scrollbar {
-        height: 6px;
+        height: 4px;
     }
     
     .gallery-selector__viewbox::-webkit-scrollbar-track {
@@ -243,12 +255,18 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .carousel {
+                
                 max-width: 100%;
                 max-height: calc(100svh - 15rem);
                 aspect-ratio: unset;
                 width:100%;
                 height:calc(100svh - 20rem);
                 min-height:500px;
+                &.landscape {
+                    min-height:unset;
+                    height:unset; 
+                    aspect-ratio: 16/10;
+                }
             }
             .gallery-frame {
                 grid-template-columns: 1fr;
@@ -260,6 +278,9 @@
                 max-height: none;
                 max-width:100svw;
                 width: 100svw;
+                position:relative;
+                top:unset;
+                right:unset;
             }
             
             .gallery-selector__scrollbox {
