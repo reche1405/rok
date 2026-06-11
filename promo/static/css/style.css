@@ -528,7 +528,7 @@ header .nav-logo, .mobile-menu .nav-logo {
     position:relative;
     z-index:1;
 }
-@media (max-width:1259px) {
+@media (max-width:1249px) {
     header .content{
         padding-inline:1rem;
     } 
