@@ -17,7 +17,7 @@ class InfiniteCarousel {
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
         
-        // Bind methods
+    // Bind methods
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
         this.selectSlide = this.selectSlide.bind(this);

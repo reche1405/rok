@@ -33,7 +33,7 @@ body:has(.carousel) {
             max-height:calc(100svh - 10rem);
             min-height:700px;
             justify-self: center;
-            &.ladnscape {
+            &.landscape {
                 justify-self:start;
                 aspect-ratio: 16/ 9;
                 min-height:unset; 
