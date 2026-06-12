@@ -271,6 +271,7 @@ body:has(.carousel) {
                     min-height:unset;
                     height:unset; 
                     aspect-ratio: 16/10;
+                    width:100%;
                 }
             }
             .gallery-frame {
