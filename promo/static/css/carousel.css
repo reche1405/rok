@@ -40,6 +40,7 @@ body:has(.carousel) {
                 width:calc(100% - 300px);
             }
         }
+        
 
         .carousel-track {
             display: flex;
@@ -87,6 +88,10 @@ body:has(.carousel) {
             position:absolute; 
             top:1rem; 
             right:0;
+        }
+
+        .gallery-frame:has(.landscape) .gallery-selector__viewbox {
+            max-height:469px;
         }
 
 /* WebKit browsers (Chrome, Edge, Safari) */
