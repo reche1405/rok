@@ -910,12 +910,12 @@ ol.process {
         &::after {
             content: "";
             
-            position:absolute; left:0; top:1.95rem;
+            position:absolute; left:0; top:1.2rem;
            
             background-color:var(--color-gold);
             width:30px; height:30px; border-radius: 15px;;
             font-weight:var(--fw-semibold);
-            border:3px solid var(--color-gold-deep);
+            border:5px solid var(--color-gold-deep);
 
         }
         &:not(:last-of-type)::before {
@@ -925,6 +925,9 @@ ol.process {
             height:100%;
             background-color: var(--color-gold);
 
+        }
+        & span {
+            font-size:1.5rem;
         }
     } 
    
@@ -1218,6 +1221,7 @@ section:has(div.slider.light) ~ .breadcrumbs {
     .p-6.sm-p-0, .p-5.sm-p-0, .p-4.sm-p-0, .sm-p-0 {
     padding:0 !important;
     }
+    
     .shadow-4.sm-shadow-0 {
         box-shadow: none;
     }
@@ -1258,6 +1262,11 @@ section:has(div.slider.light) ~ .breadcrumbs {
     }
     .welcome {
         padding-top:1rem;
+    }
+    .welcome-sub {
+        padding-inline:1rem !important;
+        padding-block: 5rem 0;
+        margin-bottom:0;
     }
     section .cta, form .cta {
         width:100%;
