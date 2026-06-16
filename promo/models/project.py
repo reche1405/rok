@@ -13,6 +13,7 @@ class ProjectTag(enum.Enum):
     LRG = 'Large Scale'
     KNB = 'Kitchens & Bathrooms'
     EXT = 'Extensions'
+    EXR = 'External Renders'
 
 class Project(db.Model):
     __tablename__ = 'projects'
