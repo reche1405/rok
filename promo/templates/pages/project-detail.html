@@ -16,7 +16,15 @@
                 
             </div>
             <div>
-                {% if project.review %}
+
+                {% if project.tag.value != 'Large Scale' %}
+                <div class="card clear px-3 pb-3 pt-1 inline-auto">
+                    <h3 class="gold-text caps small-text spaced-text">A Collection</h3>
+                    <p class="white-text">
+                        A collection of {{ project.tag.value }} projects, each with its own unique design and character, but all sharing a common thread of quality and attention to detail.
+                    </p>
+                </div>
+                {% elif project.review %}
                 <div class="card clear px-3 pb-3 pt-1 review-card inline-auto">
                     <div class="flex align-center space-between">
                         <h3 class="gold-text caps small-text spaced-text">Client Review</h3>
