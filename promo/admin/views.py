@@ -228,9 +228,9 @@ def generate_unique_slug( base_title):
         
     return slug
 
-def generate_slides(media, gallery_id):
+def generate_slides(media, gallery_id, start_index = 0):
     slides = []
-    sort_order = 0
+    sort_order = start_index
     for item in media:
         slide = Slide(
             gallery_id = gallery_id,
@@ -279,14 +279,19 @@ class ProjectAdminView(BaseSecureView):
                     if new_media_items:
                         # 2. Append to the many-to-many relationship
                         # 'media' is the relationship attribute on your Project model
-                        
-                        gallery = Gallery(
-                            name=model.title,
-                            project_id=model.id,
-                        )
-                        db.session.add(gallery)
-                        db.session.flush()
-                        slides = generate_slides(new_media_items, gallery.id)
+                        gallery = None
+                        start_index = 0
+                        if model.gallery:
+                            gallery = model.gallery
+                            start_index = len(gallery.slides) + 1
+                        else:
+                            gallery = Gallery(
+                                name=model.title,
+                                project_id=model.id,
+                            )
+                            db.session.add(gallery)
+                            db.session.flush()
+                        slides = generate_slides(new_media_items, gallery.id, start_index)
 
                         # Inform the admin user of success
                         flash(f'Successfully extracted and linked {len(new_media_items)} images.', 'success')
@@ -325,20 +330,22 @@ class UnitAdminView(BaseSecureView):
                 try:
                     # 1. Process zip and get the list of created Media objects
                     new_media_items = process_zip_upload(zip_file_storage)
-                    
+                    start_index = 0
                     if new_media_items:
                         # 2. Append to the many-to-many relationship
                         # 'media' is the relationship attribute on your Project model
-                        
-
-                        gallery = Gallery(
-                            unit_id = model.id,
-                            name=model.title,
-                            
-                        )
-                        db.session.add(gallery)
-                        db.session.flush()
-                        slides = generate_slides(new_media_items, gallery.id)
+                        gallery = None
+                        if model.gallery:
+                            gallery = model.gallery
+                            start_index = len(gallery.slides) + 1
+                        else:
+                            gallery = Gallery(
+                                name=model.title,
+                                project_id=model.id,
+                            )
+                            db.session.add(gallery)
+                            db.session.flush()
+                        slides = generate_slides(new_media_items, gallery.id, start_index)
                         #model.project.media.extend(new_media_items)
                         # Inform the admin user of success
                         flash(f'Successfully extracted and linked {len(new_media_items)} images.', 'success')
