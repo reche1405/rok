@@ -151,7 +151,7 @@ body:has(.carousel) {
         }
 
         .gallery-selector {
-            width: 80%;
+            width:200px;
             aspect-ratio: 16 / 9;
             border: none;
             cursor: pointer;
@@ -161,6 +161,7 @@ body:has(.carousel) {
             position: relative;
             padding:0;
         }
+        .landscape 
 
         .gallery-selector img {
             width: 100%;
