@@ -80,6 +80,8 @@ body:has(.carousel) {
             scrollbar-width: thin;
             scrollbar-color: #cba968 transparent;
             padding-bottom:1rem;
+            width:100%; 
+            
             
         }
 
@@ -147,6 +149,7 @@ body:has(.carousel) {
             gap: 0.75rem;
             width:100%;
             align-items: center;
+
 
         }
 
