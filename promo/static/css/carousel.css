@@ -4,7 +4,6 @@ body:has(.carousel) {
 }
 
 .gallery-container {
-            max-width: 1200px;
             width: 100%;
             backdrop-filter: blur(10px);
             border-radius: 1rem;
@@ -27,17 +26,16 @@ body:has(.carousel) {
         .carousel {
             position: relative;
             overflow: hidden;
-            border-radius: 0.75rem;
             background: #000;
             aspect-ratio: 12 / 16;
-            max-height:calc(100svh - 10rem);
-            min-height:700px;
+            min-height:calc(100svh - 6rem);
+            max-height:100svh;
             justify-self: center;
             &.landscape {
                 justify-self:start;
                 aspect-ratio: 16/ 9;
                 min-height:unset; 
-                width:calc(100% - 300px);
+                width:100%;
             }
         }
         
@@ -51,8 +49,8 @@ body:has(.carousel) {
             touch-action: pan-y pinch-zoom;
         }
         .carousel-track.no-transition {
-    transition: none !important;
-}
+            transition: none !important;
+        }
 
         .slide {
             flex: 0 0 100%;
@@ -78,21 +76,13 @@ body:has(.carousel) {
 
         /* Thumbnail Styles */
         .gallery-selector__viewbox {
-            overflow-y: auto;
-            width:300px;
-            max-height:calc(100svh - 8em);
-            overflow-y: auto;
+            overflow-x: auto;
             scrollbar-width: thin;
             scrollbar-color: #cba968 transparent;
             padding-bottom:1rem;
-            position:absolute; 
-            top:1rem; 
-            right:0;
+            
         }
 
-        .gallery-frame:has(.landscape) .gallery-selector__viewbox {
-            max-height:469px;
-        }
 
 /* WebKit browsers (Chrome, Edge, Safari) */
 .gallery-selector__viewbox::-webkit-scrollbar {
@@ -102,12 +92,11 @@ body:has(.carousel) {
 
 .gallery-selector__viewbox::-webkit-scrollbar-track {
     background: transparent;
-    border-radius: 10px;
 }
 
 .gallery-selector__viewbox::-webkit-scrollbar-thumb {
     background: #cba968;
-    border-radius: 10px;
+    border-radius: 0;
     min-height: 40px;  /* Prevents thumb from getting too small */
 }
 
@@ -140,7 +129,6 @@ body:has(.carousel) {
     
     .gallery-selector__viewbox::-webkit-scrollbar-thumb {
         background: #cba968;
-        border-radius: 10px;
         min-width: 40px;
     }
 }
@@ -155,10 +143,11 @@ body:has(.carousel) {
 
         .gallery-selector__scrollbox {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 0.75rem;
             width:100%;
             align-items: center;
+
         }
 
         .gallery-selector {
@@ -166,7 +155,6 @@ body:has(.carousel) {
             aspect-ratio: 16 / 9;
             border: none;
             cursor: pointer;
-            border-radius: 0.5rem;
             overflow: hidden;
             transition: all 0.3s ease;
             background: #333;
@@ -207,7 +195,7 @@ body:has(.carousel) {
         }
 
         .carousel-play-pause:hover {
-            background: rgba(255, 107, 107, 0.9);
+            background: var(--clr);
             transform: scale(1.1);
         }
 
