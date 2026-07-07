@@ -80,7 +80,7 @@ body:has(.carousel) {
             scrollbar-width: thin;
             scrollbar-color: #cba968 transparent;
             padding-bottom:1rem;
-            width:100%; 
+            max-width:100%; 
             
             
         }
@@ -274,8 +274,8 @@ body:has(.carousel) {
             .gallery-selector__viewbox {
                 overflow-x: auto;
                 max-height: none;
-                max-width:100svw;
-                width: 100svw;
+                max-width:100%;
+                width: 100%;
                 position:relative;
                 top:unset;
                 right:unset;
