@@ -54,15 +54,19 @@
     {% endblock hero %}
     {% block main %}
 
-    <section class="light pb-6">
-        <div class="grid content pb-4 pt-6 g-6 col-2">
-            <div class="sm-hide"></div>
+    <section class="light pb-6 pt-6 my-6">
+        <div class="grid content pb-4 pt-6 g-6 text-center justify-center">
             <div>
-                <div class="">
+                <div class="text-center">
                     <h3 class="small-text spaced-text gold-text semi-bold caps">About the Project</h3>
-                    <h2 class="display large-text">Project Overview</h2>
-                    <p>{{ project.full_desc or project.desc }}</p>
-                    <div class="flex wrap g-2 pt-4">
+                    <h2 class="display large-text pb-3 pt-1 mx-auto">Project Overview</h2>
+                    {% set paras = project.desc.split('\n') %}
+                    <p class="px-2">
+                        {% for para in paras %}
+                            <span class="block">{{ para }}</span>
+                        {% endfor %}
+                    </p>
+                    <div class="flex wrap g-2 pt-4 mt-4 justify-center">
                         {% for service in project.services %}
                             <span title="{{ service.title }}" class="card__tag white-text">{{ service.title|truncate(12) }}</span>
                         {% endfor %}

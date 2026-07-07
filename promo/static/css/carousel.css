@@ -81,7 +81,9 @@ body:has(.carousel) {
             scrollbar-width: thin;
             scrollbar-color: #cba968 transparent;
             padding-bottom:1rem;
-            max-width:100svw; 
+            max-width:1024px; 
+            margin-inline:auto;
+            margin-top:3rem;
             
             
         }
@@ -133,6 +135,7 @@ body:has(.carousel) {
         scrollbar-width: thin;
         scrollbar-color: #cba968 transparent;
         padding:1rem 1rem 2rem 1rem;
+        max-width:calc(100svw - 20px);
     }
     
     .gallery-selector__viewbox::-webkit-scrollbar {
